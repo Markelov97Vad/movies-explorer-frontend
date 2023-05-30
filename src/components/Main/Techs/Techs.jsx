@@ -1,4 +1,4 @@
-import iconsText from '../../../utils/config';
+import { iconsText } from '../../../utils/config';
 import Headline from '../Headline/Headline';
 import './Techs.css';
 
