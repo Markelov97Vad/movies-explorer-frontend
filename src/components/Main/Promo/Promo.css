@@ -2,11 +2,10 @@
   background-color: #DDDEE3;
   padding: 0 70px 75px;
   display: grid;
-  grid-template-rows: 2fr auto; 
   justify-content: space-between;
   grid-template-areas: 
-    "info image"
-    "button image";
+  "info image"
+  "button image";
 }
 
 .promo__info {
