@@ -18,7 +18,7 @@ function AboutMe() {
             После того, как прошёл курс по веб-разработке, начал заниматься 
             фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a className="student-info__link" href="#" target="_blanck" rel='noreferrer'>Github</a>
+          <a className="student-info__link" href="https://github.com/Markelov97Vad" target="_blanck" rel='noreferrer'>Github</a>
         </div>
         <img className="student-info__image" src={photo} alt="Фото студента"/>
       </article>
