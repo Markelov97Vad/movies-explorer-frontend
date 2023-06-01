@@ -1,0 +1,20 @@
+.content {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  /* margin: 0 auto; */
+}
+
+.movie-card-list {
+  padding: 70px 70px 80px;
+  /* border-top: 1px solid #E8E8E8; */
+  display: grid;
+  justify-content: center;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 364px)); */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 364px));
+  gap: 37px 24px;
+  /* margin: 0 auto; */
+  /* max-width: 1140px; */
+}
+
