@@ -61,7 +61,6 @@
 
 @media screen and (max-width: 720px) {
   .filter-checkbox {
-    /* position: absolute; */
     border: none;
     padding: 0;
   }

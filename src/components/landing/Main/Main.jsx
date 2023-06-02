@@ -6,11 +6,14 @@ import AboutMe from '../AboutMe/AboutMe.jsx';
 import Portfolio from '../Portfolio/Portfolio';
 import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
+import NavAuth from '../../navigation/NavAuth/NavAuth';
 
 function Main () {
   return (
     <>
-      <Header />
+      <Header>
+        {/* <NavAuth/> */}
+      </Header>
       <main>
         <Promo />
         <AboutProject />

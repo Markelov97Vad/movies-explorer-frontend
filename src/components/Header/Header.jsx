@@ -1,14 +1,18 @@
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../images/logo.svg'
 import './Header.css'
+import NavAuth from '../navigation/NavAuth/NavAuth';
+import NavMain from '../navigation/NavMain/NavMain';
 
-function Header () {
+function Header ({ children }) {
+  const { pathname } = useLocation();
+
   return (
-    <header className="header root__header">
-      <img src={logo} alt="логотип Movie explorer" className="header__logo"/>
-      <nav className="header__menu">
-        <span className="header__link">Регистрация</span>
-        <button className="header__button">Войти</button>
-      </nav>
+    <header className={`header ${pathname === '/' ? 'header_type_landing' : 'header_type_main'}`}>
+      <Link to='/'><img src={logo} alt="логотип Movie explorer" className="header__logo"/></Link>
+      {/* { children } */}
+      {/* <NavAuth /> */}
+      <NavMain />
     </header>
   )
 }

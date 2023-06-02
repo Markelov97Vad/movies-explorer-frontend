@@ -6,14 +6,16 @@ import MovieCardList from '../MoviesCardList/MovieCardList';
 
 function Movies() {
   return (
-    <div>
-      <Header />
+    <>
+      <Header>
+
+      </Header>
       <main>
         <SearchForm />
         <MovieCardList />
       </main>
       <Footer />
-    </div>
+    </>
   )
 }
 

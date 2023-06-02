@@ -1,0 +1,119 @@
+.navigation-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 676px;
+  /* width: 100%; */
+}
+
+.navigation-main__list {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding: 0;
+}
+
+.navigation-main__link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.navigation-main__link_type_bold {
+  font-weight: 500;
+}
+
+.navigation-main__link_type_normal {
+  font-weight: 400;
+}
+
+.navigation-main__button {
+  background: url(../../../images/button-profile.png) no-repeat;
+  background-size: 12px 14px;
+  background-position: top 7px left 12px;
+  min-width: 100px;
+  max-height: 32px;
+  border: 2px solid rgba(170, 170, 170, .2);
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  padding: 6px 12px 6px 31px;
+  cursor: pointer;
+}
+
+.navigation-main__wrapper {
+  position: relative;
+}
+
+.navigation-main__menu {
+  visibility: hidden;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .3);
+  z-index: 3;
+}
+
+.navigation-main__menu_opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+.navigation-main__container {
+  background-color: #FAFAFA;
+  min-width: 520px;
+  height: 100vh;
+  /* display: flex; */
+  /* flex-direction: column; */
+  justify-content: space-between;
+  /* align-items: center; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 229px max-content 621px;
+
+  /* justify-self: flex-end; */
+}
+
+.navigation-main__close-button {
+  background: url(../../../images/close-button.svg) no-repeat;
+  background-size: 22px 22px;
+  border: none;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin-top: 20px;
+  margin-right: 20px;
+  justify-self: end;
+  cursor: pointer;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  row-gap: 28px;
+  text-align: center;
+}
+
+.navigation-main__link_type_menu {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.navigation-main__button {
+  place-self: end center;
+  
+}
