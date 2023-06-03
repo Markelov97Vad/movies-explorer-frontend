@@ -57,6 +57,7 @@
   .header {
     padding-left: 14px;
     padding-right: 14px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .header__button {

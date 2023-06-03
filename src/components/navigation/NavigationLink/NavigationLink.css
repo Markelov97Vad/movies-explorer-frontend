@@ -1,0 +1,23 @@
+.navigation__link {
+  text-decoration: none;
+  color: #000000;
+}
+
+.navigation__link_type_bold {
+  font-weight: 500;
+}
+
+.navigation__link_type_normal {
+  font-weight: 400;
+}
+
+.navigation__link_place_header {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.navigation__link_place_menu {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
