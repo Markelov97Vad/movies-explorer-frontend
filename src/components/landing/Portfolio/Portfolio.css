@@ -13,16 +13,14 @@
 
 @media screen and (max-width: 768px) {
   .portfolio {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-inline: 50px;
     padding-bottom: 90px;
   }
 }
 
 @media screen and (max-width: 400px) {
   .portfolio {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-inline: 14px;
     padding-bottom: 70px;
   }
 

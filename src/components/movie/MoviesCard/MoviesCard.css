@@ -1,4 +1,4 @@
-.movie-card {
+.movies-card {
   background: #FFFFFF;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
@@ -7,57 +7,68 @@
   justify-self: center;
 }
 
-.movie-card__image {
+.movies-card:hover {
+  cursor: pointer;
+}
+
+
+.movies-card__image {
   width: 100%;
   max-height: 203px;
 }
 
-.movie-card__wrapper {
+.movies-card__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 16px;
-  padding: 0 24px 0 16px;
+  margin-top: 8px;
+  padding-inline: 16px;
 }
 
-.movie-card__title {
+.movies-card__title {
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   color: #000000;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 280px;
 }
 
-.movie-card__time-code {
+.movies-card__time-code {
   display: inline-block;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
   color: #A0A0A0;
   padding-left: 16px;
-  margin-top: 17px;
+  margin-top: 7px;
 }
 
-.movie-card__button {
-  /* background: url(../../../images/like-active.svg) no-repeat; */
-  background: url(../../../images/like-inactive.svg) no-repeat;
-  background-position: center;
-  padding: 0;
-  background-color: #FFFFFF;
-  border: none;
-  width: 14px;
-  height: 12px;
-  cursor: pointer;
+@media screen and (max-width: 1200px) {
+  .movies-card__title {
+    max-width: 260px;
+  }
 }
 
-.movie-card__button::before {
-  background: url(../../../images/like-inactive.svg) no-repeat;
+@media screen and (max-width: 768px) {
+  .movies-card {
+    max-width: 339px;
+  }
+  .movies-card__wrapper {
+    padding-inline: 14px;
+  }
 }
 
-.movie-card__button:hover {
-  opacity: .6;
-}
-.movie-card__button::after {
-  background-image: url(../../../images/like-active.svg);
-  /* background-image: url(../../../images/like-inactive.svg); */
+@media screen and (max-width: 400px) {
+  .movies-card {
+    max-width: 300px;
+  }
+  .movies-card__title {
+    font-size: 12px;
+    line-height: 15px;
+    max-width: 240px;
+  }
 }

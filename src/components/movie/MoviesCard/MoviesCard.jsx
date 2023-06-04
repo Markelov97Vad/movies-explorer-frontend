@@ -1,7 +1,13 @@
+import { useLocation } from 'react-router-dom';
+import ButtonCross from '../../ButtonCross/ButtonCross';
 import './MoviesCard.css';
+import ButtonLike from '../../ButtonLike/ButtonLike';
 
 function MoviesCard({ movie }) {
   const { image, nameRu, duration } = movie;
+  const { pathname } = useLocation();
+  
+
   const getTimeFromMinutes = ((time) => {
     const minutes = time % 60;
     const hour = Math.floor(time / 60);
@@ -10,13 +16,17 @@ function MoviesCard({ movie }) {
   })
 
   return ( 
-    <article className='movie-card'>
-      <img className='movie-card__image' src={`${image}`} alt={nameRu} />
-      <div className='movie-card__wrapper'>
-        <h4 className='movie-card__title'>{nameRu}</h4>
-        <button className='movie-card__button' type='button'></button>
+    <article className='movies-card'>
+      <img className='movies-card__image' src={`${image}`} alt={nameRu} />
+      <div className='movies-card__wrapper'>
+        <h4 className='movies-card__title'>{nameRu}</h4>
+        {
+          pathname === '/movies' ?
+          <ButtonLike /> :
+          <ButtonCross place='card'/>
+        }
       </div>
-      <span className='movie-card__time-code'>{getTimeFromMinutes(duration)}</span>
+      <span className='movies-card__time-code'>{getTimeFromMinutes(duration)}</span>
     </article>
   );
 }

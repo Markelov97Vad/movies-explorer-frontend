@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import './NavigationLink.css';
 
-function NavigationLink({ place, text }) {
+function NavigationLink({ place, text, path }) {
   return ( 
-      <Link className={`navigation__link navigation__link_place_${place}`} to='/'>{text}</Link>
+      <Link to={path} className={`navigation-link navigation-link_place_${place}`}>{text}</Link>
    );
 }
 

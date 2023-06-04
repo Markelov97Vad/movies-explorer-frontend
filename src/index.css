@@ -1,6 +1,10 @@
 @import url('./vendor/normalize.css');
 @import url('./vendor/fonts/fonts.css');
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,9 +15,6 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 code {

@@ -1,0 +1,21 @@
+.button-cross {
+  background: url(../../images/close-button.svg) no-repeat;
+  background-position: center;
+  border: none;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.button-cross_place_card {
+  background-size: 10px 10px;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.movies-card:hover .button-cross_place_card {
+  opacity: 1;
+}
+
+

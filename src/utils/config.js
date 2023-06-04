@@ -14,6 +14,7 @@ const linksList = [{
   link: 'https://s'
 }];
 
+// const moviesList = null // проверки загрузки карточек
 const moviesList = [
   {
     id: 1,
@@ -30,7 +31,8 @@ const moviesList = [
     image: require('../images/pic-3.png'),
     nameRu: 'В погоне за Бенкси',
     duration: 102,
-  }, {
+   }, 
+   {
     id: 4,
     image: require('../images/pic-4.png'),
     nameRu: 'Баския: Взрыв реальности',
@@ -53,7 +55,7 @@ const moviesList = [
   }, {
     id: 8,
     image: require('../images/pic-8.png'),
-    nameRu: 'Gimme Danger: История Игги и The Stooge...',
+    nameRu: 'Gimme Danger: История Игги и The Stooges sasas',
     duration: 119,
   }, {
     id: 9,

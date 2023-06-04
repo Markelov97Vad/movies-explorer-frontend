@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   max-width: 676px;
-  /* width: 100%; */
 }
 
 .navigation-header__list {
@@ -12,21 +11,6 @@
   gap: 16px;
   padding: 0;
 }
-
-/* .navigation__link {
-  text-decoration: none;
-  color: #000000;
-  font-size: 13px;
-  line-height: 18px;
-} */
-
-/* .navigation__link_type_bold {
-  font-weight: 500;
-}
-
-.navigation__link_type_normal {
-  font-weight: 400;
-} */
 
 @media screen and (max-width: 768px) {
   .navigation-header {

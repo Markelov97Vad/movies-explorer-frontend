@@ -48,15 +48,13 @@
 
 @media screen and (max-width: 768px) {
   .header {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-inline: 30px;
   }
 }
 
 @media screen and (max-width: 400px) {
   .header {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-inline: 14px;
     grid-template-columns: 1fr 1fr;
   }
 
