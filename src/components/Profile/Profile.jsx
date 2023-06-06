@@ -42,11 +42,14 @@ function Profile() {
           </fieldset>
           {
             !isEditing ? 
-              <div className='profile-form__link-wrapper'>
+              <div className='profile-form__edit'>
                 <button onClick={handleEditing} type='button' className='profile-form__button profile-form__button_type_edit'>Редактировать</button>
                 <button type='button' className='profile-form__button profile-form__button_type_logout'>Выйти из аккаунта</button>
               </div> :
-            <button type='submit' className='button button_place_profile'>Сохранить</button>
+              <div className='profile-form__submit'>
+                <span className='profile-form__error'>При обновлении профиля произошла ошибка.</span>
+                <button type='submit' className='button button_place_profile'>Сохранить</button>
+              </div>
           }
         </form>
       </main>
