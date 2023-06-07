@@ -1,0 +1,43 @@
+.navigation-link-sign {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation-link-sign_place_header {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.navigation-link-sign_type_button {
+  background-color: #3456F3;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 20px;
+  min-width: 76px;
+  min-height: 32px;
+}
+
+.navigation-link-sign_color_black {
+  color: #000;
+}
+
+.navigation-link-sign_color_white {
+  color: #fff;
+}
+
+.navigation-link-sign_color_blue {
+  color: #3456F3;
+}
+
+@media screen and (max-width: 400px) {
+  .navigation-link-sign_place_header {
+    font-size: 10px;
+  }
+
+  .navigation-link-sign_type_button {
+    padding: 5px 12px;
+    min-width: 54px;
+    min-height: 26px;
+  }
+}

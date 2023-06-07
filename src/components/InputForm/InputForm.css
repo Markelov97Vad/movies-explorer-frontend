@@ -1,6 +1,7 @@
 .form-input {
   display: flex;
   flex-direction: column;
+  min-height: 91px;
 }
 
 .form-input__label {
@@ -32,9 +33,14 @@
 }
 
 .form-input__error {
+  display: none;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
   color: #EE3465;
   margin-top: 10px;
+}
+
+.form-input__error_active {
+  display: inline;
 }

@@ -6,7 +6,7 @@ import AboutMe from '../AboutMe/AboutMe.jsx';
 import Portfolio from '../Portfolio/Portfolio';
 import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
-import NavAuth from '../../navigation/NavAuth/NavAuth';
+import NavAuth from '../../navigation/NavSign/NavSign';
 
 function Main () {
   return (
