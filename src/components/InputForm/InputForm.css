@@ -19,6 +19,7 @@
   min-height: 45px;
   font-size: 13px;
   line-height: 16px;
+  padding-inline: 15px;
 }
 
 .form-input__input:focus {

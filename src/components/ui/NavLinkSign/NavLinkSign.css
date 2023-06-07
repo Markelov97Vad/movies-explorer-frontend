@@ -7,6 +7,10 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+
+}
+.navigation-link-sign_place_sign {
+  margin-left: 6px;
 }
 
 .navigation-link-sign_type_button {

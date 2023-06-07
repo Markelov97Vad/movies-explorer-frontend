@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import './Profile.css'
+import FormButton from '../ui/FormButton/FormButton';
 
 function Profile() {
   const [name, setName] = useState('');
@@ -48,7 +49,7 @@ function Profile() {
               </div> :
               <div className='profile-form__submit'>
                 <span className='profile-form__error'>При обновлении профиля произошла ошибка.</span>
-                <button type='submit' className='button button_place_profile'>Сохранить</button>
+                <FormButton text='Сохранить'/>
               </div>
           }
         </form>

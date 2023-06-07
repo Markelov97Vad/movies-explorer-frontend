@@ -97,6 +97,7 @@
   font-size: 13px;
   line-height: 16px;
   padding: 0;
+  cursor: pointer;
 }
 
 .profile-form__button_type_edit{
@@ -106,21 +107,6 @@
 .profile-form__button_type_logout{
   color: #EE3465;
   font-weight: 500;
-}
-
-.button_place_profile {
-  background-color:  #3456F3;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 3px;
-  padding: 0;
-  /* max-width: 396px; */
-  width: 100%;
-  min-height: 45px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

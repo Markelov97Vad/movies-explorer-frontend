@@ -3,7 +3,13 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  min-height: 373px;
+  min-height: 413px;
+}
+
+.sign-form__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sign-form__control-wrapper {

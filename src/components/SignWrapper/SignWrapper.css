@@ -1,0 +1,18 @@
+.sign-wrapper {
+  min-width: 396px;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .sign-wrapper {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sign-wrapper {
+    padding-top: 56px;
+    min-width: 260px;
+  }
+}

@@ -6,7 +6,7 @@ function NavLinkSign({ text , place, type, to, color }) {
     <Link 
     to={to} 
     className={
-      `navigation-link-sign navigation-link-sign_place_${place} navigation-link-sign_type_${type} navigation-link-sign_color_${color}`
+      `navigation-link-sign ${place ? `navigation-link-sign_place_${place}` : ''} navigation-link-sign_type_${type} navigation-link-sign_color_${color}`
     }>
       {text}
     </Link>
