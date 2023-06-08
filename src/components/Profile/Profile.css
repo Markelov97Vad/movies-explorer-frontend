@@ -79,14 +79,17 @@
 }
 
 .profile-form__error {
-  display: block;
+  display: none;
   margin-bottom: 20px;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
   text-align: center;
   color: #EE3465;
-  
+}
+
+.profile-form__error_active {
+  display: block;
 }
 
 /*?  BUTTONS */

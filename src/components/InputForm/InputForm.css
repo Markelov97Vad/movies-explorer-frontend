@@ -1,7 +1,9 @@
 .form-input {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 91px;
+  position: relative;
 }
 
 .form-input__label {
@@ -20,6 +22,7 @@
   font-size: 13px;
   line-height: 16px;
   padding-inline: 15px;
+  margin-right: 0;
 }
 
 .form-input__input:focus {
@@ -40,8 +43,15 @@
   line-height: 12px;
   color: #EE3465;
   margin-top: 10px;
+  max-width: 396px;
 }
 
 .form-input__error_active {
   display: inline;
+}
+
+@media screen and (max-width: 480px) {
+  .form-input__input {
+    max-width: 260px;
+  }
 }

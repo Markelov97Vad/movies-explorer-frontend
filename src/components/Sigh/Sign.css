@@ -1,0 +1,23 @@
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign__wrapper {
+  min-width: 396px;
+  padding-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .sign__wrapper {
+    padding-top: 232px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sign__wrapper {
+    padding-top: 56px;
+    min-width: 260px;
+  }
+}

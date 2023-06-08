@@ -1,10 +1,9 @@
 .header {
   display: grid;
   justify-content: space-between;
-  grid-template-columns: minmax(280px, max-content) minmax(min-content, 676px);
+  grid-template-columns: minmax(38px, max-content) minmax(min-content, 676px);
   padding: 18px 70px;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .header_type_landing {

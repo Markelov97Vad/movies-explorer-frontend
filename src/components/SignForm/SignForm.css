@@ -4,17 +4,20 @@
   justify-content: space-between;
   width: 100%;
   min-height: 413px;
+  margin: 0 auto;
 }
 
 .sign-form__wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
 }
 
 .sign-form__control-wrapper {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .sign-form__span {
@@ -32,9 +35,16 @@
   margin-left: 6px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
+  .sign-form {
+    /* max-width: 260px; */
+    width: 100%;
+  }
+
   .sign-form__span {
     font-size: 12px;
     line-height: 15px;
+    /* max-width: 260px; */
+    /* width: 100%; */
   }
 }

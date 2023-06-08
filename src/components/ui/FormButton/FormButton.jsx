@@ -1,8 +1,11 @@
 import './FormButton.css';
 
-function FormButton({ text, isValid = true }) {
+function FormButton({ text, isValid }) {
+  const handleClick = () => {
+    console.log('click');
+  }
   return ( 
-    <button type='submit' className='form-button' disabled={!isValid}>{text}</button>
+    <button onClick={handleClick} type='submit' className='form-button' disabled={!isValid}>{text}</button>
    );
 }
 

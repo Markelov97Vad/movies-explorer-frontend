@@ -7,18 +7,23 @@ import useFormValid from '../../hooks/useFormValid';
 import { useEffect } from 'react';
 import { ERROR_MESSAGE_EMAIL } from '../../utils/validation';
 
-function SignForm() {
+function SignForm({ handleSubmit }) {
   const { pathname } = useLocation();
   const { values, handleChange, errorMessages, resetFormValues, formIsValid } = useFormValid({});
 
   useEffect(() => {
     resetFormValues();
   },[]);
+  
+  const onSubmit = (event) => {
+    event.preventDefault();
+    handleSubmit(values);
+  };
 
   return ( 
-    <form className='sign-form'>
+    <form className='sign-form' onSubmit={onSubmit}>
       <div className='sign-form__wrapper'>
-        { pathname === '/signup' && <InputForm value={values.name} onChange={handleChange} errorMessage={errorMessages.name} labelName='Имя' typeWight='normal' inputType='text' name='name'/>}
+        { pathname === '/signup' && <InputForm value={values.name} onChange={handleChange} isError={errorMessages.name} errorMessage={errorMessages.name} labelName='Имя' typeWight='normal' inputType='text' name='name'/>}
         <InputForm value={values.email} onChange={handleChange} isError={errorMessages.email} errorMessage={ERROR_MESSAGE_EMAIL} labelName='E-mail' typeWight='bold' inputType='email' name='email'/>
         <InputForm value={values.password} onChange={handleChange} isError={errorMessages.password} errorMessage={errorMessages.password} labelName='Пароль' typeWight='normal' inputType='password' name='password'/>
       </div>

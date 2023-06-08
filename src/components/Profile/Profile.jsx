@@ -1,28 +1,19 @@
 import { useEffect, useState } from 'react';
 import Header from '../Header/Header';
-import './Profile.css'
+import './Profile.css';
+import useFormValid from '../../hooks/useFormValid';
 import FormButton from '../ui/FormButton/FormButton';
 
 function Profile() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const { values, handleChange, setValues, formIsValid } = useFormValid({});
   const [isEditing, setIsEditing] = useState(false);
-
-  const handleChangeName = (e) => {
-    setName(e.target.value);
-  }
-
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-  }
 
   const handleEditing = () => {
     setIsEditing(true)
   }
 
   useEffect(() => {
-    setName('Вадим');
-    setEmail('test@email.com')
+    setValues({ name: 'Вадим', email: 'test@email.com'})
   },[])
 
   return ( 
@@ -34,11 +25,11 @@ function Profile() {
           <fieldset className='profile-form__fieldest'>
             <div className='profile-form__input-wrapper'>
               <label className='profile-form__input-label' htmlFor="name">Имя</label>
-              <input className='profile-form__input' type="text" id='name' value={name} onChange={handleChangeName} disabled={isEditing ? false : true}/>
+              <input className='profile-form__input' name='name' value={values.name || ''} type="text" id='name' onChange={handleChange} disabled={isEditing ? false : true} required/>
             </div>
             <div className='profile-form__input-wrapper'>
               <label className='profile-form__input-label' htmlFor="email">E-mail</label>
-              <input className='profile-form__input' type="email" id='email' value={email} onChange={handleChangeEmail} disabled={isEditing ? false : true}/>
+              <input className='profile-form__input' name='email' value={values.email || ''} type="email" id='email' onChange={handleChange} disabled={isEditing ? false : true} required/>
             </div>
           </fieldset>
           {
@@ -48,8 +39,8 @@ function Profile() {
                 <button type='button' className='profile-form__button profile-form__button_type_logout'>Выйти из аккаунта</button>
               </div> :
               <div className='profile-form__submit'>
-                <span className='profile-form__error'>При обновлении профиля произошла ошибка.</span>
-                <FormButton text='Сохранить'/>
+                <span className='profile-form__error profile-form__error_active'>При обновлении профиля произошла ошибка.</span>
+                <FormButton text='Сохранить' isValid={formIsValid}/>
               </div>
           }
         </form>

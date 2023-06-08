@@ -1,25 +1,18 @@
 import './Login.css'
 import SignTitle from '../SignTitle/SignTitle';
 import SignForm from '../SignForm/SignForm';
-import SignWrapper from '../SignWrapper/SignWrapper';
-import useFormStateAndValid from '../../hooks/useFormValid';
+import SignWrapper from '../Sigh/Sign';
 
-function Login() {
-  const { values } = useFormStateAndValid({});
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    const { email, password } = values;
-
-    if(!email || !password) {
-      return
-    };
-    
+function Login({ onLogin }) {
+  const handleSubmit = (values) => {
+    onLogin(values);
+    console.log(values);
   }
 
   return ( 
     <SignWrapper>
       <SignTitle text='Рады видеть!'/>
-      <SignForm onSubmit={handleSubmit} />
+      <SignForm handleSubmit={handleSubmit}/>
     </SignWrapper>
    );
 }

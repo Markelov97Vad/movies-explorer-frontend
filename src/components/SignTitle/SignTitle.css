@@ -1,3 +1,8 @@
+.sign-title {
+  display: flex;
+  flex-direction: column;
+}
+
 .sign-title__text {
   margin: 40px 0;
   font-weight: 500;
@@ -5,9 +10,8 @@
   line-height: 29px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   .sign-title {
-    display: flex;
     flex-direction: column;
     align-items: center;
   }
