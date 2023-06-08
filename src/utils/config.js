@@ -14,7 +14,7 @@ const linksList = [{
   link: 'https://s'
 }];
 
-// const moviesList = null // проверки загрузки карточек
+// const moviesList = [] // проверки загрузки карточек
 const moviesList = [
   {
     id: 1,

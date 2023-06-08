@@ -1,6 +1,6 @@
 import './NavHeader.css';
 import NavihationLink from '../NavigationLink/NavigationLink';
-import NavigationButton from '../NavigationButton/NavigationButton';
+import NavigationButton from '../NavigationLinkProfile/NavigationLinkProfile';
 
 function NavHeader() {
   return ( 

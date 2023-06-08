@@ -6,14 +6,13 @@ import NavMain from '../navigation/NavMain/NavMain';
 import { useContext } from 'react';
 import { LoggetContext } from '../contexts/loggetContext';
 
-function Header ({ children }) {
+function Header () {
   const { pathname } = useLocation();
   const isLoggetIn = useContext(LoggetContext)
 
   return (
     <header className={`header ${pathname === '/' ? 'header_type_landing' : 'header_type_main'}`}>
       <Link to='/'><img src={logo} alt="логотип Movie explorer" className="header__logo"/></Link>
-      {/* { children } */}
       { !isLoggetIn ? <NavSign /> :
       <NavMain /> }
     </header>

@@ -3,13 +3,15 @@
   color: #000000;
 }
 
-/* .navigation-link_type_bold {
-  font-weight: 500;
+.navigation-link_menu-active {
+  border-bottom: 2px solid #000000;
+  padding-bottom: 4px;
 }
 
-.navigation-link_type_normal {
-  font-weight: 400;
-} */
+.navigation-link_header-active {
+  font-weight: 500;
+  cursor: default;
+}
 
 .navigation-link_place_header {
   font-size: 13px;

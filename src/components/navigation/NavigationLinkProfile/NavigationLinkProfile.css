@@ -1,22 +1,21 @@
-.navigation-button {
+.navigation-link-profile {
   background: url(../../../images/button-profile.png) no-repeat;
   background-size: 12px 14px;
   background-position: top 7px left 12px;
-  min-width: 100px;
+  text-decoration: none;
+  max-width: 100px;
   max-height: 32px;
   border: 2px solid rgba(170, 170, 170, .2);
   border-radius: 50px;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-  text-align: center;
   color: #000000;
   margin: 0;
   padding: 6px 11px 6px 30px;
-  cursor: pointer;
 }
 
-.navigation-button_place_menu {
+.navigation-link-profile_place_menu {
   place-self: end center;
   margin-bottom: 90px;
 }

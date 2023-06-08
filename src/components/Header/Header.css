@@ -1,7 +1,8 @@
 .header {
   display: grid;
   justify-content: space-between;
-  grid-template-columns: minmax(38px, max-content) minmax(min-content, 676px);
+  /* grid-template-columns: minmax(300px, max-content) minmax(min-content, 676px); */
+  grid-template-columns: 290px minmax(min-content, 676px);
   padding: 18px 70px;
   align-items: center;
 }
@@ -48,13 +49,14 @@
 @media screen and (max-width: 768px) {
   .header {
     padding-inline: 30px;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (max-width: 400px) {
   .header {
     padding-inline: 14px;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
   }
 
   .header__button {

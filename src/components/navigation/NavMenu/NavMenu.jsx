@@ -1,4 +1,4 @@
-import NavigationButton from '../NavigationButton/NavigationButton';
+import NavigationButton from '../NavigationLinkProfile/NavigationLinkProfile';
 import NavigationLink from '../NavigationLink/NavigationLink';
 import './NavMenu.css';
 
