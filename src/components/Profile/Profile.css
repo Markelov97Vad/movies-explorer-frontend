@@ -1,5 +1,5 @@
 .profile {
-  padding-top: 74px;
+  padding-top: 70px;
   background-color: #FFFFFF;
 }
 
@@ -32,12 +32,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 17px 0;
+  /* padding: 17px 0; */
   margin: 0;
 }
 
 .profile-form__input-wrapper:first-of-type {
   border-bottom: 1px solid #E8E8E8;
+  padding-bottom: 17px;
+}
+
+.profile-form__input-wrapper:last-of-type {
+  padding-top: 17px;
 }
 
 .profile-form__input {
@@ -51,6 +56,7 @@
   background-color: inherit;
   text-align: end;
 }
+
 
 .profile-form__input:focus {
   outline: 0;

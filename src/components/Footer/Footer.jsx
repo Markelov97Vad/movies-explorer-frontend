@@ -1,3 +1,5 @@
+import { linksResources } from '../../utils/config';
+import ResourceLink from '../ui/ResourceLink/ResourceLink';
 import './Footer.css'
 
 function Footer() {
@@ -9,10 +11,10 @@ function Footer() {
         <nav className='footer__links'>
           <ul className='footer__list'>
             <li>
-              <a href="https://practicum.yandex.ru/" className='footer__link' target='_blank' rel="noreferrer">Яндекс.Практикум</a>
+              <ResourceLink href={linksResources.yandexPracticum} text='Яндекс.Практикум' place='footer'/>
             </li>
             <li>
-              <a href="https://github.com/Markelov97Vad" className='footer__link' target='_blank' rel="noreferrer">Github</a>
+              <ResourceLink href={linksResources.github} text='Github' place='footer'/>
             </li>
           </ul>
         </nav>

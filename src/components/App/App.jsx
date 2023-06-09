@@ -13,11 +13,9 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function App() {
   const [loggetIn, setLoggetIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
 
   const handleAuthorize = (data) => {
-    setCurrentUser(data)
     setLoggetIn(true);
     navigate('/movies')
   }

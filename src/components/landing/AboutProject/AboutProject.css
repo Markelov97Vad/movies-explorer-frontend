@@ -1,5 +1,5 @@
 .project-info {
-  padding: 110px 70px;
+  padding: 110px 70px 105px;
   background-color: #FAFAFA;
 }
 
@@ -47,6 +47,7 @@
 .project-timeline__title_type_explanation {
   color: #A0A0A0;
   font-weight: 500;
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 768px) {
@@ -55,7 +56,8 @@
   }
 
   .project-info__columns {
-    gap: 30px
+    gap: 30px;
+    margin-bottom: 93px;
   }
 
   .project-timeline {

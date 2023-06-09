@@ -17,7 +17,7 @@
   font-size: 50px;
   line-height: 58px;
   max-width: 640px;
-  margin: 75px 0 0;
+  margin: 73px 0 0;
 }
 
 .promo__subtitle {
@@ -28,13 +28,13 @@
   color: #000;
   opacity: .5;
   max-width: 310px;
-  margin: 30px 0 0;
+  margin: 34px 0 0;
 }
 
 .promo__image {
   grid-area: image;
   max-width: 100%;
-  margin-top: 75px;
+  margin-top: 72px;
 }
 
 .promo__navigation {
@@ -42,16 +42,21 @@
   padding-top: 146px;
 }
 
-.promo__button {
+.promo__link {
+  display: inline-block;
   border: 1px solid #000000;
   background-color: inherit;
   border-radius: 3px;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  cursor: pointer;
+  text-decoration: none;
   color: #000;
   padding: 10px 20px;
+}
+
+.promo__link:hover {
+  opacity: .8;
 }
 
 @media screen and (max-width: 865px) {
@@ -83,11 +88,11 @@
   
   .promo__image {
     max-width: 310px;
-    margin-top: 140px;
+    margin-top: 138px;
   }
 
   .promo__navigation {
-    padding-top: 92px;
+    padding-top: 90px;
   }
 }
 

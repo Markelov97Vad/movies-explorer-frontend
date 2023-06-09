@@ -1,6 +1,7 @@
 .navigation-link-sign {
   text-decoration: none;
   cursor: pointer;
+  transition: opacity .2s ease-in;
 }
 
 .navigation-link-sign_place_header {
@@ -19,13 +20,20 @@
   line-height: 17px;
 }
 
+.navigation-link-sign_type_link:hover {
+  opacity: .7;
+}
+
 .navigation-link-sign_type_button {
+  display: block;
   background-color: #3456F3;
   border: none;
   border-radius: 3px;
   padding: 8px 20px;
-  min-width: 76px;
-  min-height: 32px;
+}
+
+.navigation-link-sign_type_button:hover {
+  opacity: .8;
 }
 
 .navigation-link-sign_color_black {
@@ -47,8 +55,6 @@
 
   .navigation-link-sign_type_button {
     padding: 5px 12px;
-    min-width: 54px;
-    min-height: 26px;
   }
 
   .navigation-link-sign_place_not-found {

@@ -1,11 +1,11 @@
 import './Portfolio.css';
-import LinksList from '../LinkList/LinksList';
+import PortfolioLinksList from '../PortfolioLinksList/PortfolioLinksList';
 
 function Portfolio () {
   return (
     <section className='portfolio'>
       <h2 className='portfolio__title'>Портфолио</h2>
-      <LinksList />
+      <PortfolioLinksList />
     </section>
   )
 };

@@ -7,19 +7,6 @@
   grid-template-rows: 229px max-content minmax(min-content, 743px);
 }
 
-.navigation-menu__close-button {
-  background: url(../../../images/close-button.svg) no-repeat;
-  background-size: 22px 22px;
-  border: none;
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  margin-top: 20px;
-  margin-right: 20px;
-  justify-self: end;
-  cursor: pointer;
-}
-
 .navigation-menu__list {
   display: flex;
   flex-direction: column;

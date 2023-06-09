@@ -18,6 +18,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .project-info__title {
+    margin-bottom: 22px;
+  }
+
   .project-info__subtitle {
     font-size: 12px;
     line-height: 18px;

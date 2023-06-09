@@ -1,5 +1,6 @@
 .student-info {
   padding: 110px 70px 101px;
+  background-color: #FAFAFA;
 }
 
 .student-info__card {
@@ -19,6 +20,7 @@
   font-size: 50px;
   line-height: 58px;
   margin: 0;
+  letter-spacing: -0.04em;
 }
 
 .student-info__subtitle {
@@ -33,18 +35,9 @@
   font-size: 14px;
   line-height: 22px;
   max-width: 600px;
-  margin: 26px 49px 0 0;
+  margin: 26px 49px 99px 0;
 }
 
-.student-info__link {
-  display: inline-block;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-decoration: none;
-  color: #000;
-  margin: 99px 0 0;
-}
 
 @media screen and (max-width: 768px) {
   .student-info {
@@ -67,11 +60,9 @@
     font-size: 12px;
     line-height: 18px;
     margin-top: 20px;
+    margin-bottom: 88px;
   }
 
-  .student-info__link {
-    margin-top: 88px;
-  }
 
   .student-info__image {
     max-width: 255px;
@@ -82,7 +73,6 @@
 @media screen and (max-width: 600px) {
   .student-info__card {
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
   }
 
@@ -92,6 +82,7 @@
 
   .student-info__paragraph {
     margin-right: 0;
+    margin-bottom: 40px;
   }
 
   .student-info__image {
@@ -100,13 +91,9 @@
     max-width: 292px;
     max-height: 352px;
   }
-
-  .student-info__link {
-    margin-top: 40px;
-  }
 }
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 400px) {
   .student-info {
     padding: 70px 14px;
   }

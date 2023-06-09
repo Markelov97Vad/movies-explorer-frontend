@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
-import ButtonCross from '../../ButtonCross/ButtonCross';
+import ButtonCross from '../../ui/ButtonCross/ButtonCross';
 import './MoviesCard.css';
-import ButtonLike from '../../ButtonLike/ButtonLike';
+import ButtonLike from '../../ui/ButtonLike/ButtonLike';
 
 function MoviesCard({ movie }) {
   const { image, nameRu, duration } = movie;

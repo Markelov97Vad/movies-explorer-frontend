@@ -1,5 +1,5 @@
 .movie-card-list {
-  padding: 70px 70px 80px;
+  padding: 82px 70px 80px;
   background-color: #FAFAFA;
   display: flex;
   flex-direction: column;
@@ -10,18 +10,7 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 37px 24px;
-  margin-bottom: 80px;
-}
-
-.movie-card-list__button {
-  min-width: 320px;
-  height: 36px;
-  border: none;
-  background-color: #F4F4F4;
-  border-radius: 6px;
-  cursor: pointer;
-  align-self: center;
-  padding: 0;
+  margin-bottom: 60px;
 }
 
 @media screen and (max-width: 768px) {

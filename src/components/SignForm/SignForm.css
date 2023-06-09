@@ -10,7 +10,6 @@
 .sign-form__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   width: 100%;
 }
 
@@ -37,14 +36,11 @@
 
 @media screen and (max-width: 480px) {
   .sign-form {
-    /* max-width: 260px; */
     width: 100%;
   }
 
   .sign-form__span {
     font-size: 12px;
     line-height: 15px;
-    /* max-width: 260px; */
-    /* width: 100%; */
   }
 }

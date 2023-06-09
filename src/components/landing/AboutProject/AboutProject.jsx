@@ -1,11 +1,11 @@
 import Headline from '../Headline/Headline';
 import './AboutProject.css'
-import ProjectInfo from './ProjectInfo/ProjectInfo';
+import ProjectInfo from '../ProjectInfo/ProjectInfo';
 
 
 function AboutProject() {
   return (
-    <section className='project-info'>
+    <section id='about' className='project-info'>
       <Headline title='О проекте'/>
       <div className='project-info__columns'>
         <ProjectInfo title='Дипломный проект включал 5 этапов' subtitle='Составление плана, работу над бэкендом, 

@@ -1,0 +1,15 @@
+.append-button {
+  min-width: 320px;
+  height: 36px;
+  border: none;
+  background-color: #F4F4F4;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: center;
+  padding: 0;
+  transition: opacity .2s ease-in;
+}
+
+.append-button:hover {
+  opacity: .8;
+}

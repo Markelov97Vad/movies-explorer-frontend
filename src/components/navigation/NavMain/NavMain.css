@@ -15,6 +15,10 @@
   cursor: pointer;
 }
 
+.navigation-main__button-burger:hover {
+  opacity: .8;
+}
+
 .navigation-main__menu {
   visibility: hidden;
   display: flex;

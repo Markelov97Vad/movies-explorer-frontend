@@ -1,6 +1,8 @@
 import Headline from "../Headline/Headline";
 import './AboutMe.css'
 import photo from '../../../images/photo.jpg'
+import ResourceLink from "../../ui/ResourceLink/ResourceLink";
+import { linksResources } from "../../../utils/config";
 
 function AboutMe() {
   return (
@@ -18,7 +20,7 @@ function AboutMe() {
             После того, как прошёл курс по веб-разработке, начал заниматься 
             фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a className="student-info__link" href="https://github.com/Markelov97Vad" target="_blanck" rel='noreferrer'>Github</a>
+          <ResourceLink href={linksResources.github} place='about-me' text='Github'/>
         </div>
         <img className="student-info__image" src={photo} alt="Фото студента"/>
       </article>

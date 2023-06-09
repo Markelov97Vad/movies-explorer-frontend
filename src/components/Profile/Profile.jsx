@@ -16,12 +16,18 @@ function Profile() {
     setValues({ name: 'Вадим', email: 'test@email.com'})
   },[])
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    setValues({ name: values.name, email: values.email})
+    setIsEditing(false)
+  }
+
   return ( 
     <>
       <Header />
       <main className='profile'>
         <h3 className='profile__title'>Привет, Вадим!</h3>
-        <form className='profile-form'>
+        <form className='profile-form' onSubmit={handleSubmit}>
           <fieldset className='profile-form__fieldest'>
             <div className='profile-form__input-wrapper'>
               <label className='profile-form__input-label' htmlFor="name">Имя</label>
