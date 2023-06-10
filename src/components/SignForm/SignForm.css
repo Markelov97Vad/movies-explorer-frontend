@@ -34,9 +34,9 @@
   margin-left: 6px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 414px) {
   .sign-form {
-    width: 100%;
+    min-height: 497px;
   }
 
   .sign-form__span {

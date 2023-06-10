@@ -93,13 +93,19 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .student-info {
-    padding: 70px 14px;
+    padding: 70px 14px 0;
+    padding-bottom: 68px;
   }
 
   .student-info__card {
     margin-top: 60px;
+  }
+
+  .student-info__image {
+    width: 292px;
+    height: 352px;
   }
 
   .student-info__title {

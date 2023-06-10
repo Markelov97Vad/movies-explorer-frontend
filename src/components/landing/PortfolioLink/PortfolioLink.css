@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .portfolio-link__text {
     font-size: 18px;
     line-height: 28px;

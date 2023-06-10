@@ -5,10 +5,10 @@ import './Register.css'
 
 function Register() {
   return ( 
-      <SignWrapper>
-        <SignTitle text='Добро пожаловать!'/>
-        <SignForm />
-      </SignWrapper>
+    <SignWrapper>
+      <SignTitle text='Добро пожаловать!'/>
+      <SignForm />
+    </SignWrapper>
    );
 }
 

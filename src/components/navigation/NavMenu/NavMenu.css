@@ -4,7 +4,7 @@
   justify-content: space-between;
   display: grid;
   grid-template-columns: minmax(320px, 520px);
-  grid-template-rows: 159px max-content minmax(min-content, 743px);
+  grid-template-rows: 159px max-content minmax(min-content, 654px);
 }
 
 .navigation-menu__list {
@@ -16,4 +16,13 @@
   padding: 0;
   row-gap: 28px;
   text-align: center;
+}
+
+@media screen and (max-width: 414px) {
+  .navigation-menu {
+    grid-template-rows: 144px max-content minmax(min-content, 475px);
+  }
+  .navigation-menu__list {
+    row-gap: 25px;
+  }
 }

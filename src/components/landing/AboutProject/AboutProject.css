@@ -76,7 +76,11 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
+  .project-info__columns {
+    padding-top: 60px;
+  }
+
   .project-info {
     padding: 70px 18px;
   }
@@ -88,5 +92,9 @@
   .project-timeline__title {
     font-size: 11px;
     line-height: 13px;
+  }
+
+  .project-timeline__title_type_explanation {
+    margin-top: 0;
   }
 }

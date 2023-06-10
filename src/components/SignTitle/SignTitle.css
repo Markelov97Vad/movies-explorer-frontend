@@ -10,9 +10,14 @@
   line-height: 29px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 414px) {
   .sign-title {
     flex-direction: column;
     align-items: center;
+  }
+
+  .sign-title__text {
+    margin-top: 50px;
+    margin-bottom: 80px;
   }
 }

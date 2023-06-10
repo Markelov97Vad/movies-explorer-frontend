@@ -23,7 +23,7 @@
   cursor: default;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .form-button {
     font-size: 12px;
     line-height: 15px;

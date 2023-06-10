@@ -8,3 +8,9 @@
   gap: 30px;
 }
 
+@media screen and (max-width: 414px) {
+  .navigation-sign__list {
+    gap: 14px
+  }
+}
+

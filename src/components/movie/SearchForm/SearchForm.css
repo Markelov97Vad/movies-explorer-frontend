@@ -22,10 +22,12 @@
   margin: 0;
   display: flex;
   z-index: 1;
+  box-sizing: border-box;
+  min-height: 72px;
+  align-items: center;
 }
 
 .search-form__input {
-  background-color: inherit;
   padding: 0;
   font-weight: 400;
   font-size: 18px;
@@ -88,16 +90,15 @@
     padding-top: 19px;
     padding-bottom: 19px;
     padding-left: 19px;
-    background: none;
   }
   .search-form__input::placeholder {
     font-size: 14px;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .search-form {
-    padding-inline: 16px;
+    padding-inline: 10px;
   }
 
   .search-form__input {

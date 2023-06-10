@@ -42,7 +42,7 @@
   line-height: 17px;
   background-color: #E8E8E8;
   border-radius: 10px;
-  height: 57px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,12 +72,13 @@
   .techs-info__icon {
     font-size: 12px;
     line-height: 15px;
+    height: 57px;
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .techs-info {
-    padding: 70px 18px;
+    padding: 60px 18px 70px;
     background-color: #FAFAFA;
   }
 
@@ -94,6 +95,7 @@
   }
 
   .techs-info__list {
+    grid-template-columns: repeat(2, 84px);
     margin-top: 50px;
   }
 }

@@ -8,7 +8,7 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .headline {
     font-size: 18px;
     line-height: 22px;

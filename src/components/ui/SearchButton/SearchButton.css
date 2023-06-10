@@ -7,7 +7,7 @@
   border: none;
   border-radius: 48px;
   min-width: 80px;
-  min-height: 34px;
+  height: 34px;
   padding: 0;
   cursor: pointer;
   transition: opacity .2s ease-in;

@@ -8,7 +8,7 @@
 .screen-size_size_l {
   position: absolute;
   padding-left: 29px;
-  top: 13px;
+  top: 16px;
   right: 30px;
   min-height: 40px;
   border-left: 1px solid #CBCBCB;
@@ -61,8 +61,10 @@
 
 @media screen and (max-width: 768px) {
   .screen-size_size_l {
-    top: 11px;
-    right: 16px;
+    top: 16px;
+    right: 17px;
+    padding-left: 23px;
+
   }
 
 }
@@ -83,7 +85,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .filter-checkbox__text {
     font-size: 11px;
   }

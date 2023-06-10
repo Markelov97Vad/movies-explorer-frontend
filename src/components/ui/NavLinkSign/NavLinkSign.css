@@ -48,7 +48,7 @@
   color: #3456F3;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .navigation-link-sign_place_header {
     font-size: 10px;
   }

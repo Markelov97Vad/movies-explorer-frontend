@@ -28,7 +28,7 @@
   color: #000;
   opacity: .5;
   max-width: 310px;
-  margin: 34px 0 0;
+  margin: 36px 0 0;
 }
 
 .promo__image {
@@ -92,14 +92,14 @@
   }
 
   .promo__navigation {
-    padding-top: 90px;
+    padding-top: 93px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .promo {
     padding-inline: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 27px;
   }
 
   .promo__image {

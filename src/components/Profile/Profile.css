@@ -1,5 +1,5 @@
 .profile {
-  padding-top: 70px;
+  padding-top: 73px;
   background-color: inherit;
 }
 
@@ -132,10 +132,14 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .profile {
     padding-top: 70px;
     padding-inline: 30px;
+  }
+
+  .profile-form {
+    padding-top: 80px;
   }
 
   .profile-form__edit {

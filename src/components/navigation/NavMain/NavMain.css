@@ -43,9 +43,10 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .navigation-main__button-burger {
+    background-size: 36px 35px;
     width: 40px;
-    height: 43px;
+    height: 34px;
   }
 }

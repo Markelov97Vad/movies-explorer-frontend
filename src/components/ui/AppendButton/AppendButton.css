@@ -16,3 +16,9 @@
 .append-button:hover {
   opacity: .8;
 }
+
+@media screen and (max-width: 414px) {
+  .append-button {
+    min-width: 240px;
+  }
+}
