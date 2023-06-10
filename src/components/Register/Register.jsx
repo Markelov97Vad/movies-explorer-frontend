@@ -1,7 +1,6 @@
 import SignForm from '../SignForm/SignForm';
 import SignTitle from '../SignTitle/SignTitle';
 import SignWrapper from '../Sigh/Sign';
-import './Register.css'
 
 function Register() {
   return ( 

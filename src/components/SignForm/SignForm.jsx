@@ -1,10 +1,10 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './SignForm.css'
-import InputForm from '../InputForm/InputForm';
+import InputForm from '../ui/InputForm/InputForm'
 import NavLinkSign from '../ui/NavLinkSign/NavLinkSign';
 import FormButton from '../ui/FormButton/FormButton';
-import { useLocation } from 'react-router-dom';
 import useFormValid from '../../hooks/useFormValid';
-import { useEffect } from 'react';
 import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, ERROR_MESSAGE_PASSWORD } from '../../utils/validation';
 import { regexEmail, regexName, regexPassword } from '../../utils/validation';
 

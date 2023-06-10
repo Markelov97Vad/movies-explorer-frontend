@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import "./MoviesCardList.css";
 import { moviesList } from "../../../utils/config";
 import Preloader from "../Preloader/Preloader";

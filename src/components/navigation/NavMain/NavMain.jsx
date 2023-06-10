@@ -1,5 +1,5 @@
-import './NavMain.css';
 import { useState } from 'react';
+import './NavMain.css';
 import NavHeader from '../NavHeader/NavHeader';
 import NavMenu from '../NavMenu/NavMenu';
 

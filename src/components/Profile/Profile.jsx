@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import './Profile.css';
 import useFormValid from '../../hooks/useFormValid';
 import FormButton from '../ui/FormButton/FormButton';
+import NavLinkSign from '../ui/NavLinkSign/NavLinkSign';
 
 function Profile() {
   const { values, handleChange, setValues, formIsValid } = useFormValid({});
@@ -41,8 +42,8 @@ function Profile() {
           {
             !isEditing ? 
               <div className='profile-form__edit'>
-                <button onClick={handleEditing} type='button' className='profile-form__button profile-form__button_type_edit'>Редактировать</button>
-                <button type='button' className='profile-form__button profile-form__button_type_logout'>Выйти из аккаунта</button>
+                <button onClick={handleEditing} type='button' className='profile-form__button'>Редактировать</button>
+                <NavLinkSign to='/signin' text='Выйти из аккаунта' place='profile' type='link' color='red'/>
               </div> :
               <div className='profile-form__submit'>
                 <span className='profile-form__error profile-form__error_active'>При обновлении профиля произошла ошибка.</span>

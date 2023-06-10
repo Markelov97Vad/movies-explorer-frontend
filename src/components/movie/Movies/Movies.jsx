@@ -1,6 +1,5 @@
 import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
-import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MovieCardList from '../MoviesCardList/MovieCardList';
 

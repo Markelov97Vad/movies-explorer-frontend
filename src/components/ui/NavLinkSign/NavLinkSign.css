@@ -20,6 +20,12 @@
   line-height: 17px;
 }
 
+.navigation-link-sign_place_profile {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
 .navigation-link-sign_type_link:hover {
   opacity: .7;
 }
@@ -48,6 +54,10 @@
   color: #3456F3;
 }
 
+.navigation-link-sign_color_red {
+  color: #EE3465;
+}
+
 @media screen and (max-width: 414px) {
   .navigation-link-sign_place_header {
     font-size: 10px;
@@ -58,6 +68,11 @@
   }
 
   .navigation-link-sign_place_not-found {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .navigation-link-sign_place_profile {
     font-size: 12px;
     line-height: 15px;
   }

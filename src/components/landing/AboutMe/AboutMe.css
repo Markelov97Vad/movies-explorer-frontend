@@ -10,9 +10,10 @@
 }
 
 .student-info__image {
-  max-width: 270px;
-  max-height: 327px;
+  width: 270px;
+  height: 327px;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .student-info__title {
@@ -62,7 +63,6 @@
     margin-top: 20px;
     margin-bottom: 88px;
   }
-
 
   .student-info__image {
     max-width: 255px;

@@ -2,7 +2,6 @@ import './PortfolioLinksList.css';
 import { linksList } from '../../../utils/config';
 import PortfolioLink from '../PortfolioLink/PortfolioLink';
 
-
 function PortfolioLinksList() {
   return (
     <ul className='portfolio-projects'>

@@ -1,4 +1,3 @@
-import './Login.css'
 import SignTitle from '../SignTitle/SignTitle';
 import SignForm from '../SignForm/SignForm';
 import SignWrapper from '../Sigh/Sign';

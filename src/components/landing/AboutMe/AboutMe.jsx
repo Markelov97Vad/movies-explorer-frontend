@@ -1,6 +1,6 @@
-import Headline from "../Headline/Headline";
 import './AboutMe.css'
-import photo from '../../../images/photo.jpg'
+import Headline from "../Headline/Headline";
+import photo from '../../../images/avatar-img.png'
 import ResourceLink from "../../ui/ResourceLink/ResourceLink";
 import { linksResources } from "../../../utils/config";
 
@@ -13,12 +13,11 @@ function AboutMe() {
           <h3 className="student-info__title">Вадим</h3>
           <p className="student-info__subtitle">Фронтенд-разработчик, 26 лет</p>
           <p className="student-info__paragraph">
-            Я родился и живу в Саратове, закончил факультет экономики СГУ. 
-            У меня есть жена и дочь. Я люблю слушать музыку, 
-            а ещё увлекаюсь бегом. Недавно начал кодить. 
-            С 2015 года работал в компании «СКБ Контур». 
-            После того, как прошёл курс по веб-разработке, начал заниматься 
-            фриланс-заказами и ушёл с постоянной работы.
+            Я родился и живу в Санкт-Петербурге, в прошлом хореограф, видеограф и монтажёр. 
+            Обожаю путешествовать, побывал в 16 странах. Зимой занимаюсь лыжами,
+            а летом увлекаюсь бегом. С начала осени 2022 года начал кодить. 
+            Заканчиваю курсы в Яндекс.Практикуме.
+            Планирую дальше развиватся в этом направлении.
           </p>
           <ResourceLink href={linksResources.github} place='about-me' text='Github'/>
         </div>

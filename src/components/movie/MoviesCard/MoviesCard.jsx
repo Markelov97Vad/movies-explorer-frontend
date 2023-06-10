@@ -1,13 +1,12 @@
 import { useLocation } from 'react-router-dom';
-import ButtonCross from '../../ui/ButtonCross/ButtonCross';
 import './MoviesCard.css';
+import ButtonCross from '../../ui/ButtonCross/ButtonCross';
 import ButtonLike from '../../ui/ButtonLike/ButtonLike';
 
 function MoviesCard({ movie }) {
   const { image, nameRu, duration } = movie;
   const { pathname } = useLocation();
   
-
   const getTimeFromMinutes = ((time) => {
     const minutes = time % 60;
     const hour = Math.floor(time / 60);

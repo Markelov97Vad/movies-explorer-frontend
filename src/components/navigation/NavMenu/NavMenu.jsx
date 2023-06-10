@@ -1,6 +1,6 @@
+import "./NavMenu.css";
 import NavigationLinkProfile from "../../ui/NavigationLinkProfile/NavigationLinkProfile";
 import NavigationLink from "../../ui/NavigationLink/NavigationLink";
-import "./NavMenu.css";
 import ButtonCross from "../../ui/ButtonCross/ButtonCross";
 
 function NavMenu({ handleMenuOpen }) {
