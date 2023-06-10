@@ -5,6 +5,7 @@
   padding: 18px 70px;
   align-items: center;
   column-gap: 250px;
+  box-sizing: border-box;
 }
 
 .header_type_landing {
@@ -12,7 +13,7 @@
 }
 
 .header_type_main {
-  background-color: #FAFAFA;
+  background-color: inherit;
 }
 
 .header__menu {

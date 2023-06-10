@@ -143,11 +143,13 @@ const moviesList = [
   },
 ];
 
+const SCREEN_MEDIUM = 768;
 const SCREEN_MOBILE = 600;
 
 export { 
   iconsText,
   linksResources,
   linksList, 
-  moviesList, 
+  moviesList,
+  SCREEN_MEDIUM,
   SCREEN_MOBILE };

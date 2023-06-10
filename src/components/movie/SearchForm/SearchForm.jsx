@@ -3,13 +3,12 @@ import FilterCheckbox from '../../FilterCheckbox/FilterCheckbox';
 import useFormValid from '../../../hooks/useFormValid';
 import SearchButton from '../../ui/SearchButton/SearchButton';
 
-
 function SearchForm() {
   const { values , handleChange } = useFormValid({});
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-  }
+  };
 
   return ( 
     <section className='search-form'>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SCREEN_MOBILE } from "../utils/config";
+import { SCREEN_MEDIUM, SCREEN_MOBILE } from "../utils/config";
 
 function useResize() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -18,7 +18,8 @@ function useResize() {
   return {
     width,
     isScreenMobile: width <= SCREEN_MOBILE,
-    isScreenDesktop: width > SCREEN_MOBILE,
+    isScreenMedium: width <= SCREEN_MEDIUM,
+    isScreenDesktop: width > SCREEN_MEDIUM,
   };
 };
 

@@ -13,7 +13,7 @@ function Header () {
   return (
     <header className={`header ${pathname === '/' ? 'header_type_landing' : 'header_type_main'}`}>
       <Logo />
-      { !isLoggetIn ? <NavSign /> :
+      { isLoggetIn ? <NavSign /> :
       <NavMain /> }
     </header>
   )

@@ -4,7 +4,7 @@
   justify-content: space-between;
   display: grid;
   grid-template-columns: minmax(320px, 520px);
-  grid-template-rows: 229px max-content minmax(min-content, 743px);
+  grid-template-rows: 159px max-content minmax(min-content, 743px);
 }
 
 .navigation-menu__list {

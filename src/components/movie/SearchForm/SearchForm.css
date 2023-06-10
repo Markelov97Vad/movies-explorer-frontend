@@ -1,6 +1,6 @@
 .search-form {
   padding: 70px 70px 0;
-  background-color: #FAFAFA;
+  background-color: inherit;
 }
 
 .search-form__form {
@@ -10,6 +10,7 @@
 }
 
 .search-form__input-container {
+  background-color: #FFFFFF;
   background-image: url(../../../images/icon-search.svg);
   background-repeat: no-repeat;
   background-size: 22px 18px;
@@ -50,15 +51,33 @@
     padding-inline: 30px;
   }
 
+  .search-form__input-container {
+    padding-top: 14px;
+    padding-right: 227px;
+  }
+
   .search-form__form {
+    padding-bottom: 109px;
+  }  
+}
+
+@media screen and (max-width: 720px) {
+  .search-form {
+    padding-top: 80px;
+    padding-inline: 30px;
+  }
+
+  .search-form__form {
+    padding-bottom: 45px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .search-form__input-container {
     padding-right: 19px;
   }
+
   .search-form__button {
     margin-right: 0;
   }

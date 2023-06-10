@@ -15,11 +15,7 @@ function NavMenu({ handleMenuOpen }) {
           <NavigationLink place="menu" text="Фильмы" path="/movies" />
         </li>
         <li>
-          <NavigationLink
-            place="menu"
-            text="Сохраненные фильмы"
-            path="/saved-movies"
-          />
+          <NavigationLink place="menu" text="Сохранённые фильмы" path="/saved-movies"/>
         </li>
       </ul>
       <NavigationLinkProfile place="menu" />

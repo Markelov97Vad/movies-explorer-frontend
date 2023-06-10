@@ -1,6 +1,6 @@
 .student-info {
   padding: 110px 70px 101px;
-  background-color: #FAFAFA;
+  background-color: inherit;
 }
 
 .student-info__card {

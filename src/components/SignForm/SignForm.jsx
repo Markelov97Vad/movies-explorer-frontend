@@ -61,7 +61,7 @@ function SignForm({ handleSubmit }) {
         />
       </div>
       <div className='sign-form__control-wrapper'>
-        { pathname === '/signin' ? <FormButton text='Войти' isValid={formIsValid}/> : <FormButton text='Регистрация' isValid={formIsValid}/>}
+        { pathname === '/signin' ? <FormButton text='Войти' isValid={formIsValid}/> : <FormButton text='Зарегистрироваться' isValid={formIsValid}/>}
         { pathname === '/signin' ? <span className='sign-form__span'>Ещё не зарегистрированы?<NavLinkSign text='Регистрация' to='/signup' place='sign' type='link' color='blue'/></span> 
         : <span className='sign-form__span'>Уже зарегистрированы?<NavLinkSign text='Войти' to='/signin' place='sign' type='link' color='blue'/></span>
         }

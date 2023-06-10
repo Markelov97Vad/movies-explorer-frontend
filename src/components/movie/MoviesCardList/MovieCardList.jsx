@@ -10,11 +10,14 @@ import AppendButton from "../../ui/AppendButton/AppendButton";
 function MovieCardList() {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const { isScreenMobile, isScreenDesktop } = useResize();
+  const { isScreenMobile, isScreenMedium, isScreenDesktop } = useResize();
 
   useEffect(() => {
     if (isScreenMobile) {
       setCount(4);
+    }
+    if (isScreenMedium) {
+      setCount(7)
     }
     if (isScreenDesktop) {
       setCount(11);
@@ -25,8 +28,11 @@ function MovieCardList() {
     if (isScreenMobile) {
       setCount(count + 5);
     }
+    if (isScreenMedium) {
+      setCount(count + 8)
+    }
     if (isScreenDesktop) {
-      setCount(count + 6);
+      setCount(count + 12);
     }
   };
 

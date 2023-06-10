@@ -3,14 +3,13 @@
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
   max-width: 364px;
-  padding: 0 0 16px;
   justify-self: center;
+  box-sizing: border-box;
 }
 
 .movies-card:hover {
   cursor: pointer;
 }
-
 
 .movies-card__image {
   width: 100%;
@@ -54,18 +53,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .movies-card {
-    max-width: 339px;
-  }
   .movies-card__wrapper {
+    margin-top: 5px;
     padding-inline: 14px;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .movies-card {
-    max-width: 300px;
-  }
   .movies-card__title {
     font-size: 12px;
     line-height: 15px;

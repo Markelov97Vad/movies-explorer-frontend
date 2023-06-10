@@ -4,7 +4,7 @@ import logo from '../../../images/logo.svg'
 
 function Logo() {
   return ( 
-    <Link to='/'><img src={logo} alt="логотип Movie explorer" className="logo"/></Link>
+    <Link className='logo' to='/'><img src={logo} alt="логотип Movie explorer" className="logo__image"/></Link>
    );
 }
 
