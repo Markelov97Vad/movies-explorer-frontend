@@ -3,10 +3,13 @@ import SignTitle from '../SignTitle/SignTitle';
 import SignWrapper from '../Sigh/Sign';
 
 function Register() {
+  const handleSubmit = (values) => {
+    console.log(values);
+  }
   return ( 
     <SignWrapper>
       <SignTitle text='Добро пожаловать!'/>
-      <SignForm />
+      <SignForm handleSubmit={handleSubmit}/>
     </SignWrapper>
    );
 }

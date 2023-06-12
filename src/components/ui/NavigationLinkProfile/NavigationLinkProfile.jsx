@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 import './NavigationLinkProfile.css';
 
-function NavigationLinkProfile({ place }) {
+function NavigationLinkProfile() {
   return ( 
     <Link to='/profile'
-      className={
-          `navigation-link-profile ${place && `navigation-link-profile_place_${place}`}`
-        } 
+      className='navigation-link-profile'
       type='button'>Аккаунт</Link>
    );
 }

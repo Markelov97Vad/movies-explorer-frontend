@@ -5,7 +5,7 @@
 }
 
 .navigation-main__button-burger {
-  background: url(../../../images/burger-button.svg) no-repeat;
+  background: url(../../images/burger-button.svg) no-repeat;
   background-color: inherit;
   background-position: center;
   padding: 0;
@@ -17,24 +17,6 @@
 
 .navigation-main__button-burger:hover {
   opacity: .8;
-}
-
-.navigation-main__menu {
-  visibility: hidden;
-  display: flex;
-  justify-content: flex-end;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, .3);
-  z-index: 3;
-}
-
-.navigation-main__menu_opened {
-  opacity: 1;
-  visibility: visible;
 }
 
 @media screen and (max-width: 768px) {

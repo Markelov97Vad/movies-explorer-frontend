@@ -18,7 +18,7 @@ function useResize() {
   return {
     width,
     isScreenMobile: width <= SCREEN_MOBILE,
-    isScreenMedium: width >= SCREEN_MEDIUM,
+    isScreenMedium: width >= SCREEN_MEDIUM || width > SCREEN_MOBILE,
     isScreenDesktop: width > SCREEN_MEDIUM,
   };
 };

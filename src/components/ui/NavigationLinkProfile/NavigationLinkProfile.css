@@ -18,7 +18,3 @@
 .navigation-link-profile:hover {
   opacity: .8;
 }
-
-.navigation-link-profile_place_menu {
-  place-self: end center;
-}
