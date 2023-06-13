@@ -1,6 +1,6 @@
 import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
-import MovieCardList from '../MoviesCardList/MovieCardList';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 
 function SavedMovies() {
@@ -9,7 +9,7 @@ function SavedMovies() {
       <Header />
       <main>
         <SearchForm />
-        <MovieCardList />
+        <MoviesCardList place='saved-movies'/>
       </main>
       <Footer />
     </> 

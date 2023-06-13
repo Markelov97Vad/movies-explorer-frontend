@@ -1,8 +1,10 @@
 .movie-card-list {
-  padding: 82px 70px 80px;
+  padding-top: 82px;
+  padding-inline: 70px;
   background-color: inherit;
   display: flex;
   flex-direction: column;
+  min-height: 445px;
 }
 
 .movie-card-list__container {
@@ -16,7 +18,9 @@
 
 @media screen and (max-width: 768px) {
   .movie-card-list {
+    padding-top: 80px;
     padding-inline: 30px;
+    min-height: 445px;
   }
 
   .movie-card-list__container {
@@ -24,6 +28,14 @@
     grid-auto-rows: 262px;
     gap: 30px;
     margin-bottom: 80px;
+  }
+
+  .movie-card-list_place_saved-movies {
+    padding-bottom: 56px;
+  }
+
+  .movie-card-list_place_movies{
+    padding-bottom: 80px;
   }
 }
 

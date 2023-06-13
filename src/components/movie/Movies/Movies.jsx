@@ -1,7 +1,7 @@
 import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
-import MovieCardList from '../MoviesCardList/MovieCardList';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 function Movies() {
   return (
@@ -9,7 +9,7 @@ function Movies() {
       <Header />
       <main>
         <SearchForm />
-        <MovieCardList />
+        <MoviesCardList place='movies'/>
       </main>
       <Footer />
     </>

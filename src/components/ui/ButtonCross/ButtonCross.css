@@ -25,9 +25,13 @@
   opacity: .8;
 }
 
-.movies-card:hover .button-cross_place_card {
+.movies-card__info:hover .button-cross_place_card {
   opacity: 1;
 }
+.movies-card__info:hover .button-cross_place_card:hover {
+  opacity: .5;
+}
+
 
 @media screen and (max-width: 600px) {
   .button-cross_place_card {
