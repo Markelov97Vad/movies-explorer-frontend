@@ -5,7 +5,7 @@
   align-self: center;
 }
 
-.screen-size_size_l {
+.filter-checkbox_size_l {
   position: absolute;
   padding-left: 29px;
   top: 16px;
@@ -60,7 +60,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .screen-size_size_l {
+  .filter-checkbox_size_l {
     top: 16px;
     right: 17px;
     padding-left: 23px;
@@ -74,7 +74,7 @@
     padding: 0;
   }
 
-  .screen-size_size_s {
+  .filter-checkbox_size_s {
     margin-top: 45px;
     padding: 0;
     position: relative;

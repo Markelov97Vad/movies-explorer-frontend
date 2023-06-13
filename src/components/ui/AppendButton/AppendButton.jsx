@@ -2,7 +2,7 @@ import './AppendButton.css'
 
 function AppendButton({ onClick , text }) {
   return ( 
-    <button className="append-button" onClick={onClick}>{text}</button>
+    <button className="append-button" type='button' onClick={onClick}>{text}</button>
    );
 }
 

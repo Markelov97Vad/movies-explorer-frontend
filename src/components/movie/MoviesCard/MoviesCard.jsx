@@ -16,12 +16,12 @@ function MoviesCard({ movie }) {
 
   return ( 
     <article className='movies-card'>
-      <a className='movies-card__link' href={link} target='_blanck'>
+      <a className='movies-card__link' href={link} target='_blank' rel="noreferrer">
         <img className='movies-card__image' src={`${image}`} alt={nameRu} />
       </a>
       <div className='movies-card__info'>
         <div className='movies-card__wrapper'>
-          <h4 className='movies-card__title'>{nameRu}</h4>
+          <h2 className='movies-card__title'>{nameRu}</h2>
           {
             pathname === '/movies' ?
             <ButtonLike /> :

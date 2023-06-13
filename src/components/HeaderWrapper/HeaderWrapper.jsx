@@ -11,10 +11,10 @@ function HeaderWrapper() {
   return (
     <>
       <NavHeader />
-      <div className="navigation-main__wrapper">
+      <div className="header-wrapper">
         <button
           type="button"
-          className="navigation-main__button-burger"
+          className="header-wrapper__button-burger"
           onClick={handleMenuOpen}
         ></button>
         <HeaderMenu handleMenuOpen={handleMenuOpen} isMenuOpen={isMenuOpen} />

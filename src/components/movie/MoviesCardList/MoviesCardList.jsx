@@ -53,11 +53,13 @@ function MoviesCardList({ place }) {
       {isLoading && <Preloader />}
       {!isLoading && (
         <>
-          <div className='movie-card-list__container'>
-            {movieListForRender.map((movie) => (
-              <MoviesCard key={movie.id} movie={movie} />
-            ))}
-          </div>
+          <ul className='movie-card-list__container'>
+              {movieListForRender.map((movie) => (
+              <li key={movie.id}>
+                  <MoviesCard movie={movie} />
+              </li>
+              ))}
+          </ul>
           {renderButton && <AppendButton onClick={handleClick} text='Ещё'/>}
         </>
       )}

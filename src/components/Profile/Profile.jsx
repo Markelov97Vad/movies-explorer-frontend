@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Header from '../Header/Header';
 import './Profile.css';
+import Header from '../Header/Header';
 import useFormValid from '../../hooks/useFormValid';
 import FormButton from '../ui/FormButton/FormButton';
 import NavLinkSign from '../ui/NavLinkSign/NavLinkSign';
@@ -27,30 +27,32 @@ function Profile() {
     <>
       <Header />
       <main className='profile'>
-        <h3 className='profile__title'>Привет, Вадим!</h3>
-        <form className='profile-form' onSubmit={handleSubmit}>
-          <fieldset className='profile-form__fieldest'>
-            <div className='profile-form__input-wrapper'>
-              <label className='profile-form__input-label' htmlFor="name">Имя</label>
-              <input className='profile-form__input' name='name' value={values.name || ''} type="text" id='name' onChange={handleChange} disabled={isEditing ? false : true} required/>
-            </div>
-            <div className='profile-form__input-wrapper'>
-              <label className='profile-form__input-label' htmlFor="email">E-mail</label>
-              <input className='profile-form__input' name='email' value={values.email || ''} type="email" id='email' onChange={handleChange} disabled={isEditing ? false : true} required/>
-            </div>
-          </fieldset>
-          {
-            !isEditing ? 
-              <div className='profile-form__edit'>
-                <button onClick={handleEditing} type='button' className='profile-form__button'>Редактировать</button>
-                <NavLinkSign to='/signin' text='Выйти из аккаунта' place='profile' type='link' color='red'/>
-              </div> :
-              <div className='profile-form__submit'>
-                <span className='profile-form__error profile-form__error_active'>При обновлении профиля произошла ошибка.</span>
-                <FormButton text='Сохранить' isValid={formIsValid}/>
+        <section className='profile__info'>
+          <h1 className='profile__title'>Привет, Вадим!</h1>
+          <form className='profile__form' onSubmit={handleSubmit}>
+            <fieldset className='profile__fieldest'>
+              <div className='profile__input-wrapper'>
+                <label className='profile__input-label' htmlFor="name">Имя</label>
+                <input className='profile__input' name='name' value={values.name || ''} type="text" id='name' onChange={handleChange} disabled={isEditing ? false : true} required/>
               </div>
-          }
-        </form>
+              <div className='profile__input-wrapper'>
+                <label className='profile__input-label' htmlFor="email">E-mail</label>
+                <input className='profile__input' name='email' value={values.email || ''} type="email" id='email' onChange={handleChange} disabled={isEditing ? false : true} required/>
+              </div>
+            </fieldset>
+            {
+              !isEditing ? 
+                <div className='profile__edit'>
+                  <button onClick={handleEditing} type='button' className='profile__button'>Редактировать</button>
+                  <NavLinkSign to='/signin' text='Выйти из аккаунта' place='profile' type='link' color='red'/>
+                </div> :
+                <div className='profile__submit'>
+                  <span className='profile__error profile__error_active'>При обновлении профиля произошла ошибка.</span>
+                  <FormButton text='Сохранить' isValid={formIsValid}/>
+                </div>
+            }
+          </form>
+        </section>
       </main>
     </> 
   );

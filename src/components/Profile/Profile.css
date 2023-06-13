@@ -1,16 +1,19 @@
 .profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding-top: 73px;
   background-color: inherit;
   height: 100%;
   width: 100%;
-  max-height: 483px;
   padding-bottom: 40px;
-  margin: 0 auto;
-}
+  max-height: 483px;
 
+}
+.profile__info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
 .profile__title {
   font-weight: 500;
   font-size: 24px;
@@ -19,7 +22,7 @@
   margin: 0;
 }
 
-.profile-form {
+.profile__form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,29 +33,29 @@
   row-gap: 20px;
 }
 
-.profile-form__fieldest {
+.profile__fieldest {
   border: none;
   margin: 0;
   padding: 0;
 }
 
-.profile-form__input-wrapper {
+.profile__input-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0;
 }
 
-.profile-form__input-wrapper:first-of-type {
+.profile__input-wrapper:first-of-type {
   border-bottom: 1px solid #E8E8E8;
   padding-bottom: 17px;
 }
 
-.profile-form__input-wrapper:last-of-type {
+.profile__input-wrapper:last-of-type {
   padding-top: 17px;
 }
 
-.profile-form__input {
+.profile__input {
   max-height: 14px;
   font-weight: 400;
   font-size: 11px;
@@ -65,28 +68,28 @@
   /* max-width: 413px; */
 }
 
-.profile-form__input:focus {
+.profile__input:focus {
   outline: 0;
 }
 
-.profile-form__input:disabled {
+.profile__input:disabled {
   color: #000;
 }
-.profile-form__input-label {
+.profile__input-label {
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
   color: #000000;
 }
 
-.profile-form__edit {
+.profile__edit {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-.profile-form__error {
+.profile__error {
   display: none;
   margin-bottom: 20px;
   font-weight: 400;
@@ -97,11 +100,11 @@
   z-index: 4;
 }
 
-.profile-form__error_active {
+.profile__error_active {
   display: block;
 }
 
-.profile-form__button {
+.profile__button {
   display: inline;
   border: none;
   background-color: inherit;
@@ -114,7 +117,7 @@
   font-weight: 400;
 }
 
-.profile-form__button:hover {
+.profile__button:hover {
   opacity: .7;
 }
 
@@ -124,7 +127,7 @@
     max-height: 445px;
   }
 
-  .profile-form {
+  .profile__form {
     padding-top: 96px;
   }
 
@@ -136,15 +139,15 @@
     max-height: 597px;
   }
 
-  .profile-form {
+  .profile__form{
     padding-top: 80px;
   }
 
-  .profile-form__fieldest {
+  .profile__fieldest {
     padding-inline: 30px;
   }
 
-  .profile-form__button {
+  .profile__button {
     font-size: 12px;
     line-height: 15px;
   }

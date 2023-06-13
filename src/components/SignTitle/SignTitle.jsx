@@ -5,7 +5,7 @@ function SignTitle({ text }) {
   return ( 
     <div className='sign-title'>
       <Logo />
-      <h3 className='sign-title__text'>{text}</h3>
+      <h1 className='sign-title__text'>{text}</h1>
     </div>
    );
 }

@@ -3,9 +3,9 @@ import './Sign.css'
 function Sign({ children }) {
   return ( 
     <main className="sign">
-      <div className='sign__wrapper'>
+      <section className='sign__wrapper'>
         {children}
-      </div>
+      </section>
     </main>
    );
 }

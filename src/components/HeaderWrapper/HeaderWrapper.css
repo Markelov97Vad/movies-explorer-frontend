@@ -1,10 +1,10 @@
-.navigation-main__wrapper {
+.header-wrapper {
   display: none;
   position: relative;
   justify-content: flex-end;
 }
 
-.navigation-main__button-burger {
+.header-wrapper__button-burger {
   background: url(../../images/burger-button.svg) no-repeat;
   background-color: inherit;
   background-position: center;
@@ -15,18 +15,18 @@
   cursor: pointer;
 }
 
-.navigation-main__button-burger:hover {
+.header-wrapper__button-burger:hover {
   opacity: .8;
 }
 
 @media screen and (max-width: 768px) {
-  .navigation-main__wrapper {
+  .header-wrapper {
     display: flex;
   }
 }
 
 @media screen and (max-width: 414px) {
-  .navigation-main__button-burger {
+  .header-wrapper__button-burger {
     background-size: 36px 35px;
     width: 40px;
     height: 34px;
