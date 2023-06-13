@@ -18,6 +18,10 @@
   display: none;
 }
 
+.filter-checkbox__label:hover {
+  opacity: .8;
+}
+
 .filter-checkbox__input + .filter-checkbox__label {
   display: block;
   position: relative;
@@ -27,8 +31,9 @@
   background: #EBEBEB;
   box-shadow: #FFFFFF;
   cursor: pointer;
-  transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out, opacity .2s ease-in;;
 }
+
 
 .filter-checkbox__input + .filter-checkbox__label:before {
   content: "";
@@ -41,8 +46,10 @@
   position: absolute;
   left: 2px;
   top: 2px;
+  opacity: 1;
   transition: all .23s ease-in-out;
 }
+
 .filter-checkbox__input:checked + .filter-checkbox__label {
   background-color: #2BE080;
 }
@@ -65,7 +72,6 @@
     right: 17px;
     padding-left: 23px;
   }
-
 }
 
 @media screen and (max-width: 720px) {

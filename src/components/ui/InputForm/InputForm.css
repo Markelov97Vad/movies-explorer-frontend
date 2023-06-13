@@ -23,6 +23,7 @@
   line-height: 16px;
   padding-inline: 15px;
   margin-right: 0;
+  z-index: 2;
 }
 
 .form-input__input_type_active {
@@ -30,7 +31,25 @@
 }
 
 .form-input__input:focus {
+  background-color: transparent;
   outline: 0;
+}
+
+.form-input__input + .form-input__focus-span {
+  position: absolute; 
+  left: 50%; 
+  top: 22px; 
+  width: 0; 
+  height: 48px; 
+  background-color:  #3457f322;
+  transition: all 0.3s; 
+  z-index: 1;
+  border-radius: 8px;
+}
+.form-input__input:focus + .form-input__focus-span{
+  transition: 0.3s; 
+  width: 100%; 
+  left: 0;
 }
 
 .form-input__input_type_bold {
@@ -46,7 +65,7 @@
   font-size: 10px;
   line-height: 12px;
   color: #EE3465;
-  margin-top: 7px;
+  margin-top: 6px;
   max-width: 396px;
 }
 

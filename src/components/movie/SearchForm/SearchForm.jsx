@@ -15,6 +15,7 @@ function SearchForm() {
       <form className='search-form__form' onSubmit={handleSubmit} noValidate>
           <div className='search-form__input-container'>
             <input value={values.movies || ''} onChange={handleChange} className='search-form__input' name='movies' type="text" placeholder='Фильм' required/>
+            {/* <span className='focus-border'></span> */}
             <SearchButton />
           </div>
           <FilterCheckbox/>
