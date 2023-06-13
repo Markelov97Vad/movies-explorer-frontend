@@ -23,7 +23,6 @@ function MoviesCardList({ place }) {
     if (isScreenDesktop) {
       setCount(11);
       // setCount(2);
-      // setCount(1);
     }
   }, [isScreenMobile, isScreenDesktop]);
 

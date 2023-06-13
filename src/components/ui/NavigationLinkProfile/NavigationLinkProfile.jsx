@@ -5,7 +5,7 @@ function NavigationLinkProfile() {
   return ( 
     <Link to='/profile'
       className='navigation-link-profile'
-      type='button'>Аккаунт</Link>
+    >Аккаунт</Link>
    );
 }
 

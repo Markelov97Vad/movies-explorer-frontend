@@ -17,7 +17,7 @@ function Header() {
       }`}
     >
       <Logo />
-      {isLoggetIn ? <NavSign /> : <HeaderWrapper />}
+      {!isLoggetIn ? <NavSign /> : <HeaderWrapper />}
     </header>
   );
 }

@@ -4,8 +4,12 @@
   background-color: inherit;
   display: flex;
   flex-direction: column;
-  min-height: 445px;
+  min-height: 525px;
 }
+
+/* .movie-card-list_place_saved-movies {
+  min-height: 556px;
+} */
 
 .movie-card-list__container {
   display: grid;
@@ -34,6 +38,7 @@
 
   .movie-card-list_place_saved-movies {
     padding-bottom: 56px;
+    min-height: 671px;
   }
 
   .movie-card-list_place_movies{
@@ -42,6 +47,10 @@
 }
 
 @media screen and (max-width: 414px) {
+  .movie-card-list_place_saved-movies {
+    min-height: 598px;
+  }
+
   .movie-card-list__container {
     grid-template-columns: repeat(auto-fill, 300px);
     grid-auto-rows: 237px;

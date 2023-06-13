@@ -24,5 +24,6 @@
   .sign__wrapper {
     padding-top: 56px;
     min-width: 260px;
+    padding-bottom: 30px;
   }
 }
