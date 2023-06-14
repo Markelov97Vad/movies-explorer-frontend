@@ -1,0 +1,19 @@
+import Footer from '../../Footer/Footer';
+import Header from '../../Header/Header';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SearchForm from '../SearchForm/SearchForm';
+
+function SavedMovies() {
+  return ( 
+    <>
+      <Header />
+      <main>
+        <SearchForm />
+        <MoviesCardList place='saved-movies'/>
+      </main>
+      <Footer />
+    </> 
+  );
+}
+
+export default SavedMovies;
