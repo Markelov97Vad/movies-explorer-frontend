@@ -4,7 +4,7 @@ import ButtonCross from '../../ui/ButtonCross/ButtonCross';
 import ButtonLike from '../../ui/ButtonLike/ButtonLike';
 
 function MoviesCard({ movie }) {
-  const { image, nameRu, duration, link } = movie;
+  const { image, nameRU, duration, trailerLink } = movie;
   const { pathname } = useLocation();
   
   const getTimeFromMinutes = ((time) => {
@@ -16,12 +16,12 @@ function MoviesCard({ movie }) {
 
   return ( 
     <article className='movies-card'>
-      <a className='movies-card__link' href={link} target='_blank' rel="noreferrer">
-        <img className='movies-card__image' src={`${image}`} alt={nameRu} />
+      <a className='movies-card__link' href={trailerLink} target='_blank' rel="noreferrer">
+        <img className='movies-card__image' src={`https://api.nomoreparties.co${image.url}`} alt={nameRU} />
       </a>
       <div className='movies-card__info'>
         <div className='movies-card__wrapper'>
-          <h2 className='movies-card__title'>{nameRu}</h2>
+          <h2 className='movies-card__title'>{nameRU}</h2>
           {
             pathname === '/movies' ?
             <ButtonLike /> :

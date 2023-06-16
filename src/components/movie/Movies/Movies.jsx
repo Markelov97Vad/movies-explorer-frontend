@@ -3,13 +3,13 @@ import Header from '../../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
-function Movies() {
+function Movies({ movies }) {
   return (
     <>
       <Header />
       <main>
         <SearchForm />
-        <MoviesCardList place='movies'/>
+        <MoviesCardList place='movies' movies={movies}/>
       </main>
       <Footer />
     </>
