@@ -22,6 +22,24 @@ class MainApi {
     })
     .then( res => this._checkResponse(res))
   }
+
+  authorize({ email, password }) {
+    return fetch(`${this._url}/signin`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({ email, password })
+    })
+    .then(res => this._checkResponse(res));
+  }
+
+  checkToken() {
+    return fetch(`${this._url}/users/me`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+    .then(res => this._checkResponse(res));
+  }
 }
 
 const mainApi = new MainApi({
