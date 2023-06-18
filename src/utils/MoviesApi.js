@@ -1,13 +1,13 @@
 import { MOVIES_API_URL } from "./config";
-
+// запросы к BeatfilmMoviesApi
 class MoviesApi {
-  constructor({ url, headers}) {
+  constructor({ url, headers }) {
     this._url = url;
     this._headers = headers; 
   }
 
   _getPromise(res) {
-    if (true) {
+    if (res.ok) {
       return res.json();
     }
     return Promise.reject(res.status);

@@ -170,7 +170,7 @@ const moviesList = [
 const SCREEN_MEDIUM = 768;
 const SCREEN_MOBILE = 600;
 
-const MAIN_API_URL = '';
+const MAIN_API_URL = 'http://localhost:3000';
 const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
 export { 
