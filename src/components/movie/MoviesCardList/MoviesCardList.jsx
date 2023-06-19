@@ -6,9 +6,9 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import useResize from "../../../hooks/useResize";
 import AppendButton from "../../ui/AppendButton/AppendButton";
 
-function MoviesCardList({ place, moviesList }) {
+function MoviesCardList({ isLoading, place, moviesList = [], }) {
   const [count, setCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const { isScreenMobile, isScreenMedium, isScreenDesktop } = useResize();
   console.log(moviesList.length);
 

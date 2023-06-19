@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import useMovieSearch from '../../../hooks/useMoviesSearch';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import moviesApi from '../../../utils/MoviesApi';
+import useSearchData from '../../../hooks/useSearchData';
 
 function Movies({ movies }) {
   const [moviesList, setMoviesList] = useState(()=> {
@@ -16,6 +17,7 @@ function Movies({ movies }) {
   const [errorMessage, setErrorMessage] = useState('')
   const { handleMoviesFilter } = useMovieSearch(setErrorMessage);
   const [isLoading, setIsloading] = useState(false);
+  const { keyword, handleStorageData } = useSearchData();
   // useEffect(() => {
   //   setMoviesList()
   // },[])
@@ -25,7 +27,7 @@ function Movies({ movies }) {
     setRenderMoviesList(result);
   }
 
-  function handleMoviesResponse({ keyword, shortmovies }) {
+  const handleMoviesResponse = ({ keyword, shortmovies }) => {
     setIsloading(false);
 
     moviesApi
@@ -38,9 +40,17 @@ function Movies({ movies }) {
       .then(movies => handleResultRender(keyword, movies, shortmovies))
       .catch(err => {
         setErrorMessage('Произошла ошибка во время запроса')
-        console.log('err');
+        console.log(err);
       })
       .finally(() => setIsloading(false));
+  }
+
+  const handleCheckboxShortmovies = (shortmovies) => {
+    handleStorageData({ shortmovies });
+
+    if(keyword) {
+      handleResultRender(keyword, shortmovies, moviesList )
+    }
   }
 
   const handleSubmit = (value) => {
@@ -54,7 +64,10 @@ function Movies({ movies }) {
     <>
       <Header />
       <main>
-        <SearchForm onSubmit={handleSubmit}/>
+        <SearchForm 
+          handleSubmit={handleSubmit} 
+          handleCheckboxShortmovies={handleCheckboxShortmovies}
+        />
         <MoviesCardList 
           place='movies' 
           // movies={movies} 

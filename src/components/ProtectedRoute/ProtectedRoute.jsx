@@ -5,7 +5,7 @@ import useUserContext from "../../hooks/useUserContext";
 const ProtectedRoute = ({element: Component, ...props}) => {
   // const loggetContext = useContext(LoggetContext)
   const { loggetIn } = useUserContext();
-  console.log(props.loggetIn, 'Ебаный логгет');
+  console.log(props.loggetIn);
   return (
     props.loggetIn ? <Component {...props} /> : <Navigate to='/signin' replace /> 
     // {loggetIn === true console.log()};

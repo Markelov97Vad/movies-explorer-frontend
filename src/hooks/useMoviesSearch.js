@@ -6,7 +6,7 @@ function useMovieSearch(handleError) {
   };
 
   const filterKeywords = (movies, keyword) => {
-    const result = movies.filter(movie => movie.nameRu.toLowerCase().includes(keyword));
+    const result = movies.filter(movie => movie.nameRU.toLowerCase().includes(keyword));
     checkError(result);
     return result
   }
