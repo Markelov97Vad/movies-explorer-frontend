@@ -5,4 +5,29 @@ function useMovieSearch(handleError) {
     }
   };
 
+  const filterKeywords = (movies, keyword) => {
+    const result = movies.filter(movie => movie.nameRu.toLowerCase().includes(keyword));
+    checkError(result);
+    return result
+  }
+
+  const filterShortMovies = (movies) => {
+    const result = movies.filter(movie => movie.duration >= 40);
+    checkError(result);
+    return result
+  }
+
+  const handleMoviesFilter = (keyword, movies, shortmovies) => {
+    let result = filterKeywords(movies, keyword);
+
+    if(!shortmovies) {
+      result = filterShortMovies(result);
+    }
+
+    return result;
+  }
+  
+  return { handleMoviesFilter };
 }
+
+export default useMovieSearch;

@@ -6,11 +6,11 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import useResize from "../../../hooks/useResize";
 import AppendButton from "../../ui/AppendButton/AppendButton";
 
-function MoviesCardList({ place, movies }) {
+function MoviesCardList({ place, moviesList }) {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const { isScreenMobile, isScreenMedium, isScreenDesktop } = useResize();
-  console.log(movies);
+  console.log(moviesList.length);
 
   useEffect(() => {
     if (isScreenMobile) {
@@ -54,7 +54,7 @@ function MoviesCardList({ place, movies }) {
       {!isLoading && (
         <>
           <ul className='movie-card-list__container'>
-              {movies.map((movie) => (
+              {moviesList.map((movie) => (
               <li key={movie.id}>
                   <MoviesCard movie={movie} />
               </li>
