@@ -40,6 +40,14 @@ class MainApi {
     })
     .then(res => this._checkResponse(res));
   }
+
+  getMoviesSavedByUser() {
+    return fetch(`${this._url}/movies`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+    .then(res => this._checkResponse(res))
+  }
 }
 
 const mainApi = new MainApi({

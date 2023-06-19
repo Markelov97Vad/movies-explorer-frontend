@@ -1,21 +1,30 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import useFormValid from "../../hooks/useFormValid";
 import FormButton from "../ui/FormButton/FormButton";
 import NavLinkButton from "../ui/NavLinkButton/NavLinkButton";
+// import { CurrentUser } from "../../contexts/UserContext";
 
 function Profile() {
-  const { values, handleChange, setValues, formIsValid } = useFormValid({});
+  const { values, handleChange, setValues, formIsValid, resetFormValues } =
+    useFormValid({});
   const [isEditing, setIsEditing] = useState(false);
+  // const currentUser = useContext(CurrentUser);
 
   const handleEditing = () => {
     setIsEditing(true);
   };
 
-  useEffect(() => {
-    setValues({ name: "Вадим", email: "test@email.com" });
-  }, []);
+  // useEffect(() => {
+  //   setValues({name: currentUser.name, email: currentUser.email});
+  //   console.log(currentUser);
+  // }, []);
+
+  // useLayoutEffect(() => {
+  //   resetFormValues(currentUser);
+  //   console.log(currentUser);
+  // }, [currentUser, resetFormValues]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -29,7 +38,12 @@ function Profile() {
       <main className="profile">
         <section className="profile__info">
           <h1 className="profile__title">Привет, Вадим!</h1>
-          <form className="profile__form" onSubmit={handleSubmit} name="profile" noValidate>
+          <form
+            className="profile__form"
+            onSubmit={handleSubmit}
+            name="profile"
+            noValidate
+          >
             <fieldset className="profile__fieldest">
               <div className="profile__input-wrapper">
                 <label className="profile__input-label" htmlFor="name">

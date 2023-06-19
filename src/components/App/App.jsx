@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, Switch, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Main from "../landing/Main/Main";
@@ -11,9 +11,11 @@ import { LoggetContext } from "../../contexts/loggetContext";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
-import { CurrentUser } from "../../contexts/currentUserContext";
+// import { CurrentUser } from "../../contexts/UserContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import UserContextProvider from "../../contexts/UserContextProvider";
 
-function App(props) {
+function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [loggetIn, setLoggetIn] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -28,14 +30,12 @@ function App(props) {
       .catch((err) => console.log(err));
   };
 
-  const handleAuthorize = (email, password) => {
-    return mainApi
-      .authorize(email, password)
-      .then((res) => {
-        setLoggetIn(true);
-        navigate("/movies", { replace: true });
-      })
-  };
+  // const handleAuthorize = (email, password) => {
+  //   return mainApi.authorize(email, password).then((res) => {
+  //     setLoggetIn(true);
+  //     navigate("/movies", { replace: true });
+  //   });
+  // };
 
   // useEffect(() => {
   //   moviesApi
@@ -46,39 +46,77 @@ function App(props) {
   //     })
   //     .catch((err) => console.log(err));
   // }, []);
-  useEffect(() => {
-    mainApi
+  // useEffect(() => {
+  //   mainApi
+  //     .checkToken()
+  //     .then((res) => {
+  //       setCurrentUser(res);
+  //       console.log(currentUser);
+  //       setLoggetIn(true);
+  //     })
+  //     .catch(err => {
+  //       err === 401 ?
+  //       console.log('Необходима авторизация')
+  //       :
+  //       console.log(`Не удалось авторизовать пользователя. Ошибка: ${err}`)
+  //     })
+  // },[loggetIn])
+
+  const handleTockenCheck = () => {
+    return mainApi
       .checkToken()
       .then((res) => {
-        setCurrentUser(res);
         setLoggetIn(true);
+        setCurrentUser(res);
+        console.log(currentUser);
+        console.log(loggetIn, "O");
       })
-      .catch(err => {
-        err === 401 ?
-        console.log('Необходима авторизация')
-        :
-        console.log(`Не удалось авторизовать пользователя. Ошибка: ${err}`)
-      })
-  },[])
+      .catch((err) => {
+        err === 401
+          ? console.log("Необходима авторизация")
+          : console.log(`Не удалось авторизовать пользователя. Ошибка: ${err}`);
+      });
+  };
+
+  useEffect(() => {
+    console.log(loggetIn);
+    handleTockenCheck();
+  }, [loggetIn]);
 
   return (
     <div className="root">
-      <LoggetContext.Provider value={loggetIn}>
-        <CurrentUser.Provider value={currentUser}>
+      {/* <LoggetContext.Provider value={loggetIn}>
+        <CurrentUser.Provider value={currentUser}> */}
+        <UserContextProvider>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/movies" element={<Movies movies={movies} />} />
-            <Route path="/saved-movies" element={<SavedMovies />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/signin" element={<Login onLogin={handleAuthorize} />} />
+            <Route
+              path="/movies"
+              element={
+                <ProtectedRoute
+                  element={Movies}
+                  movies={movies}
+                  loggetIn={loggetIn}
+                />
+              }
+            />
+            {/* <Route path="/saved-movies" element={<ProtectedRoute element={SavedMovies} loggetIn={loggetIn}/>} />
+            <Route path="/profile" element={<ProtectedRoute element={Profile} loggetIn={loggetIn} />} /> */}
+            {/* <Route path="/saved-movies" element={<SavedMovies />} /> */}
+            {/* <Route path="/profile" element={<Profile />} /> */}
+            <Route
+              path="/signin"
+              element={<Login />}
+            />
             <Route
               path="/signup"
               element={<Register onRegistration={handleRegistration} />}
             />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </CurrentUser.Provider>
-      </LoggetContext.Provider>
+        </UserContextProvider>
+        {/* </CurrentUser.Provider>
+      </LoggetContext.Provider> */}
     </div>
   );
 }
