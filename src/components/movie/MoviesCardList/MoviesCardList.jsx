@@ -50,8 +50,7 @@ function MoviesCardList({ isLoading, place, moviesList = [], }) {
 
   return (
     <section className={`movie-card-list movie-card-list_place_${place}`}>
-      {isLoading && <Preloader />}
-      {!isLoading && (
+      {isLoading ? <Preloader /> :
         <>
           <ul className='movie-card-list__container'>
               {moviesList.map((movie) => (
@@ -62,7 +61,8 @@ function MoviesCardList({ isLoading, place, moviesList = [], }) {
           </ul>
           {renderButton && <AppendButton onClick={handleClick} text='Ещё'/>}
         </>
-      )}
+      // )}
+              }
     </section>
   );
 }

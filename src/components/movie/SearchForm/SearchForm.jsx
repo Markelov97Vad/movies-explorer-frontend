@@ -4,13 +4,14 @@ import useFormValid from '../../../hooks/useFormValid';
 import SearchButton from '../../ui/SearchButton/SearchButton';
 import { useState } from 'react';
 
-function SearchForm({ handleSubmit, handleCheckboxShortmovies }) {
+function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies }) {
   const { values , handleChange, handleToggleChange } = useFormValid({});
   const [validationError, setValidationError] = useState('');
 
   // const handleSubmit = (evt) => {
   //   evt.preventDefault();
   // };
+  // валидация ввода
   const handleInputValidate = () => {
     // setValidationError('')
     const isValid = values.keyword && values.keyword.length > 0;
@@ -25,14 +26,17 @@ function SearchForm({ handleSubmit, handleCheckboxShortmovies }) {
     evt.preventDefault();
     const isValid = handleInputValidate();
      if (isValid) {
-      handleSubmit(values);
+      handleSubmitMoviesSearch(values);
+      console.log('сабмитПоиска', values);
      }
   }
-
+  // состояние чекбокса
   const handleCheckbox = (evt) => {
     handleToggleChange(evt);
     const { name, checked } = evt.target;
     console.log('check');
+    console.log(checked);
+    console.log(name);
     handleCheckboxShortmovies(checked);
   }
 
