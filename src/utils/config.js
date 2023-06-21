@@ -172,6 +172,7 @@ const SCREEN_MOBILE = 600;
 
 const MAIN_API_URL = 'http://localhost:3000';
 const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+const MOVIES_BASE_API_URL = 'https://api.nomoreparties.co';
 
 // Данные карточки
 
@@ -185,8 +186,8 @@ function handleMovieDataFormat({ nameRU, nameEN, country, director, duration, ye
       duration,
       year,
       trailerLink,
-      image:  MOVIES_API_URL + image.url,
-      thumbnail:  MOVIES_API_URL + image.formats.thumbnail.url,
+      image:  MOVIES_BASE_API_URL + image.url,
+      thumbnail:  MOVIES_BASE_API_URL + image.formats.thumbnail.url,
       movieId: id,
   };
 }

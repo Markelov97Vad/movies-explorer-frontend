@@ -92,7 +92,9 @@ function App() {
               path="/saved-movies"
               element={
                 <ProtectedRoute>
-                  <SavedMovies />
+                  <MoviesContextProvider>
+                    <SavedMovies />
+                  </MoviesContextProvider>
                 </ProtectedRoute>
               }
             />

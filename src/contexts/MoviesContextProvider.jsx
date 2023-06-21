@@ -16,21 +16,23 @@ function MoviesContextProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     const movies = JSON.parse(localStorage.getItem('savedMovies'));
-
+    console.log('MOVIES',movies);
     if(movies) {
+      console.log('MOVIES',movies);
       setSavedMoviesList(movies);
       setIsLoading(false)
+    } else {
+      mainApi
+        .getMoviesSavedByUser()
+        .then(movies => {
+          setSavedMoviesList(movies);
+          localStorage.setItem('savedMovies', JSON.stringify(movies));
+        })
+        .catch(err => {
+          console.log(err, 'Не удалось загрузить фильмы.');
+        })
+        .finally(() => setIsLoading(false))
     }
-    mainApi
-      .getMoviesSavedByUser()
-      .then(movies => {
-        setSavedMoviesList(movies);
-        localStorage.setItem('savedMovies', JSON.stringify(movies));
-      })
-      .catch(err => {
-        console.log(err, 'Не удалось загрузить фильмы.');
-      })
-      .finally(() => setIsLoading(false))
   },[]);
 
   const addUserMovie = (movie) => {
