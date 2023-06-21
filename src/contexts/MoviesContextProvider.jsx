@@ -24,10 +24,18 @@ function MoviesContextProvider({ children }) {
         console.log(err, 'Не удалось загрузить фильмы.');
       })
       .finally(() => setIsLoading(false))
-  },[])
+  },[]);
+
+  const addUserMovie = (movie) => {
+    console.log('ТУТ',movie);
+    const newSavedMoviesList = [...savedMoviesList, movie ];
+    setSavedMoviesList(newSavedMoviesList);
+    localStorage.setItem('savedMovies', JSON.stringify(newSavedMoviesList));
+  }
+
 
   return ( 
-    <MoviesContext.Provider value={''}>
+    <MoviesContext.Provider value={{savedMoviesList, isLoading, addUserMovie}}>
       {children}
     </MoviesContext.Provider> );
 }

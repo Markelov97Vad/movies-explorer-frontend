@@ -1,4 +1,11 @@
-import { Navigate, Route, Routes, Switch, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  Switch,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 import "./App.css";
 import Main from "../landing/Main/Main";
@@ -14,7 +21,8 @@ import mainApi from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import UserContextProvider from "../../contexts/UserContextProvider";
 import useUserContext from "../../hooks/useUserContext";
-import { UserContext } from "../../contexts/UserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import MoviesContextProvider from "../../contexts/MoviesContextProvider";
 
 function App() {
   const [isAppLoaded, setIsAppLoaded] = useState(false);
@@ -23,7 +31,7 @@ function App() {
   const [loggetIn, setLoggetIn] = useState(false);
   // const [movies, setMovies] = useState([]);
   const navigate = useNavigate();
-  const location  = useLocation();
+  const location = useLocation();
 
   const handleRegistration = (name, email, password) => {
     return mainApi
@@ -42,7 +50,8 @@ function App() {
   };
 
   const handleTockenCheck = useCallback(() => {
-    return mainApi.checkToken()
+    return mainApi
+      .checkToken()
       .then((res) => {
         setLoggetIn(true);
         setCurrentUser(res);
@@ -55,8 +64,8 @@ function App() {
           : console.log(`Не удалось авторизовать пользователя. Ошибка: ${err}`);
       })
       .finally(() => {
-        setIsAppLoaded(true)
-      })
+        setIsAppLoaded(true);
+      });
   }, []);
 
   useEffect(() => {
@@ -65,18 +74,17 @@ function App() {
 
   return (
     <div className="root">
-      <UserContext.Provider 
-        value={{loggetIn, currentUser}}
-      >
+      <CurrentUserContext.Provider value={{ loggetIn, currentUser }}>
         {isAppLoaded && (
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/m" element={<Main />} />
             <Route
               path="/movies"
               element={
                 <ProtectedRoute>
-                  <Movies />
+                  <MoviesContextProvider>
+                    <Movies />
+                  </MoviesContextProvider>
                 </ProtectedRoute>
               }
             />
@@ -107,9 +115,9 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         )}
-      </UserContext.Provider>
+      </CurrentUserContext.Provider>
     </div>
-    )
+  );
 }
 
 export default App;

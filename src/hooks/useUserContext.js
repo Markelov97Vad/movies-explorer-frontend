@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function useUserContext() {
-  const userContextValue = useContext(UserContext);
+  const userContextValue = useContext(CurrentUserContext);
   return { ...userContextValue };
 }
 

@@ -7,10 +7,13 @@ import useMovieSearch from '../../../hooks/useMoviesSearch';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import moviesApi from '../../../utils/MoviesApi';
 import useSearchData from '../../../hooks/useSearchData';
+import mainApi from '../../../utils/MainApi';
+import useMoviesContext from '../../../hooks/useMoviesContext';
 
 function Movies({ movies }) {
   const [moviesList, setMoviesList] = useState(()=> {
     const movies = JSON.parse(localStorage.getItem('moviesList'));
+    console.log('useState Movies',movies);
     return movies ? movies : [];
   });
   const [renderMoviesList, setRenderMoviesList] = useState([])
@@ -18,6 +21,7 @@ function Movies({ movies }) {
   const { handleMoviesFilter } = useMovieSearch(setErrorMessage);
   const { keyword, handleStorageData } = useSearchData();
   const [isLoading, setIsloading] = useState(false);
+  const { addUserMovie, savedMoviesList } = useMoviesContext();
   // useEffect(() => {
   //   setMoviesList()
   // },[])
@@ -36,10 +40,13 @@ function Movies({ movies }) {
       .then(movies => {
         setMoviesList(movies);
         localStorage.setItem('moviesList', JSON.stringify(movies));
-        console.log('moviesList');
+        console.log('moviesList', movies);
         return movies
       })
-      .then(movies => handleResultRender(keyword, movies, shortmovies))
+      .then(movies => {
+        console.log('moviesList2', movies);
+        handleResultRender(keyword, movies, shortmovies)
+      })
       .catch(err => {
         setErrorMessage('Произошла ошибка во время запроса')
         console.log(err);
@@ -65,6 +72,17 @@ function Movies({ movies }) {
       console.log('1');
     }
   }
+// сохранить фильм
+  const handleMovieSave = (movie) => {
+    console.log(movie);
+    return mainApi
+      .addMovie(movie)
+      .then(addUserMovie)
+      .catch((err) => {
+        console.log(`Не удалось сохранить фильм, Error: ${err}`);
+      })
+      // console.log(movie);
+  }
   return (
     <>
       <Header />
@@ -77,7 +95,9 @@ function Movies({ movies }) {
           place='movies' 
           // movies={movies} 
           moviesList={renderMoviesList}
+          savedMoviesList={savedMoviesList}
           isLoading={isLoading}
+          handleMovieSave={handleMovieSave}
         />
       </main>
       <Footer />

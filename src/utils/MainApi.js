@@ -46,7 +46,17 @@ class MainApi {
       method: 'GET',
       credentials: 'include'
     })
-    .then(res => this._checkResponse(res))
+    .then(res => this._checkResponse(res));
+  }
+
+  addMovie(movie) {
+    return fetch(`${this._url}/movies`, {
+      method: 'POST',
+      credentials: 'include',  
+      headers: this._headers,
+      body: JSON.stringify({...movie})
+    })
+    .then(res => this._checkResponse(res));
   }
 }
 
