@@ -7,7 +7,7 @@ import useResize from "../../../hooks/useResize";
 import AppendButton from "../../ui/AppendButton/AppendButton";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
-function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, savedMoviesList}) {
+function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, savedMoviesList, handleMovieDelete}) {
   const [count, setCount] = useState(0);
   // const [isLoading, setIsLoading] = useState(false);
   const { isScreenMobile, isScreenMedium, isScreenDesktop } = useResize();
@@ -65,6 +65,7 @@ function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, sa
                       movie={movie} 
                       handleMovieSave={handleMovieSave}
                       savedMoviesList={savedMoviesList}
+                      handleMovieDelete={handleMovieDelete}
                     />
                 </li>
               )

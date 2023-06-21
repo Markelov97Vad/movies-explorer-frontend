@@ -6,6 +6,13 @@ function MoviesContextProvider({ children }) {
   const [savedMoviesList, setSavedMoviesList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+
+  const checkSavedMovies = (moviesList) => {
+    if(moviesList.length === 0) {
+      console.log('нет сохраненных фильмов');
+    }
+  }
+
   useEffect(() => {
     setIsLoading(true);
     const movies = JSON.parse(localStorage.getItem('savedMovies'));
@@ -33,9 +40,16 @@ function MoviesContextProvider({ children }) {
     localStorage.setItem('savedMovies', JSON.stringify(newSavedMoviesList));
   }
 
+  const deleteUserMovie = (movieId) => {
+    const newSavedMoviesList = savedMoviesList.filter(elem => elem._id !== movieId);
+    setSavedMoviesList(newSavedMoviesList);
+    localStorage.setItem('savedMovies', JSON.stringify(newSavedMoviesList));
+    checkSavedMovies(newSavedMoviesList);
+  }
+
 
   return ( 
-    <MoviesContext.Provider value={{savedMoviesList, isLoading, addUserMovie}}>
+    <MoviesContext.Provider value={{savedMoviesList, isLoading, addUserMovie, deleteUserMovie}}>
       {children}
     </MoviesContext.Provider> );
 }

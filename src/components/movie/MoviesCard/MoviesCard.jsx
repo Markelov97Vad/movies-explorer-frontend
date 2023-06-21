@@ -5,7 +5,7 @@ import ButtonLike from '../../ui/ButtonLike/ButtonLike';
 import { handleMovieDataFormat } from '../../../utils/config';
 import { useState } from 'react';
 
-function MoviesCard({ movie, handleMovieSave, savedMoviesList }) {
+function MoviesCard({ movie, handleMovieSave, savedMoviesList, handleMovieDelete }) {
   const { image, nameRU, duration, trailerLink } = movie;
   const { pathname } = useLocation();
   const [moviesListN, setMoviesListN] = useState([])
@@ -19,13 +19,17 @@ function MoviesCard({ movie, handleMovieSave, savedMoviesList }) {
 
   // const movieData = handleMovieDataFormat(movie);
   const isOwner = savedMoviesList.some(savedMovie => savedMovie.movieId === movie.id);
-  // console.log('IsOwner',isOwner);
+  console.log('IsOwner',isOwner);
+  console.log('savedMoviesList',savedMoviesList);
+  const movieData = handleMovieDataFormat(movie);
+  console.log('MovieData',movieData);
+
   // const handleSave = handleMovieSave(movieData);
   const handleSave = () => {
-    const addMovie = handleMovieDataFormat(movie)
+    // const addMovie = handleMovieDataFormat(movie)
     // const arrMovie = [...moviesListN, addMovie]
     // setMoviesListN(arrMovie)
-    handleMovieSave(addMovie)
+    handleMovieSave(movieData)
 
     
     // console.log(arrMovie);
@@ -33,14 +37,11 @@ function MoviesCard({ movie, handleMovieSave, savedMoviesList }) {
     // console.log(moviesListN);
   }
 
-  // const handleClick = () => {
-  //   const d =  handleMovieSave.bind(null,movie)
-  //   console.log(movie);
-  //   return d
-  // }
-
-  // const handleSave = handleMovieSave.bind(null, movieData)
-
+  const handleDelete = () => {
+    const movieId = savedMoviesList.find(elem => elem.nameRU === movieData.nameRU)
+    console.log('ID для удаления',movieId._id);
+    handleMovieDelete(movieId._id)
+  }
 
   return ( 
     <article className='movies-card'>
@@ -52,7 +53,7 @@ function MoviesCard({ movie, handleMovieSave, savedMoviesList }) {
           <h2 className='movies-card__title'>{nameRU}</h2>
           {
             pathname === '/movies' ?
-            <ButtonLike  handleClick={handleSave}/> :
+            <ButtonLike  handleSave={handleSave} handleDelete={handleDelete} isOwner={isOwner}/> :
             <ButtonCross place='card'/>
           }
         </div>

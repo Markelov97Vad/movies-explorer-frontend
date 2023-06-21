@@ -58,6 +58,15 @@ class MainApi {
     })
     .then(res => this._checkResponse(res));
   }
+
+  deleteMovie(movieId) {
+    return fetch(`${this._url}/movies/${movieId}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: this._headers,
+    })
+    .then(res => this._checkResponse(res));
+  }
 }
 
 const mainApi = new MainApi({

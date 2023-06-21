@@ -21,7 +21,7 @@ function Movies({ movies }) {
   const { handleMoviesFilter } = useMovieSearch(setErrorMessage);
   const { keyword, handleStorageData } = useSearchData();
   const [isLoading, setIsloading] = useState(false);
-  const { addUserMovie, savedMoviesList } = useMoviesContext();
+  const { addUserMovie, savedMoviesList, deleteUserMovie } = useMoviesContext();
   // useEffect(() => {
   //   setMoviesList()
   // },[])
@@ -74,7 +74,7 @@ function Movies({ movies }) {
   }
 // сохранить фильм
   const handleMovieSave = (movie) => {
-    console.log(movie);
+    // console.log(movie);
     return mainApi
       .addMovie(movie)
       .then(addUserMovie)
@@ -82,6 +82,14 @@ function Movies({ movies }) {
         console.log(`Не удалось сохранить фильм, Error: ${err}`);
       })
       // console.log(movie);
+  }
+// удалить фильм
+  const handleMovieDelete = (movieId) => {
+    console.log('Id delete',movieId);
+    return mainApi
+      .deleteMovie(movieId)
+      .then(() => deleteUserMovie(movieId))
+      .catch(err => console.log(`Не удалось удалить фильм, Error: ${err}`))
   }
   return (
     <>
@@ -98,6 +106,7 @@ function Movies({ movies }) {
           savedMoviesList={savedMoviesList}
           isLoading={isLoading}
           handleMovieSave={handleMovieSave}
+          handleMovieDelete={handleMovieDelete}
         />
       </main>
       <Footer />
