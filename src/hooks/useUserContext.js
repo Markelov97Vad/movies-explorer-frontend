@@ -3,7 +3,7 @@ import { UserContext } from "../contexts/UserContext";
 
 function useUserContext() {
   const userContextValue = useContext(UserContext);
-  return { ...userContextValue};
+  return { ...userContextValue };
 }
 
 export default useUserContext;

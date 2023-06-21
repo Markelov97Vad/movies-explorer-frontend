@@ -1,21 +1,18 @@
-import { Route, Navigate, redirect } from "react-router-dom";
-import { LoggetContext } from "../../contexts/loggetContext";
+import { Navigate} from "react-router-dom";
 import useUserContext from "../../hooks/useUserContext";
+// import { useEffect, useState } from "react";
+// import mainApi from "../../utils/MainApi";
 
-const ProtectedRoute = ({element: Component, ...props}) => {
-  // const loggetContext = useContext(LoggetContext)
+function ProtectedRoute({children , ...rest}) {
   const { loggetIn } = useUserContext();
-  console.log(props.loggetIn);
-  return (
-    props.loggetIn ? <Component {...props} /> : <Navigate to='/signin' replace /> 
-    // {loggetIn === true console.log()};
-    //  <Component {...props} next={() => console.log('')}/>
-    // <Route>
-    //   {() =>
-    //     loggetIn ? <Component {...props} /> : <redirect to='/' />
-    //   }
-    // </Route>
-  );
+  // const location = useLocation();
+  // console.log("ProtectedRoute",loggetIn);
+
+  if(!loggetIn) {
+    // return <Navigate to='/' state={{ previousPath: location.pathname }} />
+    return <Navigate to='/' replace />
+  }
+  return children;
 }
 
 export default ProtectedRoute;

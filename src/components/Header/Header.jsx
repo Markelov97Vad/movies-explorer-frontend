@@ -3,13 +3,11 @@ import { useLocation } from "react-router-dom";
 import "./Header.css";
 import NavSign from "../navigation/NavSign/NavSign";
 import HeaderWrapper from "../HeaderWrapper/HeaderWrapper";
-import { LoggetContext } from "../../contexts/loggetContext";
 import Logo from "../ui/Logo/Logo";
 import useUserContext from "../../hooks/useUserContext";
 
 function Header() {
   const { pathname } = useLocation();
-  // const isLoggetIn = useContext(LoggetContext);
   const { loggetIn } = useUserContext();
 
   return (
