@@ -168,7 +168,8 @@ const linksList = [{
 // ];
 
 const SCREEN_MEDIUM = 768;
-const SCREEN_MOBILE = 600;
+// const SCREEN_MOBILE = 635;
+const SCREEN_DESKTOP = 1279;
 
 const MAIN_API_URL = 'http://localhost:3000';
 const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
@@ -199,7 +200,8 @@ export {
   linksList, 
   handleMovieDataFormat,
   SCREEN_MEDIUM,
-  SCREEN_MOBILE,
+  // SCREEN_MOBILE,
+  SCREEN_DESKTOP,
   MAIN_API_URL,
   MOVIES_API_URL
 };

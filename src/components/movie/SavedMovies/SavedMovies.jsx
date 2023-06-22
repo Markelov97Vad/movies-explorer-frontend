@@ -19,42 +19,68 @@ function SavedMovies() {
   const [initialRender, setInitialRender] = useState(true);
 
   const handleResultRender = (keyword, movies, shortmovies) => {
-    setRenderMoviesList(() => handleMoviesFilter(keyword, movies, shortmovies));
+    console.log('KEY', keyword,'short', shortmovies,'List', savedMoviesList);
+    const resultSearchMovie = handleMoviesFilter(keyword, movies, shortmovies);
+
+    // setRenderMoviesList(() => handleMoviesFilter(keyword, movies, shortmovies));
+    setRenderMoviesList(resultSearchMovie);
   };
 
   const handleSubmitMoviesSearch = (value) => {
+    handleStorageData(value);
+
     if(savedMoviesList.length > 0) {
       handleResultRender(value.keyword, savedMoviesList, value.shortmovies)
-      console.log('2');
     }
   }
 
   const handleCheckboxShortmovies = (shortmovies) => {
     handleStorageData({ shortmovies });
 
-    if(keyword) {
-      handleResultRender(keyword, shortmovies, savedMoviesList )
-      console.log( "handleCheckboxShortmovies", shortmovies);
+    // if(savedMoviesList.length > 0) {
+    //   console.log(savedMoviesList);
+    //   console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
+    //   handleResultRender(keyword, shortmovies, savedMoviesList )
+    //   // console.log( "handleCheckboxShortmovies", shortmovies);
+    // }
+    if(savedMoviesList.length > 0) {
+      // console.log('MOVIEDLIST',savedMoviesList);
+      // console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
+      // handleResultRender(keyword, savedMoviesList, shortmovies)
+      // console.log( "handleCheckboxShortmovies", shortmovies);
     }
   }
-  console.log(savedMoviesList);
+  // console.log(savedMoviesList);
+// const renderList = () => {
+//   setRenderMoviesList(savedMoviesList)
+// }
 
   // удалить фильм
   const handleMovieDelete = (movieId) => {
-    console.log('Id delete',movieId);
+    // console.log('Id delete',movieId);
     return mainApi
       .deleteMovie(movieId)
-      .then(() => deleteUserMovie(movieId))
+      .then(() => {
+        deleteUserMovie(movieId)
+        // renderList();
+        // console.log(savedMoviesList);
+      })
       .catch(err => console.log(`Не удалось удалить фильм, Error: ${err}`))
   }
 
+  // useEffect(() => {
+  //   setRenderMoviesList(savedMoviesList)
+  // },[initialRender])
 
-// useEffect(() => {
-//     if(initialRender && savedMoviesList.length > 0) {
-//       setRenderMoviesList(setRenderMoviesList);
-//         setInitialRender(false);
-//     };
-// }, [initialRender, savedMoviesList]);
+
+useEffect(() => {
+    if(initialRender && savedMoviesList.length > 0) {
+      setRenderMoviesList(savedMoviesList);
+      setInitialRender(false);
+    } else if (!initialRender) {
+      setRenderMoviesList(savedMoviesList);
+    }
+}, [initialRender, savedMoviesList]);
   return ( 
     <>
       <Header />
@@ -62,17 +88,11 @@ function SavedMovies() {
         <SearchForm 
           handleSubmitMoviesSearch={handleSubmitMoviesSearch} 
           handleCheckboxShortmovies={handleCheckboxShortmovies}
+          // valueCache={true}
         />
-        {/* <MoviesCardList 
-          place='saved-movies'
-          moviesList={savedMoviesList}
-          handleMovieDelete={handleMovieDelete}
-          savedMoviesList={savedMoviesList}
-          isLoading={isLoading}
-        /> */}
         <SavedMoviesCardList 
           place='saved-movies' 
-          moviesList={savedMoviesList} 
+          moviesList={renderMoviesList} 
           handleMovieDelete={handleMovieDelete}
         />
       </main>

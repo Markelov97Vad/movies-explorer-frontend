@@ -6,18 +6,12 @@ import Preloader from "../Preloader/Preloader";
 
 function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, handleMovieDelete}) {
   return ( 
-    <section className={`movie-card-list movie-card-list_place_${place}`}>
+    <section className={`movies-card-list movies-card-list_place_${place}`}>
       {isLoading ? <Preloader /> :
-      <>
-      <ul className='movie-card-list__container'>
+      <ul className='movies-card-list__container'>
           {moviesList.map((movie) => {
-            // const movieData = handleMovieDataFormat(movie);
-            // const isOwner = savedMoviesList.some(savedMovie => savedMovie.movieId === movie.id);
-            // console.log('IsOwner',isOwner);
-            // const handleSave = handleMovieSave.bind(null, movieData);
-            console.log(movie);
+            // console.log(movie);
             const handleDelete = () => {
-              // const movieId = moviesList.find(elem => elem.nameRU === movieData.nameRU)
               handleMovieDelete(movie._id)
             }
 
@@ -25,7 +19,7 @@ function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, ha
               handleDelete();
             }
           return (
-            <li key={movie.id}>
+            <li key={movie._id}>
                 <MoviesCard 
                   movie={movie} 
                   // handleMovieSave={handleMovieSave}
@@ -39,7 +33,6 @@ function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, ha
           )
         })}
       </ul>
-    </>
     }
     {moviesList.length === 0 && <ErrorMessage text='Ничего не найдено'/>}
     </section>

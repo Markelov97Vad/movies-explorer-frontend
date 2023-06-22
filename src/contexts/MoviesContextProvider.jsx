@@ -16,9 +16,9 @@ function MoviesContextProvider({ children }) {
   useEffect(() => {
     setIsLoading(true);
     const movies = JSON.parse(localStorage.getItem('savedMovies'));
-    console.log('MOVIES',movies);
+    // console.log('MOVIES',movies);
     if(movies) {
-      console.log('MOVIES',movies);
+      // console.log('MOVIES',movies);
       setSavedMoviesList(movies);
       setIsLoading(false)
     } else {
@@ -36,7 +36,7 @@ function MoviesContextProvider({ children }) {
   },[]);
 
   const addUserMovie = (movie) => {
-    console.log('ТУТ',movie);
+    // console.log('ТУТ',movie);
     const newSavedMoviesList = [...savedMoviesList, movie ];
     setSavedMoviesList(newSavedMoviesList);
     localStorage.setItem('savedMovies', JSON.stringify(newSavedMoviesList));

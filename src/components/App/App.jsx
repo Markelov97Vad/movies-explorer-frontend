@@ -55,8 +55,8 @@ function App() {
       .then((res) => {
         setLoggetIn(true);
         setCurrentUser(res);
-        console.log(currentUser);
-        console.log(loggetIn, "O");
+        // console.log(currentUser);
+        // console.log(loggetIn, "O");
       })
       .catch((err) => {
         err === 401

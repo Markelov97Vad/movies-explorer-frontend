@@ -6,39 +6,42 @@ function useMovieSearch(handleError) {
     }
   };
 
-  const filterKeywords = (movies, keyword) => {
+  const filterKeywords = ( keyword, movies) => {
+    console.log( "DATA MOVIES",movies);
+    console.log('DATA 2', keyword);
+    // let movies = [];
     const result = movies.filter( movie => {
       // console.log(movie.nameRU.toLowerCase());
       return movie.nameRU.toLowerCase().includes(keyword.toLowerCase())
     });
+    // let result = ''
     checkError(result);
     return result
   }
 
   const filterShortMovies = (movies) => {
+    console.log('FILTERSHORT', movies);
     const result = movies.filter( movie => {
-      console.log('длительность' ,movie.duration);
+      // console.log('длительность' ,movie.duration);
       return movie.duration <= 40
     });
+    // let result = '';
     checkError(result);
     console.log('результат короткометражек' ,result);
     return result
   }
 
-  // const filterShortmovies = (movies) => {
-  //   const res = movies.filter(movie => {
-  //     return movie.duration <= 40
-  //   })
-  //   return res
-  // }
-
-  const handleMoviesFilter = (keyword, movies, shortmovies = false) => {
-    let result = filterKeywords(movies, keyword);
+  const handleMoviesFilter = (keyword, movies, shortmovies) => {
+    console.log('AAAA',movies);
+    console.log(keyword);
+    let result = filterKeywords(keyword, movies);
     console.log('shortmovies!', shortmovies);
+    console.log('RESULT', result);
     if(shortmovies) {
       result = filterShortMovies(result);
     }
     // const result = filterShortmovies(movies)
+    console.log('FINAL RESULT', result);
     return result;
   }
   

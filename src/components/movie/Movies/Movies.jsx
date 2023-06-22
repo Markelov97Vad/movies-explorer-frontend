@@ -2,18 +2,19 @@ import Footer from '../../Footer/Footer';
 import Header from '../../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useMovieSearch from '../../../hooks/useMoviesSearch';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import moviesApi from '../../../utils/MoviesApi';
 import useSearchData from '../../../hooks/useSearchData';
 import mainApi from '../../../utils/MainApi';
 import useMoviesContext from '../../../hooks/useMoviesContext';
+import useResultCache from '../../../hooks/useResultCache';
 
 function Movies({ movies }) {
   const [moviesList, setMoviesList] = useState(()=> {
     const movies = JSON.parse(localStorage.getItem('moviesList'));
-    console.log('useState Movies',movies);
+    // console.log('useState Movies',movies);
     return movies ? movies : [];
   });
   const [renderMoviesList, setRenderMoviesList] = useState([])
@@ -22,14 +23,18 @@ function Movies({ movies }) {
   const { keyword, handleStorageData } = useSearchData();
   const [isLoading, setIsloading] = useState(false);
   const { addUserMovie, savedMoviesList, deleteUserMovie } = useMoviesContext();
+  const { setResultCache, getResultCache } = useResultCache();
   // useEffect(() => {
   //   setMoviesList()
   // },[])
   // рендер результата поиска 
   const handleResultRender = (keyword, movies, shortmovies) => {
     const resultSearchMovie = handleMoviesFilter(keyword, movies, shortmovies);
-
+    // сюда приходит movies = boolean //! НЕТ
+    // console.log('Проверка Movies 1', movies);
+  console.log('RESULTSEARCH',resultSearchMovie);
     setRenderMoviesList(resultSearchMovie);
+    setResultCache( 'moviesCache', { movies: resultSearchMovie });
   }
   // результат запроса к API
   const handleMoviesFetch = ({ keyword, shortmovies }) => {
@@ -40,11 +45,11 @@ function Movies({ movies }) {
       .then(movies => {
         setMoviesList(movies);
         localStorage.setItem('moviesList', JSON.stringify(movies));
-        console.log('moviesList', movies);
+        // console.log('moviesList', movies);
         return movies
       })
       .then(movies => {
-        console.log('moviesList2', movies);
+        // console.log('Проверка Movies 2', movies);
         handleResultRender(keyword, movies, shortmovies)
       })
       .catch(err => {
@@ -54,24 +59,37 @@ function Movies({ movies }) {
       .finally(() => setIsloading(false));
   }
 
-  const handleCheckboxShortmovies = (shortmovies) => {
-    handleStorageData({ shortmovies });
-
-    if(keyword) {
-      handleResultRender(keyword, shortmovies, moviesList )
-      console.log( "handleCheckboxShortmovies", shortmovies);
-    }
-  }
-
   const handleSubmitMoviesSearch = (value) => {
+    handleStorageData(value);
     if(moviesList.length > 0) {
       handleResultRender(value.keyword, moviesList, value.shortmovies)
-      console.log('2');
+      // console.log('2');
     } else {
       handleMoviesFetch(value)
-      console.log('1');
+      // console.log('1');
     }
   }
+
+  const handleCheckboxShortmovies =(shortmovies) => {
+    handleStorageData({ shortmovies });
+    
+    // console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
+    console.log('KYEVIRD',keyword);
+    if (keyword) {
+      // handleResultRender(keyword, moviesList, shortmovies)
+      // console.log( "handleCheckboxShortmovies", shortmovies);
+    }
+  }
+  // const handleCheckboxShortmovies = useCallback((shortmovies) => {
+  //   handleStorageData({ shortmovies });
+    
+  //   // console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
+  //   if (keyword) {
+  //     handleResultRender(keyword, moviesList, shortmovies)
+  //     // console.log( "handleCheckboxShortmovies", shortmovies);
+  //   }
+  // },[])
+
 // сохранить фильм
   const handleMovieSave = (movie) => {
     // console.log(movie);
@@ -91,6 +109,16 @@ function Movies({ movies }) {
       .then(() => deleteUserMovie(movieId))
       .catch(err => console.log(`Не удалось удалить фильм, Error: ${err}`))
   }
+
+  useEffect(() => {
+    const movieCache = getResultCache('moviesCache');
+    console.log('MoviesCache', movieCache);
+    movieCache?.movies && setRenderMoviesList(movieCache.movies)
+    // if(movieCache.movies) {
+    //   setRenderMoviesList(movieCache.movies)
+    // }
+  },[getResultCache])
+  console.log('ПЕРЕД РЕНДЕР.',renderMoviesList);
   return (
     <>
       <Header />
@@ -98,6 +126,7 @@ function Movies({ movies }) {
         <SearchForm 
           handleSubmitMoviesSearch={handleSubmitMoviesSearch} 
           handleCheckboxShortmovies={handleCheckboxShortmovies}
+          valueCache={true}
         />
         <MoviesCardList 
           place='movies' 
