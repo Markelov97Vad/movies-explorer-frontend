@@ -50,7 +50,7 @@ function Movies() {
         return movies
       })
       .then(movies => {
-        console.log('Проверка Movies 2', movies);
+        // console.log('Проверка Movies 2', movies);
         handleResultRender(keyword, movies, shortmovies)
       })
       .catch(err => {
@@ -62,17 +62,17 @@ function Movies() {
   //! Submit формы поиска фильма 
   const handleSubmitMoviesSearch = (value) => {
     handleStorageData(value);
-    console.log("MOVIE LIST", moviesList);
+    // console.log("MOVIE LIST", moviesList);
     if(moviesList.length > 0) {
       handleResultRender(value.keyword, moviesList, value.shortmovies)
-      console.log('2');
+      // console.log('2');
     } else {
       handleMoviesFetch(value)
-      console.log('1', value);
+      // console.log('1', value);
     }
   }
 
-  const handleCheckboxShortmovies =(shortmovies) => {
+  const handleCheckboxShortmovies = (shortmovies) => {
     handleStorageData({ shortmovies });
     
     // console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
@@ -105,7 +105,7 @@ function Movies() {
   }
 // удалить фильм
   const handleMovieDelete = (movieId) => {
-    console.log('Id delete',movieId);
+    // console.log('Id delete',movieId);
     return mainApi
       .deleteMovie(movieId)
       .then(() => deleteUserMovie(movieId))
@@ -116,7 +116,7 @@ function Movies() {
     if (moviesList.length > 0) {
       const movieCache = getResultCache('moviesCache');
       movieCache?.movies && setRenderMoviesList(movieCache.movies);
-      console.log('MoviesCache', movieCache);
+      // console.log('MoviesCache', movieCache);
       
     }
     const errorCache = getResultCache('error');

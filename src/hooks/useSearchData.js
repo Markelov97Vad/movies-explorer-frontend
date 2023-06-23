@@ -6,7 +6,8 @@ function useSearchData() {
 
   const handleStorageData = ({ shortMovies, keyword }) => {
     setShortMovies(shortMovies);
-
+    console.log('SHORT', shortMovies);
+    console.log('KEYWORD LL', keyword);
     if (keyword) {
       setKeyword(keyword);
     }

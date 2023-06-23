@@ -21,7 +21,7 @@ function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, sa
   const { renderMovies, renderMoviesCard, renderButton } = useMoviesCardsRender(moviesList);
   // console.log('USERENDER FINAL 2',renderMovies);
   // console.log('ERROR MESSAGE', errorMessage)
-  console.log('MOVIE LIST LIST', moviesList)
+  // console.log('MOVIE LIST LIST', moviesList)
   // console.log('RENDERMoviesCARD', renderMoviesCard)
   return (
     <section className={`movies-card-list movies-card-list_place_${place}`}>

@@ -57,13 +57,6 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
     handleValuesCache({ [name] : checked});
   }
 
-  useEffect(() => {
-    if(valueCache) {
-      const cache = getResultCache('searchValueCache');
-      resetFormValues(cache);
-    }
-  }, [valueCache, getResultCache, resetFormValues])
-
   return ( 
     <section className='search-form'>
       <form className='search-form__form' onSubmit={onSubmit} noValidate>

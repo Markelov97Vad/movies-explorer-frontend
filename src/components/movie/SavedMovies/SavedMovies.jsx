@@ -35,7 +35,7 @@ function SavedMovies() {
   }
 
   const handleCheckboxShortmovies = (shortmovies) => {
-    handleStorageData({ shortmovies });
+    // handleStorageData({ shortmovies });
 
     // if(savedMoviesList.length > 0) {
     //   console.log(savedMoviesList);
@@ -68,19 +68,19 @@ function SavedMovies() {
       .catch(err => console.log(`Не удалось удалить фильм, Error: ${err}`))
   }
 
-  // useEffect(() => {
-  //   setRenderMoviesList(savedMoviesList)
-  // },[initialRender])
-
-
-useEffect(() => {
+  useEffect(() => {
     if(initialRender && savedMoviesList.length > 0) {
       setRenderMoviesList(savedMoviesList);
+      setErrorMessage('Нет Сохраненных фильмов')
       setInitialRender(false);
     } else if (!initialRender) {
       setRenderMoviesList(savedMoviesList);
-    }
-}, [initialRender, savedMoviesList]);
+      setErrorMessage('Нет Сохраненных фильмов')
+    } else if (savedMoviesList.length === 0) {
+      setErrorMessage('Нет Сохраненных фильмов')
+    } 
+  }, [initialRender, savedMoviesList]);
+
   return ( 
     <>
       <Header />
@@ -94,6 +94,7 @@ useEffect(() => {
           place='saved-movies' 
           moviesList={renderMoviesList} 
           handleMovieDelete={handleMovieDelete}
+          errorMesage={errorMessage}
         />
       </main>
       <Footer />
