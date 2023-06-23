@@ -60,7 +60,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
   useEffect(() => {
     if(valueCache) {
       const cache = getResultCache('searchValueCache');
-      // resetFormValues(cache);
+      resetFormValues(cache);
     }
   }, [valueCache, getResultCache, resetFormValues])
 

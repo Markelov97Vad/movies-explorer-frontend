@@ -173,6 +173,7 @@ const SCREEN_DESKTOP = 1279;
 
 const MAIN_API_URL = 'http://localhost:3000';
 const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
+// const MOVIES_API_URL = 'https://';
 const MOVIES_BASE_API_URL = 'https://api.nomoreparties.co';
 
 // Данные карточки

@@ -11,7 +11,7 @@ import mainApi from '../../../utils/MainApi';
 import useMoviesContext from '../../../hooks/useMoviesContext';
 import useResultCache from '../../../hooks/useResultCache';
 
-function Movies({ movies }) {
+function Movies() {
   const [moviesList, setMoviesList] = useState(()=> {
     const movies = JSON.parse(localStorage.getItem('moviesList'));
     // console.log('useState Movies',movies);
@@ -19,6 +19,7 @@ function Movies({ movies }) {
   });
   const [renderMoviesList, setRenderMoviesList] = useState([])
   const [errorMessage, setErrorMessage] = useState('')
+                                                            // handleError
   const { handleMoviesFilter } = useMovieSearch(setErrorMessage);
   const { keyword, handleStorageData } = useSearchData();
   const [isLoading, setIsloading] = useState(false);
@@ -32,11 +33,11 @@ function Movies({ movies }) {
     const resultSearchMovie = handleMoviesFilter(keyword, movies, shortmovies);
     // сюда приходит movies = boolean //! НЕТ
     // console.log('Проверка Movies 1', movies);
-  console.log('RESULTSEARCH',resultSearchMovie);
+  // console.log('RESULTSEARCH',resultSearchMovie);
     setRenderMoviesList(resultSearchMovie);
     setResultCache( 'moviesCache', { movies: resultSearchMovie });
   }
-  // результат запроса к API
+  //! результат запроса к API
   const handleMoviesFetch = ({ keyword, shortmovies }) => {
     setIsloading(true);
 
@@ -49,24 +50,25 @@ function Movies({ movies }) {
         return movies
       })
       .then(movies => {
-        // console.log('Проверка Movies 2', movies);
+        console.log('Проверка Movies 2', movies);
         handleResultRender(keyword, movies, shortmovies)
       })
       .catch(err => {
-        setErrorMessage('Произошла ошибка во время запроса')
-        console.log(err);
+        setErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        console.log('ОШИБКА ЗАПРОСА',err);
       })
       .finally(() => setIsloading(false));
   }
-
+  //! Submit формы поиска фильма 
   const handleSubmitMoviesSearch = (value) => {
     handleStorageData(value);
+    console.log("MOVIE LIST", moviesList);
     if(moviesList.length > 0) {
       handleResultRender(value.keyword, moviesList, value.shortmovies)
-      // console.log('2');
+      console.log('2');
     } else {
       handleMoviesFetch(value)
-      // console.log('1');
+      console.log('1', value);
     }
   }
 
@@ -111,14 +113,23 @@ function Movies({ movies }) {
   }
 
   useEffect(() => {
-    const movieCache = getResultCache('moviesCache');
-    console.log('MoviesCache', movieCache);
-    movieCache?.movies && setRenderMoviesList(movieCache.movies)
+    if (moviesList.length > 0) {
+      const movieCache = getResultCache('moviesCache');
+      movieCache?.movies && setRenderMoviesList(movieCache.movies);
+      console.log('MoviesCache', movieCache);
+      
+    }
+    const errorCache = getResultCache('error');
+    errorCache?.error && setErrorMessage(errorCache.error);
     // if(movieCache.movies) {
     //   setRenderMoviesList(movieCache.movies)
     // }
   },[getResultCache])
-  console.log('ПЕРЕД РЕНДЕР.',renderMoviesList);
+
+  useEffect(() => {
+    errorMessage && setResultCache('errors', {error: errorMessage})
+  }, [errorMessage, setResultCache]);
+  // console.log('ПЕРЕД РЕНДЕР.',renderMoviesList);
   return (
     <>
       <Header />
@@ -136,6 +147,7 @@ function Movies({ movies }) {
           isLoading={isLoading}
           handleMovieSave={handleMovieSave}
           handleMovieDelete={handleMovieDelete}
+          errorMessage={errorMessage}
         />
       </main>
       <Footer />

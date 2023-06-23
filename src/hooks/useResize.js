@@ -10,7 +10,7 @@ function useResize() {
     const handleResize = (event) => {
       const renderCount = width > SCREEN_DESKTOP ? 12 : width > SCREEN_MEDIUM ? 8 : 5;
       const downloadCount = width > SCREEN_DESKTOP ? 3 : 2;
-      console.log('NEN');
+      // console.log('NEN');
       setCardsCount(renderCount);
       setNewCardsCount(downloadCount);
 

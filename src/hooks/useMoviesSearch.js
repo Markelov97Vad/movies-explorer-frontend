@@ -7,8 +7,8 @@ function useMovieSearch(handleError) {
   };
 
   const filterKeywords = ( keyword, movies) => {
-    console.log( "DATA MOVIES",movies);
-    console.log('DATA 2', keyword);
+    // console.log( "DATA MOVIES",movies);
+    // console.log('DATA 2', keyword);
     // let movies = [];
     const result = movies.filter( movie => {
       // console.log(movie.nameRU.toLowerCase());
@@ -27,21 +27,21 @@ function useMovieSearch(handleError) {
     });
     // let result = '';
     checkError(result);
-    console.log('результат короткометражек' ,result);
+    // console.log('результат короткометражек' ,result);
     return result
   }
 
   const handleMoviesFilter = (keyword, movies, shortmovies) => {
-    console.log('AAAA',movies);
-    console.log(keyword);
+    // console.log('AAAA',movies);
+    // console.log(keyword);
     let result = filterKeywords(keyword, movies);
-    console.log('shortmovies!', shortmovies);
-    console.log('RESULT', result);
+    // console.log('shortmovies!', shortmovies);
+    // console.log('RESULT', result);
     if(shortmovies) {
       result = filterShortMovies(result);
     }
     // const result = filterShortmovies(movies)
-    console.log('FINAL RESULT', result);
+    // console.log('FINAL RESULT', result);
     return result;
   }
   
