@@ -27,6 +27,9 @@ import MoviesContextProvider from "../../contexts/MoviesContextProvider";
 function App() {
   const [isAppLoaded, setIsAppLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [errorRequest, setErrorRequest] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [message, setMessage] = useState('')
   // const { isAppLoaded } = useUserContext()
   const [loggetIn, setLoggetIn] = useState(false);
   // const [movies, setMovies] = useState([]);
@@ -72,6 +75,32 @@ function App() {
     handleTockenCheck();
   }, []);
 
+  const handleOpenConfirm = () => {
+    setIsEditing(true)
+  }
+
+  // const funcEdit = () => {
+  //   setErrorRequest(!errorRequest)
+  // }
+  const handleUserInfoChange = (userData) => {
+    console.log('userDATA' , userData);
+    return mainApi
+      .setUserInfo(userData)
+      .then((userData)=> {
+        setCurrentUser(userData);
+        setIsEditing(false)
+      })
+      .catch((err) => {
+        console.log(`Ошибка в обработке запроса ERR: ${err}`)
+        setIsEditing(true)
+        setErrorRequest(true)
+      })
+      .finally(() => {
+        setMessage('успех')
+      })
+  }
+  
+
   return (
     <div className="root">
       <CurrentUserContext.Provider value={{ loggetIn, currentUser }}>
@@ -102,7 +131,7 @@ function App() {
               path="/profile"
               element={
                 <ProtectedRoute>
-                  <Profile />
+                  <Profile handleUserInfoChange={handleUserInfoChange} errorRequest={errorRequest} isEditing={isEditing} handleOpenConfirm={handleOpenConfirm} message={message}/>
                 </ProtectedRoute>
               }
             />

@@ -4,33 +4,61 @@ import Header from "../Header/Header";
 import useFormValid from "../../hooks/useFormValid";
 import FormButton from "../ui/FormButton/FormButton";
 import NavLinkButton from "../ui/NavLinkButton/NavLinkButton";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, regexName } from "../../utils/validation";
 // import { CurrentUser } from "../../contexts/UserContext";
 
-function Profile() {
-  const { values, handleChange, setValues, formIsValid, resetFormValues } =
+function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConfirm, message}) {
+  const { values, handleChange, setValues, formIsValid, resetFormValues, errorMessages } =
     useFormValid({});
-  const [isEditing, setIsEditing] = useState(false);
+  // const [isEditing, setIsEditing] = useState(false);
+  const [error, setError] = useState('');
   // const currentUser = useContext(CurrentUser);
+  const { currentUser } = useContext(CurrentUserContext);
 
-  const handleEditing = () => {
-    setIsEditing(true);
-  };
+  // const handleEditing = () => {
+  //   setIsEditing(true);
+  // };
 
-  // useEffect(() => {
-  //   setValues({name: currentUser.name, email: currentUser.email});
-  //   console.log(currentUser);
-  // }, []);
+  useEffect(() => {
+    setValues({name: currentUser.name, email: currentUser.email});
+    console.log(currentUser);
+  }, []);
 
   // useLayoutEffect(() => {
   //   resetFormValues(currentUser);
   //   console.log(currentUser);
   // }, [currentUser, resetFormValues]);
 
+  // const handleSuccess = () => {
+  //   setError(errorRequest)
+  //   // setIsEditing(false);
+  // }
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setValues({ name: values.name, email: values.email });
-    setIsEditing(false);
+    // setValues({ name: values.name, email: values.email });
+    handleUserInfoChange({ name: values.name, email: values.email })
+    // setIsEditing(false);
   };
+
+  const handleErrorMessage = () => {
+    if (errorMessages.name) {
+      setError(ERROR_MESSAGE_NAME)
+      console.log('вызов');
+    } else if(errorMessages.email) {
+      setError(ERROR_MESSAGE_EMAIL)
+    } else if (errorRequest) {
+      setError('Такой Email уже есть')
+      console.log('выызов', errorRequest);
+    } else {
+      setError('')
+    }
+    // setError('')
+  }
+  useEffect(() => {
+    handleErrorMessage()
+  },[error, values, handleChange])
 
   return (
     <>
@@ -57,6 +85,9 @@ function Profile() {
                   id="name"
                   onChange={handleChange}
                   disabled={isEditing ? false : true}
+                  minLength={2}
+                  maxLength={30}
+                  pattern={regexName}
                   required
                 />
               </div>
@@ -78,8 +109,9 @@ function Profile() {
             </fieldset>
             {!isEditing ? (
               <div className="profile__edit">
+                <span>{message}</span>
                 <button
-                  onClick={handleEditing}
+                  onClick={handleOpenConfirm}
                   type="button"
                   className="profile__button"
                 >
@@ -95,10 +127,8 @@ function Profile() {
               </div>
             ) : (
               <div className="profile__submit">
-                <span className="profile__error profile__error_active">
-                  При обновлении профиля произошла ошибка.
-                </span>
-                <FormButton text="Сохранить" isValid={formIsValid} />
+                <span className="profile__error profile__error_active">{error}</span>
+                <FormButton text="Сохранить" isValid={formIsValid}/>
               </div>
             )}
           </form>

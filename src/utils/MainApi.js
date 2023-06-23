@@ -41,6 +41,16 @@ class MainApi {
     .then(res => this._checkResponse(res));
   }
 
+  setUserInfo({name, email}) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({ name , email})
+    })
+    .then(res => this._checkResponse(res));
+  }
+
   getMoviesSavedByUser() {
     return fetch(`${this._url}/movies`, {
       method: 'GET',

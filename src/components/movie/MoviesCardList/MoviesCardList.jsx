@@ -64,7 +64,6 @@ function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, sa
           {renderButton && <AppendButton onClick={renderMoviesCard} text='Ещё'/>}
         </>
       }
-    {/* } */}
     {(moviesList.length === 0 && errorMessage ) && 
       <ErrorMessage text={errorMessage}/>
     }

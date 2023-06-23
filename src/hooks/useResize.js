@@ -7,14 +7,16 @@ function useResize() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = (event) => {
+    const handleResize = (evt) => {
       const renderCount = width > SCREEN_DESKTOP ? 12 : width > SCREEN_MEDIUM ? 8 : 5;
       const downloadCount = width > SCREEN_DESKTOP ? 3 : 2;
       // console.log('NEN');
       setCardsCount(renderCount);
       setNewCardsCount(downloadCount);
 
-      // setWidth(event.target.innerWidth);
+      // console.log(evt);
+      // console.log(window.innerWidth);
+      setWidth(window.innerWidth);
     };
 
     window.addEventListener('resize', handleResize);
@@ -22,9 +24,9 @@ function useResize() {
     handleResize();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      // window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [width]);
 
   return { cardsCount, newCardsCount };
 };
