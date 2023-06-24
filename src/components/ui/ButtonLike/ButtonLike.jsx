@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './ButtonLike.css'
 
 function ButtonLike({ isOwner, handleClick}) {

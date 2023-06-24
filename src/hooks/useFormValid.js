@@ -1,32 +1,80 @@
-import { useCallback, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { validationConfig } from "../utils/validation";
 
-function useFormValid(inputValues) {
-  const [values, setValues] = useState(inputValues);
+function useFormValid( values = {}) {
+  const [inputValues, setInputValues] = useState(values);
   const [errorMessages, setErrorMessages] = useState({});
   const [formIsValid, setFormIsValid] = useState(false);
+  const formRef = useRef(null);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    const isValid = event.target.closest('form').checkValidity();
-
-    setValues({...values, [name]: value});
-    setErrorMessages({...errorMessages, [name]: event.target.validationMessage});
-    setFormIsValid(isValid);
+  const handleStoreValues =(name, value) => {
+    setInputValues(current => ({
+        ...current,
+        [name]: value,
+    }))
   }
 
   const handleToggleChange = (event) => {
     const { name, checked } = event.target;
 
-    setValues({...values, [name]: checked })
+    setInputValues({...values, [name]: checked })
   }
 
   const resetFormValues = useCallback((newValues = {}, newError = {}, newIsValid = false) => {
-    setValues(newValues);
+    setInputValues(newValues);
     setErrorMessages(newError);
     setFormIsValid(newIsValid);
-  }, [setValues, setErrorMessages, setFormIsValid]);
+  }, [setInputValues, setErrorMessages, setFormIsValid]);
 
-  return { values, handleChange, setValues, formIsValid, errorMessages, resetFormValues, handleToggleChange }
+  const handleErrorMessage = (name, message) => {
+    setErrorMessages(current => ({
+        ...current,
+        [name]: message,
+    }))
+  }
+
+  function handleDefaultValidation(name, validationMessage) {
+    const isValid = formRef.current?.checkValidity();
+
+    handleErrorMessage(name, validationMessage)
+    setFormIsValid(isValid);
+  }
+
+
+  const handleCustomValidation = (name, value) => {
+    const { pattern, validationError, emptyError } = validationConfig[name];
+
+    const match = pattern.test(value);
+    const message = !value ? emptyError : match ? '' : validationError;
+
+    handleErrorMessage(name, message);
+  }
+
+  function handleSaveFormRef(evt) {
+    formRef.current ??= evt.target.closest('form');
+  }
+
+  const handleInputChange =(evt, config = { customValidation: false }) => {
+    const { name, value, validationMessage } = evt.target;
+
+    handleStoreValues(name, value);
+    handleSaveFormRef(evt);
+
+    if (config.customValidation) {
+        handleCustomValidation(name, value);
+    } else {
+        handleDefaultValidation(name, validationMessage);
+    }
+}
+
+  useLayoutEffect(() => {
+    const isValid = formRef.current?.checkValidity();
+    const isError = Object.keys(errorMessages).some(name => errorMessages[name]);
+
+    setFormIsValid(() => isValid && !isError);
+  }, [inputValues, errorMessages])
+
+  return { inputValues, handleInputChange, formIsValid, errorMessages, resetFormValues, handleToggleChange , handleInputChange}
 }
 
 export default useFormValid;

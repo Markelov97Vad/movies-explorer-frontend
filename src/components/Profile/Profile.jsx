@@ -5,20 +5,19 @@ import useFormValid from "../../hooks/useFormValid";
 import FormButton from "../ui/FormButton/FormButton";
 import NavLinkButton from "../ui/NavLinkButton/NavLinkButton";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { regexEmail, regexName } from "../../utils/validation";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, UNAUTHORIZED_ERROR_EMAIL_MESSAGE } from "../../utils/constants";
+import { UNAUTHORIZED_ERROR_EMAIL_MESSAGE } from "../../utils/constants";
 
 function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenConfirm, message, onSignOut, isLoading }) {
   const [error, setError] = useState('');
   const inputRef = useRef(null);
   const { 
-    values, 
-    handleChange, 
-    setValues, 
+    inputValues, 
+    handleInputChange,  
     formIsValid, 
-    errorMessages 
-  } = useFormValid({});
+    errorMessages,
+    resetFormValues
+  } = useFormValid();
   const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -26,19 +25,19 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
   },[isEditing]);
 
   useEffect(() => {
-    setValues({ name: currentUser.name, email: currentUser.email});
-  }, []);
+    resetFormValues(currentUser);
+  },[])
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleUserInfoChange({ name: values.name, email: values.email })
+    handleUserInfoChange({ name: inputValues.name, email: inputValues.email })
   };
 
   const handleErrorMessage = () => {
     if (errorMessages.name) {
-      setError(ERROR_MESSAGE_NAME)
+      setError(errorMessages.name)
     } else if(errorMessages.email) {
-      setError(ERROR_MESSAGE_EMAIL)
+      setError(errorMessages.email)
     } else if (errorRequest) {
       setError(UNAUTHORIZED_ERROR_EMAIL_MESSAGE)
     } else {
@@ -47,7 +46,7 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
   }
   useEffect(() => {
     handleErrorMessage()
-  },[error, values, handleChange])
+  },[error, inputValues, handleInputChange])
 
   return (
     <>
@@ -70,14 +69,13 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
                   ref={inputRef}
                   className="profile__input"
                   name="name"
-                  value={values.name || ""}
+                  value={inputValues.name || ""}
                   type="text"
                   id="name"
-                  onChange={handleChange}
+                  onChange={(evt) => handleInputChange(evt, { customValidation: true })}
                   disabled={isEditing ? false : true}
                   minLength={2}
                   maxLength={30}
-                  pattern={regexName}
                   required
                 />
               </div>
@@ -88,13 +86,12 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
                 <input
                   className="profile__input"
                   name="email"
-                  value={values.email || ""}
+                  value={inputValues.email || ""}
                   type="email"
                   id="email"
-                  onChange={handleChange}
+                  onChange={(evt) => handleInputChange(evt, { customValidation: true })}
                   disabled={isEditing ? false : true}
                   required
-                  pattern={regexEmail}
                 />
               </div>
             </fieldset>

@@ -15,10 +15,6 @@ export const MOVIES_REQUEST_ERROR_MESSAGE = 'Во время запроса пр
 export const MOVIES_SEARCH_ERROR_MESSAGE = 'Ничего не найдено';
 export const VALIDATION_INPUT_ERROR_MESSAGE = 'Нужно ввести ключевое слово';
 
-export const ERROR_MESSAGE_EMAIL = 'Ввидите адрес электронной почты';
-export const ERROR_MESSAGE_NAME = 'Имя должно быть от 2 до 30 символов';
-export const ERROR_MESSAGE_PASSWORD = 'Пароль должен содержать буквы и цыфры'
-
 export const SCREEN_MEDIUM = 635;
 export const SCREEN_DESKTOP = 1279;
 

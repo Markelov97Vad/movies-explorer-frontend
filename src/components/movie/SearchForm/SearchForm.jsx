@@ -10,7 +10,12 @@ import { VALIDATION_INPUT_ERROR_MESSAGE } from '../../../utils/constants';
 function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, valueCache = false }) {
   const [validationError, setValidationError] = useState('');
   const [visible, setVisible] = useState(false)
-  const { values , handleChange, handleToggleChange, resetFormValues } = useFormValid({});
+  const { 
+    inputValues,
+    handleInputChange,
+    handleToggleChange,
+    resetFormValues 
+  } = useFormValid();
   const { setResultCache, getResultCache } = useResultCache();
 
   // валидация ввода
@@ -29,7 +34,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
 
   const handleInputValidate = () => {
     setValidationError('')
-    const isValid = values.keyword && values.keyword.length > 0;
+    const isValid = inputValues.keyword && inputValues.keyword.length > 0;
 
     if(!isValid) {
       setValidationError(VALIDATION_INPUT_ERROR_MESSAGE);
@@ -42,8 +47,8 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
     evt.preventDefault();
     const isValid = handleInputValidate();
      if (isValid) {
-      handleSubmitMoviesSearch(values);
-      handleValuesCache(values)
+      handleSubmitMoviesSearch(inputValues);
+      handleValuesCache(inputValues)
       setVisible(false)
      }
   }
@@ -62,8 +67,8 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
       <form className='search-form__form' onSubmit={onSubmit} noValidate>
           <div className='search-form__input-container'>
             <input 
-              value={values.keyword || ''} 
-              onChange={handleChange} 
+              value={inputValues.keyword || ''} 
+              onChange={handleInputChange} 
               className='search-form__input' 
               name='keyword' 
               type="text" 
@@ -73,7 +78,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
           </div>
           <FilterCheckbox 
             handleChange={handleCheckbox} 
-            checked={values.shortmovies}
+            checked={inputValues.shortmovies}
           />
       </form>
     </section>

@@ -1,10 +1,16 @@
-// const regexName = '[A-я-\s]{2,30}';
-const regexName = "^[A-я]{2,30}";
-const regexEmail = "\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$/";
-const regexPassword = "(?=.*[A-z])(?=.*\\d)(?=.)(?=.{1,}).*";
+const validationConfig = {
+  name: {
+      pattern: /^[a-zA-Zа-яА-ЯёЁ-]+[a-zA-Zа-яА-ЯёЁ -]*$/,
+      validationError: 'Имя может содержать только буквы, пробел или дефис',
+      emptyError: 'Заполните это поле.',
+  },
+  email: {
+      pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      validationError: 'Email введен некорректно',
+      emptyError: 'Заполните это поле.',
+  }
+}
 
 export {
-  regexName,
-  regexEmail,
-  regexPassword,
+  validationConfig
 }
