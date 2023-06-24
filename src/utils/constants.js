@@ -22,7 +22,6 @@ export const ERROR_MESSAGE_PASSWORD = 'Пароль должен содержа�
 export const SCREEN_MEDIUM = 635;
 export const SCREEN_DESKTOP = 1279;
 
-// export const MAIN_API_URL = 'https://api.marsello.diploma.nomoredomains.rocks';
-export const MAIN_API_URL = 'http://localhost:3000';
+export const MAIN_API_URL = 'https://api.marsello.diploma.nomoredomains.rocks';
 export const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const MOVIES_BASE_API_URL = 'https://api.nomoreparties.co';
