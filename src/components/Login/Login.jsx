@@ -5,7 +5,7 @@ import mainApi from "../../utils/MainApi";
 import useUserContext from "../../hooks/useUserContext";
 import { useNavigate } from "react-router-dom";
 
-function Login({onLogin}) {
+function Login({onLogin, message, isLoading}) {
   // const { loggetIn, setUserLoggetIn } = useUserContext();
   // const navigate = useNavigate();
   // const handleAuthorize = (email, password) => {
@@ -24,7 +24,12 @@ function Login({onLogin}) {
   return (
     <SignWrapper>
       <SignTitle text="Рады видеть!" />
-      <SignForm handleSubmit={handleSubmit} nameForm='signin'/>
+      <SignForm 
+        handleSubmit={handleSubmit} 
+        nameForm='signin' 
+        message={message}
+        isLoading={isLoading}
+      />
     </SignWrapper>
   );
 }

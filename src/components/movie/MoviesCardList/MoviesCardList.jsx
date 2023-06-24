@@ -65,7 +65,7 @@ function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, sa
         </>
       }
     {(moviesList.length === 0 && errorMessage ) && 
-      <ErrorMessage text={errorMessage}/>
+      <ErrorMessage text={errorMessage} place='movie-card-list'/>
     }
     </section>
   );

@@ -11,6 +11,10 @@
   min-height: 556px;
 } */
 
+.movies-card-list_place_movies {
+  margin-bottom: 78px;
+}
+
 .movies-card-list__container {
   display: grid;
   justify-content: center;
@@ -42,7 +46,7 @@
   }
 
   .movies-card-list_place_movies{
-    padding-bottom: 80px;
+    padding-bottom: 0;
   }
 }
 

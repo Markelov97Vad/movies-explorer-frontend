@@ -10,7 +10,7 @@ class MainApi {
     if(res.ok) {
       return res.json()
     } else {
-      return Promise.reject(`${res.status} - ${res.statusText}`)
+      return Promise.reject(res.status)
     }
   }
 
@@ -37,6 +37,15 @@ class MainApi {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include'
+    })
+    .then(res => this._checkResponse(res));
+  }
+
+  logout() {
+    return fetch(`${this._url}/signout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers
     })
     .then(res => this._checkResponse(res));
   }

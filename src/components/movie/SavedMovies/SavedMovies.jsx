@@ -46,7 +46,7 @@ function SavedMovies() {
     if(savedMoviesList.length > 0) {
       // console.log('MOVIEDLIST',savedMoviesList);
       // console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
-      // handleResultRender(keyword, savedMoviesList, shortmovies)
+      handleResultRender(keyword, savedMoviesList, shortmovies)
       // console.log( "handleCheckboxShortmovies", shortmovies);
     }
   }
@@ -71,13 +71,13 @@ function SavedMovies() {
   useEffect(() => {
     if(initialRender && savedMoviesList.length > 0) {
       setRenderMoviesList(savedMoviesList);
-      setErrorMessage('Нет Сохраненных фильмов')
+      setErrorMessage('Нет сохраненных фильмов')
       setInitialRender(false);
     } else if (!initialRender) {
       setRenderMoviesList(savedMoviesList);
-      setErrorMessage('Нет Сохраненных фильмов')
+      setErrorMessage('Нет cохраненных фильмов')
     } else if (savedMoviesList.length === 0) {
-      setErrorMessage('Нет Сохраненных фильмов')
+      setErrorMessage('Нет сохраненных фильмов')
     } 
   }, [initialRender, savedMoviesList]);
 

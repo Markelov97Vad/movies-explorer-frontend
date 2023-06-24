@@ -4,9 +4,11 @@ import useFormValid from '../../../hooks/useFormValid';
 import SearchButton from '../../ui/SearchButton/SearchButton';
 import { useEffect, useState } from 'react';
 import useResultCache from '../../../hooks/useResultCache';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
 
 function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, valueCache = false }) {
   const [validationError, setValidationError] = useState('');
+  const [visible, setVisible] = useState(false)
   const { values , handleChange, handleToggleChange, resetFormValues } = useFormValid({});
   const { setResultCache, getResultCache } = useResultCache();
 
@@ -32,7 +34,8 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
     const isValid = values.keyword && values.keyword.length > 0;
 
     if(!isValid) {
-      setValidationError('Ввидите ключивое слово');
+      setValidationError('Нужно ввести ключевое слово');
+      setVisible(true)
     }
     return isValid;
   }
@@ -43,6 +46,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
      if (isValid) {
       handleSubmitMoviesSearch(values);
       handleValuesCache(values)
+      setVisible(false)
       console.log('САБМИТ ПОИСКА', values);
      }
   }
@@ -59,6 +63,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
 
   return ( 
     <section className='search-form'>
+      {visible && <ErrorMessage text={validationError} place='search-form'/>}
       <form className='search-form__form' onSubmit={onSubmit} noValidate>
           <div className='search-form__input-container'>
             <input value={values.keyword || ''} onChange={handleChange} className='search-form__input' name='keyword' type="text" placeholder='Фильм' required/>

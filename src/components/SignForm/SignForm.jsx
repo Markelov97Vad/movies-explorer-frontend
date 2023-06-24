@@ -11,8 +11,9 @@ import {
   ERROR_MESSAGE_PASSWORD,
 } from "../../utils/validation";
 import { regexEmail, regexName, regexPassword } from "../../utils/validation";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-function SignForm({ handleSubmit, nameForm }) {
+function SignForm({ handleSubmit, nameForm, message, isLoading }) {
   const { pathname } = useLocation();
   const { values, handleChange, errorMessages, resetFormValues, formIsValid } =
     useFormValid({});
@@ -69,10 +70,11 @@ function SignForm({ handleSubmit, nameForm }) {
         />
       </div>
       <div className="sign-form__control-wrapper">
+        <ErrorMessage text={message} place='sign-form'/>
         {pathname === "/signin" ? (
-          <FormButton text="Войти" isValid={formIsValid} />
+          <FormButton text="Войти" isValid={formIsValid} isLoading={isLoading}/>
         ) : (
-          <FormButton text="Зарегистрироваться" isValid={formIsValid} />
+          <FormButton text="Зарегистрироваться" isValid={formIsValid} isLoading={isLoading}/>
         )}
         {pathname === "/signin" ? (
           <span className="sign-form__span">

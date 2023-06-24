@@ -40,7 +40,7 @@ function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, ha
     }
     {(moviesList.length === 0 && errorMesage) && 
       // <ErrorMessage text={errorMesage}/>
-      <ErrorMessage text={errorMesage}/>
+      <ErrorMessage text={errorMesage} place='movie-card-list'/>
     }
     </section>
    );

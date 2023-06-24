@@ -1,24 +1,34 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import useFormValid from "../../hooks/useFormValid";
 import FormButton from "../ui/FormButton/FormButton";
 import NavLinkButton from "../ui/NavLinkButton/NavLinkButton";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, regexName } from "../../utils/validation";
+import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, regexEmail, regexName } from "../../utils/validation";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 // import { CurrentUser } from "../../contexts/UserContext";
 
-function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConfirm, message}) {
+function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConfirm, message, onSignOut, isLoading}) {
   const { values, handleChange, setValues, formIsValid, resetFormValues, errorMessages } =
     useFormValid({});
   // const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState('');
   // const currentUser = useContext(CurrentUser);
   const { currentUser } = useContext(CurrentUserContext);
+  const inputRef = useRef(null);
 
   // const handleEditing = () => {
   //   setIsEditing(true);
   // };
+
+  // const handleFocus = () => {
+  //   inputRef.current.focus();
+  // }
+  useEffect(() => {
+    // handleFocus();
+    inputRef.current.focus();
+  },[isEditing])
 
   useEffect(() => {
     setValues({name: currentUser.name, email: currentUser.email});
@@ -78,6 +88,7 @@ function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConf
                   Имя
                 </label>
                 <input
+                  ref={inputRef}
                   className="profile__input"
                   name="name"
                   value={values.name || ""}
@@ -104,12 +115,13 @@ function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConf
                   onChange={handleChange}
                   disabled={isEditing ? false : true}
                   required
+                  pattern={regexEmail}
                 />
               </div>
             </fieldset>
             {!isEditing ? (
               <div className="profile__edit">
-                <span>{message}</span>
+                <span className="profile__success-span">{message}</span>
                 <button
                   onClick={handleOpenConfirm}
                   type="button"
@@ -123,12 +135,13 @@ function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConf
                   place="profile"
                   type="link"
                   color="red"
+                  onSignOut={onSignOut}
                 />
               </div>
             ) : (
               <div className="profile__submit">
-                <span className="profile__error profile__error_active">{error}</span>
-                <FormButton text="Сохранить" isValid={formIsValid}/>
+                {error.length > 0 && <ErrorMessage text={error} place='profile'/>}
+                <FormButton text="Сохранить" isValid={formIsValid} isLoading={isLoading}/>
               </div>
             )}
           </form>

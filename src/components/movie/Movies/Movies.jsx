@@ -78,7 +78,7 @@ function Movies() {
     // console.log('key', keyword,'short', shortmovies,'List', savedMoviesList);
     console.log('KYEVIRD',keyword);
     if (keyword) {
-      // handleResultRender(keyword, moviesList, shortmovies)
+      handleResultRender(keyword, moviesList, shortmovies)
       // console.log( "handleCheckboxShortmovies", shortmovies);
     }
   }
