@@ -162,4 +162,8 @@
     font-size: 12px;
     line-height: 15px;
   }
+
+  .profile__success-span {
+    font-size: 12px;
+  }
 }

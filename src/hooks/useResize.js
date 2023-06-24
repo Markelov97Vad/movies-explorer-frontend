@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SCREEN_DESKTOP, SCREEN_MEDIUM } from "../utils/config";
+import { SCREEN_DESKTOP, SCREEN_MEDIUM } from "../utils/constants";
 
 function useResize() {
   const [cardsCount, setCardsCount] = useState(12);
@@ -7,15 +7,13 @@ function useResize() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = (evt) => {
+    const handleResize = () => {
       const renderCount = width > SCREEN_DESKTOP ? 12 : width > SCREEN_MEDIUM ? 8 : 5;
       const downloadCount = width > SCREEN_DESKTOP ? 3 : 2;
-      // console.log('NEN');
+
       setCardsCount(renderCount);
       setNewCardsCount(downloadCount);
 
-      // console.log(evt);
-      // console.log(window.innerWidth);
       setWidth(window.innerWidth);
     };
 
@@ -24,7 +22,7 @@ function useResize() {
     handleResize();
 
     return () => {
-      // window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [width]);
 

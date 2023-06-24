@@ -1,4 +1,5 @@
-import { MOVIES_API_URL } from "./config";
+import { MOVIES_API_URL } from "./constants";
+
 // запросы к BeatfilmMoviesApi
 class MoviesApi {
   constructor({ url, headers }) {

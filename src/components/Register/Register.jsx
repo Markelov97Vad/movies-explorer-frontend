@@ -6,7 +6,6 @@ function Register({ onRegistration , message, isLoading}) {
   const handleSubmit = (values) => {
     const { name, email, password } = values
     onRegistration({ name, email, password })
-    console.log(values);
   };
   return (
     <SignWrapper>

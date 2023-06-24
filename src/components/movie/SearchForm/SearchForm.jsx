@@ -5,6 +5,7 @@ import SearchButton from '../../ui/SearchButton/SearchButton';
 import { useEffect, useState } from 'react';
 import useResultCache from '../../../hooks/useResultCache';
 import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+import { VALIDATION_INPUT_ERROR_MESSAGE } from '../../../utils/constants';
 
 function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, valueCache = false }) {
   const [validationError, setValidationError] = useState('');
@@ -12,16 +13,13 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
   const { values , handleChange, handleToggleChange, resetFormValues } = useFormValid({});
   const { setResultCache, getResultCache } = useResultCache();
 
-  // const handleSubmit = (evt) => {
-  //   evt.preventDefault();
-  // };
   // валидация ввода
   const handleValuesCache = (inputValuse) => {
     if(valueCache) {
       setResultCache('searchValueCache', inputValuse)
     }
   }
-
+  // инпутов из кэша
   useEffect(() => {
     if(valueCache) {
       const cache = getResultCache('searchValueCache');
@@ -34,7 +32,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
     const isValid = values.keyword && values.keyword.length > 0;
 
     if(!isValid) {
-      setValidationError('Нужно ввести ключевое слово');
+      setValidationError(VALIDATION_INPUT_ERROR_MESSAGE);
       setVisible(true)
     }
     return isValid;
@@ -47,16 +45,13 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
       handleSubmitMoviesSearch(values);
       handleValuesCache(values)
       setVisible(false)
-      console.log('САБМИТ ПОИСКА', values);
      }
   }
   // состояние чекбокса
   const handleCheckbox = (evt) => {
     handleToggleChange(evt);
     const { name, checked } = evt.target;
-    // console.log('check');
-    console.log(checked);
-    // console.log(name);
+    
     handleCheckboxShortmovies(checked);
     handleValuesCache({ [name] : checked});
   }
@@ -66,7 +61,14 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
       {visible && <ErrorMessage text={validationError} place='search-form'/>}
       <form className='search-form__form' onSubmit={onSubmit} noValidate>
           <div className='search-form__input-container'>
-            <input value={values.keyword || ''} onChange={handleChange} className='search-form__input' name='keyword' type="text" placeholder='Фильм' required/>
+            <input 
+              value={values.keyword || ''} 
+              onChange={handleChange} 
+              className='search-form__input' 
+              name='keyword' 
+              type="text" 
+              placeholder='Фильм' 
+              required/>
             <SearchButton />
           </div>
           <FilterCheckbox 

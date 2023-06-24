@@ -1,12 +1,11 @@
+import "./App.css";
 import {
-  Navigate,
   Route,
   Routes,
-  useLocation,
   useNavigate,
 } from "react-router-dom";
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import "./App.css";
+import { useCallback, useEffect, useState } from "react";
+
 import Main from "../landing/Main/Main";
 import Movies from "../movie/Movies/Movies";
 import SavedMovies from "../movie/SavedMovies/SavedMovies";
@@ -14,27 +13,33 @@ import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi";
-// import { CurrentUser } from "../../contexts/UserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import UserContextProvider from "../../contexts/UserContextProvider";
-import useUserContext from "../../hooks/useUserContext";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import MoviesContextProvider from "../../contexts/MoviesContextProvider";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { 
+  CONFLICT_CODE, 
+  SERVER_ERROR_CODE, 
+  SERVER_ERROR_SIGNIN_MESSAGE, 
+  SERVER_ERROR_SIGNOUT_MESSAGE, 
+  SERVER_ERROR_SIGNUP_MESSAGE, 
+  SUCCESS_MESSAGE, 
+  UNAUTHORIZED_CODE, 
+  UNAUTHORIZED_ERROR_AUTH_MESSAGE, 
+  UNAUTHORIZED_ERROR_CHECKTOKEN_MESSAGE, 
+  UNAUTHORIZED_ERROR_CONFIRM_MESSAGE, 
+  UNAUTHORIZED_ERROR_EMAIL_MESSAGE 
+} from "../../utils/constants";
 
 function App() {
   const [isAppLoaded, setIsAppLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [errorRequest, setErrorRequest] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [message, setMessage] = useState('')
-  // const { isAppLoaded } = useUserContext()
+  const [message, setMessage] = useState('');
   const [loggetIn, setLoggetIn] = useState(false);
-  // const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleRegistration = (name, email, password) => {
     setIsLoading(true);
@@ -44,13 +49,12 @@ function App() {
         navigate("/signin", { replace: true });
       })
       .catch((err) => {
-        if (err === 409) {
-          setMessage('Пользователь с таким email уже существует')
+        if (err === CONFLICT_CODE) {
+          setMessage(UNAUTHORIZED_ERROR_EMAIL_MESSAGE)
         }
-        if (err === 500) {
-          setMessage('При регистрации пользователя произошла ошибка')
+        if (err === SERVER_ERROR_CODE) {
+          setMessage(SERVER_ERROR_SIGNUP_MESSAGE)
         }
-        console.log(err)
         setIsLoading(false)
       })
       .finally(() => setIsLoading(false));
@@ -67,18 +71,17 @@ function App() {
         navigate("/movies", { replace: true });
       })
       .catch((err) => {
-        if (err === 401) {
-          setMessage('Вы ввели неправильный логин или пароль.');
+        if (err === UNAUTHORIZED_CODE) {
+          setMessage(UNAUTHORIZED_ERROR_CONFIRM_MESSAGE);
         }
-        if (err === 500) {
-          setMessage('При авторизации пользователя произошла ошибка');
+        if (err === SERVER_ERROR_CODE) {
+          setMessage(SERVER_ERROR_SIGNIN_MESSAGE);
         }
         setIsLoading(false);
       })
       .finally(() => {
         setIsLoading(false)
-        console.log('ЗАШЕЛ');
-      })
+      });
   };
 
   const handleTockenCheck = useCallback(() => {
@@ -89,13 +92,12 @@ function App() {
         setCurrentUser(res);
       })
       .catch((err) => {
-        err === 401
-          ? console.log("Необходима авторизация")
-          : console.log(`Не удалось авторизовать пользователя. Ошибка: ${err}`);
+        err === UNAUTHORIZED_CODE
+          ? console.log(UNAUTHORIZED_ERROR_AUTH_MESSAGE)
+          : console.log(UNAUTHORIZED_ERROR_CHECKTOKEN_MESSAGE, err);
       })
       .finally(() => {
         setIsAppLoaded(true);
-        // setMessage('')
       });
   }, []);
 
@@ -107,12 +109,8 @@ function App() {
     setIsEditing(true)
   }
 
-  // const funcEdit = () => {
-  //   setErrorRequest(!errorRequest)
-  // }
   const handleUserInfoChange = (userData) => {
     setMessage('')
-    console.log('userDATA' , userData);
     setIsLoading(true);
     return mainApi
       .setUserInfo(userData)
@@ -121,22 +119,21 @@ function App() {
         setIsEditing(false)
       })
       .catch((err) => {
-        console.log(`Ошибка в обработке запроса ERR: ${err}`)
-        if (err === 409) {
-          setMessage('Пользователь с таким email уже существует');
+        if (err === CONFLICT_CODE) {
+          setMessage(UNAUTHORIZED_ERROR_EMAIL_MESSAGE);
         }
         setIsEditing(true)
         setErrorRequest(true)
         setIsLoading(false)
       })
       .finally(() => {
-        setMessage('Данные успешно обновлены')
+        setMessage(SUCCESS_MESSAGE)
         setIsLoading(false)
       })
   }
 
   const handleSignOut = () => {
-    console.log('Logout');
+    setMessage('')
     return mainApi
       .logout()
       .then(() => {
@@ -146,13 +143,8 @@ function App() {
       .then(() => {
         localStorage.clear();
         sessionStorage.clear();
-        // navigate()
-        // setErrorRequest(true)
       })
-      .catch((err) => {
-        setMessage('На сервере произошла ошибка.')
-        console.log(err);
-      })
+      .catch(() => setMessage(SERVER_ERROR_SIGNOUT_MESSAGE))
       .finally(() =>  navigate('/', { replace: true }));
   }
 

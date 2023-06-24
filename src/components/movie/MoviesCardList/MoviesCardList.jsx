@@ -1,28 +1,14 @@
-import { useEffect, useState } from "react";
 import "./MoviesCardList.css";
-import { handleMovieDataFormat, moviesList } from "../../../utils/config";
+import { handleMovieDataFormat } from "../../../utils/config";
 import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import useResize from "../../../hooks/useResize";
 import AppendButton from "../../ui/AppendButton/AppendButton";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 import ButtonLike from "../../ui/ButtonLike/ButtonLike";
-import ButtonCross from "../../ui/ButtonCross/ButtonCross";
-import { useLocation } from "react-router-dom";
 import useMoviesCardsRender from "../../../hooks/useMoviesCardsRender";
 
 function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, savedMoviesList = [], handleMovieDelete, errorMessage }) {
-  // const [count, setCount] = useState(0);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const { isScreenMobile, isScreenMedium, isScreenDesktop } = useResize();
-  // console.log(moviesList.length);
-  // const location = useLocation();
-  // console.log('ПОСЛЕ ПРОБРОСА',moviesList);
   const { renderMovies, renderMoviesCard, renderButton } = useMoviesCardsRender(moviesList);
-  // console.log('USERENDER FINAL 2',renderMovies);
-  // console.log('ERROR MESSAGE', errorMessage)
-  // console.log('MOVIE LIST LIST', moviesList)
-  // console.log('RENDERMoviesCARD', renderMoviesCard)
   return (
     <section className={`movies-card-list movies-card-list_place_${place}`}>
       {isLoading && <Preloader /> }

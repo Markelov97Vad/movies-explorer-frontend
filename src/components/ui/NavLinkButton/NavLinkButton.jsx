@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import './NavLinkButton.css'
 
-function NavLinkButton({ text , place, type, link, color, onSignOut}) {
+function NavLinkButton({ text , place, type, link, color, onSignOut = null }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 

@@ -1,70 +1,49 @@
-import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import useFormValid from "../../hooks/useFormValid";
 import FormButton from "../ui/FormButton/FormButton";
 import NavLinkButton from "../ui/NavLinkButton/NavLinkButton";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, regexEmail, regexName } from "../../utils/validation";
+import { regexEmail, regexName } from "../../utils/validation";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-// import { CurrentUser } from "../../contexts/UserContext";
+import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, UNAUTHORIZED_ERROR_EMAIL_MESSAGE } from "../../utils/constants";
 
-function Profile({handleUserInfoChange, errorRequest , isEditing, handleOpenConfirm, message, onSignOut, isLoading}) {
-  const { values, handleChange, setValues, formIsValid, resetFormValues, errorMessages } =
-    useFormValid({});
-  // const [isEditing, setIsEditing] = useState(false);
+function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenConfirm, message, onSignOut, isLoading }) {
   const [error, setError] = useState('');
-  // const currentUser = useContext(CurrentUser);
-  const { currentUser } = useContext(CurrentUserContext);
   const inputRef = useRef(null);
+  const { 
+    values, 
+    handleChange, 
+    setValues, 
+    formIsValid, 
+    errorMessages 
+  } = useFormValid({});
+  const { currentUser } = useContext(CurrentUserContext);
 
-  // const handleEditing = () => {
-  //   setIsEditing(true);
-  // };
-
-  // const handleFocus = () => {
-  //   inputRef.current.focus();
-  // }
   useEffect(() => {
-    // handleFocus();
     inputRef.current.focus();
-  },[isEditing])
+  },[isEditing]);
 
   useEffect(() => {
-    setValues({name: currentUser.name, email: currentUser.email});
-    console.log(currentUser);
+    setValues({ name: currentUser.name, email: currentUser.email});
   }, []);
-
-  // useLayoutEffect(() => {
-  //   resetFormValues(currentUser);
-  //   console.log(currentUser);
-  // }, [currentUser, resetFormValues]);
-
-  // const handleSuccess = () => {
-  //   setError(errorRequest)
-  //   // setIsEditing(false);
-  // }
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // setValues({ name: values.name, email: values.email });
     handleUserInfoChange({ name: values.name, email: values.email })
-    // setIsEditing(false);
   };
 
   const handleErrorMessage = () => {
     if (errorMessages.name) {
       setError(ERROR_MESSAGE_NAME)
-      console.log('вызов');
     } else if(errorMessages.email) {
       setError(ERROR_MESSAGE_EMAIL)
     } else if (errorRequest) {
-      setError('Такой Email уже есть')
-      console.log('выызов', errorRequest);
+      setError(UNAUTHORIZED_ERROR_EMAIL_MESSAGE)
     } else {
       setError('')
     }
-    // setError('')
   }
   useEffect(() => {
     handleErrorMessage()

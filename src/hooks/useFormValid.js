@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 
 function useFormValid(inputValues) {
-  // console.log(inputValues);
   const [values, setValues] = useState(inputValues);
   const [errorMessages, setErrorMessages] = useState({});
   const [formIsValid, setFormIsValid] = useState(false);

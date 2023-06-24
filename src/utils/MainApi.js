@@ -1,4 +1,4 @@
-import { MAIN_API_URL } from "./config";
+import { MAIN_API_URL } from "./constants";
 
 class MainApi {
   constructor({ url, headers }) {

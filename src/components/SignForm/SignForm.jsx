@@ -1,17 +1,13 @@
+import "./SignForm.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import "./SignForm.css";
 import InputForm from "../ui/InputForm/InputForm";
 import NavLinkSign from "../ui/NavLinkButton/NavLinkButton";
 import FormButton from "../ui/FormButton/FormButton";
 import useFormValid from "../../hooks/useFormValid";
-import {
-  ERROR_MESSAGE_EMAIL,
-  ERROR_MESSAGE_NAME,
-  ERROR_MESSAGE_PASSWORD,
-} from "../../utils/validation";
 import { regexEmail, regexName, regexPassword } from "../../utils/validation";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { ERROR_MESSAGE_EMAIL, ERROR_MESSAGE_NAME, ERROR_MESSAGE_PASSWORD } from "../../utils/constants";
 
 function SignForm({ handleSubmit, nameForm, message, isLoading }) {
   const { pathname } = useLocation();

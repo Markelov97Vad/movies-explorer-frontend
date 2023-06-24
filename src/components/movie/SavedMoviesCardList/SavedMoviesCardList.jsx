@@ -1,20 +1,13 @@
-import { handleMovieDataFormat } from "../../../utils/config";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 import ButtonCross from "../../ui/ButtonCross/ButtonCross";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
 
-function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, handleMovieDelete}) {
-  console.log(moviesList);
-  console.log('ERROR MESSAGE');
+function SavedMoviesCardList({ place, moviesList = [], errorMessage, handleMovieDelete }) {
   return ( 
     <section className={`movies-card-list movies-card-list_place_${place}`}>
-      {isLoading && <Preloader />}
-      {(!isLoading && moviesList.length > 0) && 
-      
+      {moviesList.length > 0 && 
       <ul className='movies-card-list__container'>
           {moviesList.map((movie) => {
-            // console.log(movie);
             const handleDelete = () => {
               handleMovieDelete(movie._id)
             }
@@ -26,8 +19,6 @@ function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, ha
             <li key={movie._id}>
                 <MoviesCard 
                   movie={movie} 
-                  // handleMovieSave={handleMovieSave}
-                  // savedMoviesList={savedMoviesList}
                   Button={ButtonCross}
                   handleClick={handleClick}
                   handleMovieDelete={handleMovieDelete}
@@ -38,9 +29,8 @@ function SavedMoviesCardList({place, moviesList = [], isLoading, errorMesage, ha
         })}
       </ul>
     }
-    {(moviesList.length === 0 && errorMesage) && 
-      // <ErrorMessage text={errorMesage}/>
-      <ErrorMessage text={errorMesage} place='movie-card-list'/>
+    {(moviesList.length === 0 && errorMessage) && 
+      <ErrorMessage text={errorMessage} place='movie-card-list'/>
     }
     </section>
    );
