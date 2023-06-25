@@ -1,13 +1,17 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import './NavLinkButton.css'
 
-function NavLinkButton({ text , place, type, link, color, onSignOut = null }) {
+function NavLinkButton({ text , place, type, link = '', color, onSignOut = null, isNotFoundPage = false  }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
   const handleClick = () => {
     if (pathname !== '/profile') {
-      navigate(`${link}`, {replace: true})
+      if( isNotFoundPage ) {
+        navigate(-1)
+      } else {
+        navigate(`${link}`, {replace: true})
+      }
     } else if ( pathname === '/profile') {
       onSignOut();
     }

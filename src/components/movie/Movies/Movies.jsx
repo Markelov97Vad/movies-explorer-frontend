@@ -61,7 +61,7 @@ function Movies() {
   }
 
   const handleCheckboxShortmovies = (shortmovies) => {
-    handleStorageData({ shortmovies });
+    handleStorageData( {shortmovies});
     if (keyword) {
       handleResultRender(keyword, moviesList, shortmovies)
     }
@@ -91,6 +91,11 @@ function Movies() {
     const errorCache = getResultCache('errors');
     errorCache?.error && setErrorMessage(errorCache.error);
   },[getResultCache])
+
+  useEffect(() => {
+    const keywordCache = getResultCache('searchValueCache')
+    handleStorageData({keyword: keywordCache?.keyword})
+  }, [])
 
   useEffect(() => {
     errorMessage && setResultCache('errors', {error: errorMessage})

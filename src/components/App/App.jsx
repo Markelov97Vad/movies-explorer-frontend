@@ -41,13 +41,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegistration = (name, email, password) => {
+  const handleRegistration = (inputValue) => {
     setIsLoading(true);
     return mainApi
-      .register(name, password, email)
-      .then(() => {
-        navigate("/signin", { replace: true });
-      })
+      .register(inputValue)
+      .then(() => handleAuthorize(inputValue))
       .catch((err) => {
         if (err === CONFLICT_CODE) {
           setMessage(UNAUTHORIZED_ERROR_EMAIL_MESSAGE)
@@ -60,11 +58,11 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
-  const handleAuthorize = (email, password) => {
+  const handleAuthorize = (inputValue) => {
     setMessage('')
     setIsLoading(true);
     return mainApi
-      .authorize(email, password)
+      .authorize(inputValue)
       .then((res) => {
         setLoggetIn(true);
         setCurrentUser(res);
@@ -151,7 +149,6 @@ function App() {
   useEffect(() => {
     setMessage('');
   }, [navigate]);
-  
 
   return (
     <div className="root">

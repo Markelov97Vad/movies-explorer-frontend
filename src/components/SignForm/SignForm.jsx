@@ -23,6 +23,7 @@ function SignForm({ handleSubmit, nameForm, message, isLoading }) {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log('INPUT VALUES', inputValues);
     handleSubmit(inputValues);
   };
 
@@ -70,9 +71,9 @@ function SignForm({ handleSubmit, nameForm, message, isLoading }) {
       <div className="sign-form__control-wrapper">
         <ErrorMessage text={message} place='sign-form'/>
         {pathname === "/signin" ? (
-          <FormButton text="Войти" isValid={formIsValid} isLoading={isLoading}/>
+          <FormButton text="Войти" disabled={!formIsValid} isLoading={isLoading}/>
         ) : (
-          <FormButton text="Зарегистрироваться" isValid={formIsValid} isLoading={isLoading}/>
+          <FormButton text="Зарегистрироваться" disabled={!formIsValid} isLoading={isLoading}/>
         )}
         {pathname === "/signin" ? (
           <span className="sign-form__span">

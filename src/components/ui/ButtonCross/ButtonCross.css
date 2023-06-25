@@ -31,10 +31,21 @@
 .movies-card__info:hover .button-cross_place_card:hover {
   opacity: .5;
 }
-
-
-@media screen and (max-width: 600px) {
+  /* iPad screen */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1366px) {
   .button-cross_place_card {
+    opacity: 1;
+  }
+}
+  /* mobile portrait */
+@media only screen and (orientation: portrait) and (min-device-width: 414px) and (max-device-height: 926px) and (-webkit-device-pixel-ratio: 3){
+	.button-cross_place_card {
+    opacity: 1;
+  }
+}
+  /* mobile landscape*/
+@media only screen and (orientation: landscape) and (min-device-width: 414px) and (max-device-height: 926px) and (-webkit-device-pixel-ratio: 3){
+	.button-cross_place_card {
     opacity: 1;
   }
 }
@@ -43,5 +54,9 @@
   .button-cross_place_menu {
     margin-top: 20px;
     margin-right: 20px;
+  }
+
+  .button-cross_place_card {
+    opacity: 1;
   }
 }

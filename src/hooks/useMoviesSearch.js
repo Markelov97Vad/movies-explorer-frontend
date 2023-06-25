@@ -1,4 +1,4 @@
-import { MOVIES_SEARCH_ERROR_MESSAGE } from "../utils/constants";
+import { MOVIES_SEARCH_ERROR_MESSAGE, NUMBER_OF_SHORTMOVIES } from "../utils/constants";
 
 function useMovieSearch(handleError) {
   const checkError = (result) => {
@@ -17,7 +17,7 @@ function useMovieSearch(handleError) {
 
   const filterShortMovies = (movies) => {
     const result = movies.filter( movie => {
-      return movie.duration <= 40
+      return movie.duration <= NUMBER_OF_SHORTMOVIES
     });
     checkError(result);
     return result

@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { SCREEN_DESKTOP, SCREEN_MEDIUM } from "../utils/constants";
+import { 
+  NUMBER_OF_MOVIES_FOR_DESKTOP,
+  NUMBER_OF_MOVIES_FOR_DESKTOP_ADD,
+  NUMBER_OF_MOVIES_FOR_MOBILE,
+  NUMBER_OF_MOVIES_FOR_MOBILE_ADD,
+  NUMBER_OF_MOVIES_FOR_TABLET,
+  SCREEN_DESKTOP, 
+  SCREEN_TABLET
+} from "../utils/constants";
 
 function useResize() {
   const [cardsCount, setCardsCount] = useState(12);
@@ -8,8 +16,12 @@ function useResize() {
 
   useEffect(() => {
     const handleResize = () => {
-      const renderCount = width > SCREEN_DESKTOP ? 12 : width > SCREEN_MEDIUM ? 8 : 5;
-      const downloadCount = width > SCREEN_DESKTOP ? 3 : 2;
+      const renderCount = width > SCREEN_DESKTOP ? 
+        NUMBER_OF_MOVIES_FOR_DESKTOP : width > SCREEN_TABLET ? 
+        NUMBER_OF_MOVIES_FOR_TABLET : NUMBER_OF_MOVIES_FOR_MOBILE;
+
+      const downloadCount = width > SCREEN_DESKTOP ? 
+        NUMBER_OF_MOVIES_FOR_DESKTOP_ADD : NUMBER_OF_MOVIES_FOR_MOBILE_ADD;
 
       setCardsCount(renderCount);
       setNewCardsCount(downloadCount);

@@ -14,14 +14,15 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
     inputValues,
     handleInputChange,
     handleToggleChange,
-    resetFormValues 
+    resetFormValues,
+    checkboxValues
   } = useFormValid();
   const { setResultCache, getResultCache } = useResultCache();
 
   // валидация ввода
-  const handleValuesCache = (inputValuse) => {
+  const handleValuesCache = (inputValues) => {
     if(valueCache) {
-      setResultCache('searchValueCache', inputValuse)
+      setResultCache('searchValueCache', inputValues)
     }
   }
   // инпутов из кэша
@@ -47,8 +48,14 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
     evt.preventDefault();
     const isValid = handleInputValidate();
      if (isValid) {
-      handleSubmitMoviesSearch(inputValues);
-      handleValuesCache(inputValues)
+      handleSubmitMoviesSearch({ 
+        keyword: inputValues.keyword, 
+        shortmovies: checkboxValues.shortmovies
+      });
+      handleValuesCache({ 
+        keyword: inputValues.keyword, 
+        shortmovies: checkboxValues.shortmovies
+      })
       setVisible(false)
      }
   }
@@ -56,7 +63,6 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
   const handleCheckbox = (evt) => {
     handleToggleChange(evt);
     const { name, checked } = evt.target;
-    
     handleCheckboxShortmovies(checked);
     handleValuesCache({ [name] : checked});
   }
@@ -78,7 +84,7 @@ function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, value
           </div>
           <FilterCheckbox 
             handleChange={handleCheckbox} 
-            checked={inputValues.shortmovies}
+            checked={checkboxValues.shortmovies}
           />
       </form>
     </section>

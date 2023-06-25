@@ -4,9 +4,9 @@ function useSearchData() {
   const [keyword, setKeyword] = useState('');
   const [shortMovies, setShortMovies] = useState(true);
 
-  const handleStorageData = ({ shortMovies, keyword }) => {
-    setShortMovies(shortMovies);
-
+  const handleStorageData = ({ shortmovies, keyword }) => {
+    setShortMovies(shortmovies);
+    
     if (keyword) {
       setKeyword(keyword);
     }

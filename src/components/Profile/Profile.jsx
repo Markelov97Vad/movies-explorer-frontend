@@ -48,6 +48,8 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
     handleErrorMessage()
   },[error, inputValues, handleInputChange])
 
+  const isSubmitButtonDisabled = (!formIsValid || (currentUser.name === inputValues.name && currentUser.email === inputValues.email));
+
   return (
     <>
       <Header />
@@ -117,7 +119,11 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
             ) : (
               <div className="profile__submit">
                 {error.length > 0 && <ErrorMessage text={error} place='profile'/>}
-                <FormButton text="Сохранить" isValid={formIsValid} isLoading={isLoading}/>
+                <FormButton 
+                  text="Сохранить" 
+                  disabled={isSubmitButtonDisabled}
+                  isLoading={isLoading}
+                  />
               </div>
             )}
           </form>

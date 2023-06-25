@@ -1,7 +1,7 @@
 const validationConfig = {
   name: {
-      pattern: /^[a-zA-Zа-яА-ЯёЁ-]+[a-zA-Zа-яА-ЯёЁ -]*$/,
-      validationError: 'Имя может содержать только буквы, пробел или дефис',
+      pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})+[a-zA-Zа-яА-ЯёЁ -]*$/,
+      validationError: 'Имя должно быть от 2 до 30 символов, может содержать пробел или дефис',
       emptyError: 'Заполните это поле.',
   },
   email: {

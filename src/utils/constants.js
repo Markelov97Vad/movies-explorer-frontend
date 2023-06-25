@@ -15,8 +15,15 @@ export const MOVIES_REQUEST_ERROR_MESSAGE = 'Во время запроса пр
 export const MOVIES_SEARCH_ERROR_MESSAGE = 'Ничего не найдено';
 export const VALIDATION_INPUT_ERROR_MESSAGE = 'Нужно ввести ключевое слово';
 
-export const SCREEN_MEDIUM = 635;
+export const SCREEN_TABLET = 635;
 export const SCREEN_DESKTOP = 1279;
+
+export const NUMBER_OF_SHORTMOVIES = 40;
+export const NUMBER_OF_MOVIES_FOR_DESKTOP = 12;
+export const NUMBER_OF_MOVIES_FOR_TABLET = 8;
+export const NUMBER_OF_MOVIES_FOR_MOBILE = 5;
+export const NUMBER_OF_MOVIES_FOR_DESKTOP_ADD = 3;
+export const NUMBER_OF_MOVIES_FOR_MOBILE_ADD = 2;
 
 export const MAIN_API_URL = 'https://api.marsello.diploma.nomoredomains.rocks';
 export const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';

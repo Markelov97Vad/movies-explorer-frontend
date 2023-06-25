@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import './FormButton.css';
 import { loadingMessage } from '../../../utils/config';
 
-function FormButton({ text, isValid, isLoading }) {
+function FormButton({ text, isLoading, disabled}) {
   const { pathname } = useLocation();
   
   const handleRequest = () => {
@@ -16,11 +16,13 @@ function FormButton({ text, isValid, isLoading }) {
       return loadingMessage.profile
     }
   }
+
   return ( 
     <button 
       type='submit' 
       className='form-button'
-      disabled={!isValid}>
+      disabled={disabled}
+    >
         {isLoading ? handleRequest() :  text}
     </button>
    );
