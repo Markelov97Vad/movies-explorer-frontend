@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import './ButtonLike.css'
 
-function ButtonLike() {
-  const [ isLiked, setIsLiked] = useState(false);
+function ButtonLike({ isOwner, handleClick}) {
 
-  const cardLikeButtonClassname = `button-like ${isLiked ? 'button-like_active' : ''}`
-
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-  }
+  const cardLikeButtonClassname = `button-like ${isOwner? 'button-like_active' : ''}`
 
   return ( 
-    <button className={cardLikeButtonClassname} onClick={handleLike} type='button'></button>
+    <button className={cardLikeButtonClassname} onClick={handleClick} type='button'></button>
    );
 }
 

@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./HeaderWrapper.css";
+import { useState } from "react";
 import NavHeader from "../navigation/NavHeader/NavHeader";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 

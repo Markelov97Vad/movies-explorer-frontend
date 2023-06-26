@@ -84,6 +84,12 @@
   color: #000000;
 }
 
+.profile__success-span {
+  font-size: 13px;
+  line-height: 16px;
+  color: #2BE080;
+}
+
 .profile__edit {
   display: flex;
   flex-direction: column;
@@ -155,5 +161,9 @@
   .profile__button {
     font-size: 12px;
     line-height: 15px;
+  }
+
+  .profile__success-span {
+    font-size: 12px;
   }
 }

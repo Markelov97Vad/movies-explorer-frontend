@@ -10,11 +10,11 @@ function NotFoundPage() {
           <span className="not-found-page__subtitle">Страница не найдена</span>
         </div>
         <NavLinkButton
-          link="/"
           text="Назад"
           place="not-found"
           type="link"
           color="blue"
+          isNotFoundPage={true}
         />
       </section>
     </main>

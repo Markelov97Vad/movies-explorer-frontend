@@ -1,11 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import './NavLinkButton.css'
 
-function NavLinkButton({ text , place, type, link, color }) {
+function NavLinkButton({ text , place, type, link = '', color, onSignOut = null, isNotFoundPage = false  }) {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleClick = () => {
-    navigate(`${link}`, {replace: true})
+    if (pathname !== '/profile') {
+      if( isNotFoundPage ) {
+        navigate(-1)
+      } else {
+        navigate(`${link}`, {replace: true})
+      }
+    } else if ( pathname === '/profile') {
+      onSignOut();
+    }
   }
 
   return ( 
@@ -14,8 +23,6 @@ function NavLinkButton({ text , place, type, link, color }) {
     }>
       {text}
     </button>
-    // <button to={to} type="button" className={`navigation-link-sign__button navigation-link-sign__button_place_${place} navigation-link-sign__button_type_${type} navigation-link-sign__button_color_${color}`} >
-    //   </button>
    );
 }
 

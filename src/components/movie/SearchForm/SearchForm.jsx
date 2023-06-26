@@ -2,22 +2,90 @@ import './SearchForm.css';
 import FilterCheckbox from '../../FilterCheckbox/FilterCheckbox';
 import useFormValid from '../../../hooks/useFormValid';
 import SearchButton from '../../ui/SearchButton/SearchButton';
+import { useEffect, useState } from 'react';
+import useResultCache from '../../../hooks/useResultCache';
+import ErrorMessage from '../../ErrorMessage/ErrorMessage';
+import { VALIDATION_INPUT_ERROR_MESSAGE } from '../../../utils/constants';
 
-function SearchForm() {
-  const { values , handleChange } = useFormValid({});
+function SearchForm({ handleSubmitMoviesSearch, handleCheckboxShortmovies, valueCache = false }) {
+  const [validationError, setValidationError] = useState('');
+  const [visible, setVisible] = useState(false)
+  const { 
+    inputValues,
+    handleInputChange,
+    handleToggleChange,
+    resetFormValues,
+    checkboxValues
+  } = useFormValid();
+  const { setResultCache, getResultCache } = useResultCache();
 
-  const handleSubmit = (evt) => {
+  // валидация ввода
+  const handleValuesCache = (inputValues) => {
+    if(valueCache) {
+      setResultCache('searchValueCache', inputValues)
+    }
+  }
+  // инпутов из кэша
+  useEffect(() => {
+    if(valueCache) {
+      const cache = getResultCache('searchValueCache');
+      cache && resetFormValues(cache);
+    }
+  }, [valueCache, getResultCache, resetFormValues])
+
+  const handleInputValidate = () => {
+    setValidationError('')
+    const isValid = inputValues.keyword && inputValues.keyword.length > 0;
+
+    if(!isValid) {
+      setValidationError(VALIDATION_INPUT_ERROR_MESSAGE);
+      setVisible(true)
+    }
+    return isValid;
+  }
+
+  const onSubmit = (evt) => {
     evt.preventDefault();
-  };
+    const isValid = handleInputValidate();
+     if (isValid) {
+      handleSubmitMoviesSearch({ 
+        keyword: inputValues.keyword, 
+        shortmovies: checkboxValues.shortmovies
+      });
+      handleValuesCache({ 
+        keyword: inputValues.keyword, 
+        shortmovies: checkboxValues.shortmovies
+      })
+      setVisible(false)
+     }
+  }
+  // состояние чекбокса
+  const handleCheckbox = (evt) => {
+    handleToggleChange(evt);
+    const { name, checked } = evt.target;
+    handleCheckboxShortmovies(checked);
+    handleValuesCache({ [name] : checked});
+  }
 
   return ( 
     <section className='search-form'>
-      <form className='search-form__form' onSubmit={handleSubmit} noValidate>
+      {visible && <ErrorMessage text={validationError} place='search-form'/>}
+      <form className='search-form__form' onSubmit={onSubmit} noValidate>
           <div className='search-form__input-container'>
-            <input value={values.movies || ''} onChange={handleChange} className='search-form__input' name='movies' type="text" placeholder='Фильм' required/>
+            <input 
+              value={inputValues.keyword || ''} 
+              onChange={handleInputChange} 
+              className='search-form__input' 
+              name='keyword' 
+              type="text" 
+              placeholder='Фильм' 
+              required/>
             <SearchButton />
           </div>
-          <FilterCheckbox/>
+          <FilterCheckbox 
+            handleChange={handleCheckbox} 
+            checked={checkboxValues.shortmovies}
+          />
       </form>
     </section>
    );

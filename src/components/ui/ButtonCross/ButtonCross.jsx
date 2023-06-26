@@ -1,8 +1,8 @@
 import './ButtonCross.css';
 
-function ButtonCross({ onClick, place }) {
+function ButtonCross({ handleClick, place }) {
   return ( 
-    <button onClick={onClick} type='button' className={`button-cross button-cross_place_${place}`}></button>
+    <button onClick={handleClick} type='button' className={`button-cross button-cross_place_${place}`}></button>
    );
 }
 

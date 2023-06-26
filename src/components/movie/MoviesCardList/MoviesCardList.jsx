@@ -1,67 +1,58 @@
-import { useEffect, useState } from "react";
 import "./MoviesCardList.css";
-import { moviesList } from "../../../utils/config";
+import { handleMovieDataFormat } from "../../../utils/config";
 import Preloader from "../Preloader/Preloader";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import useResize from "../../../hooks/useResize";
 import AppendButton from "../../ui/AppendButton/AppendButton";
+import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import ButtonLike from "../../ui/ButtonLike/ButtonLike";
+import useMoviesCardsRender from "../../../hooks/useMoviesCardsRender";
 
-function MoviesCardList({ place }) {
-  const [count, setCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const { isScreenMobile, isScreenMedium, isScreenDesktop } = useResize();
-
-  useEffect(() => {
-    if (isScreenMobile) {
-      setCount(4);
-      // setCount(1);
-    }
-    if (isScreenMedium) {
-      setCount(7)
-      // setCount(2)
-    }
-    if (isScreenDesktop) {
-      setCount(11);
-      // setCount(2);
-    }
-  }, [isScreenMobile, isScreenDesktop]);
-
-  const handleClick = () => {
-    if (isScreenMobile) {
-      setCount(count + 5);
-    }
-    if (isScreenMedium) {
-      setCount(count + 8)
-    }
-    if (isScreenDesktop) {
-      setCount(count + 12);
-    }
-  };
-
-  const movieListForRender = moviesList.filter((el, index) => {
-    if (index <= count) {
-      return el;
-    }
-    return null;
-  });
-
-  const renderButton = movieListForRender.length < moviesList.length;
-
+function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, savedMoviesList = [], handleMovieDelete, errorMessage }) {
+  const { renderMovies, renderMoviesCard, renderButton } = useMoviesCardsRender(moviesList);
   return (
-    <section className={`movie-card-list movie-card-list_place_${place}`}>
-      {isLoading && <Preloader />}
-      {!isLoading && (
+    <section className={`movies-card-list movies-card-list_place_${place}`}>
+      {isLoading && <Preloader /> }
+      {(!isLoading && renderMovies.length > 0) &&
         <>
-          <ul className='movie-card-list__container'>
-              {movieListForRender.map((movie) => (
+          <ul className='movies-card-list__container'>
+            {renderMovies.map((movie) => {
+              const movieData = handleMovieDataFormat(movie);
+              const isOwner = savedMoviesList.some(savedMovie => savedMovie.movieId === movie.id);
+              const handleSave = () => {
+                handleMovieSave(movieData)
+              }
+
+              const handleDelete = () => {
+                const movieId = savedMoviesList.find(elem => elem.nameRU === movieData.nameRU)
+                handleMovieDelete(movieId._id)
+              }
+
+              const handleClick = () => {
+                if(!isOwner) {
+                  handleSave();
+                } else {
+                  handleDelete();
+                }
+              }
+            return (
               <li key={movie.id}>
-                  <MoviesCard movie={movie} />
+                  <MoviesCard 
+                    movie={movie}
+                    handleClick={handleClick}
+                    Button={ButtonLike}
+                    savedMoviesList={savedMoviesList}
+                    isOwner={isOwner}
+                  />
               </li>
-              ))}
+            )
+            })}
           </ul>
-          {renderButton && <AppendButton onClick={handleClick} text='Ещё'/>}
+          {renderButton && <AppendButton onClick={renderMoviesCard} text='Ещё'/>}
         </>
-      )}
+      }
+    {(moviesList.length === 0 && errorMessage ) && 
+      <ErrorMessage text={errorMessage} place='movie-card-list'/>
+    }
     </section>
   );
 }
