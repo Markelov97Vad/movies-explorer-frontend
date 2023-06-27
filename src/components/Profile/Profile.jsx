@@ -55,7 +55,7 @@ function Profile({ handleUserInfoChange, errorRequest , isEditing, handleOpenCon
       <Header />
       <main className="profile">
         <section className="profile__info">
-          <h1 className="profile__title">Привет, Вадим!</h1>
+          <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
           <form
             className="profile__form"
             onSubmit={handleSubmit}
