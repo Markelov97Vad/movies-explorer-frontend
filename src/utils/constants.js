@@ -25,7 +25,7 @@ export const NUMBER_OF_MOVIES_FOR_MOBILE = 5;
 export const NUMBER_OF_MOVIES_FOR_DESKTOP_ADD = 3;
 export const NUMBER_OF_MOVIES_FOR_MOBILE_ADD = 2;
 
-// export const MAIN_API_URL = 'https://api.marsello.diploma.nomoredomains.rocks';
-export const MAIN_API_URL = 'http://localhost:3000';
+export const MAIN_API_URL = 'https://api.marsello.diploma.nomoredomains.rocks';
+// export const MAIN_API_URL = 'http://localhost:3000';
 export const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 export const MOVIES_BASE_API_URL = 'https://api.nomoreparties.co';
