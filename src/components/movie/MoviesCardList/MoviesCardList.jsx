@@ -17,7 +17,10 @@ function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, sa
           <ul className='movies-card-list__container'>
             {renderMovies.map((movie) => {
               const movieData = handleMovieDataFormat(movie);
-              const isOwner = savedMoviesList.some(savedMovie => savedMovie.movieId === movie.id);
+              const isOwner = savedMoviesList.some(savedMovie => {
+                return savedMovie.movieId === movie.id
+              });
+              console.log();
               const handleSave = () => {
                 handleMovieSave(movieData)
               }
@@ -38,9 +41,9 @@ function MoviesCardList({ isLoading, place, moviesList = [], handleMovieSave, sa
               <li key={movie.id}>
                   <MoviesCard 
                     movie={movie}
-                    handleClick={handleClick}
                     Button={ButtonLike}
-                    savedMoviesList={savedMoviesList}
+                    handleClick={handleClick}
+                    // savedMoviesList={savedMoviesList}
                     isOwner={isOwner}
                   />
               </li>

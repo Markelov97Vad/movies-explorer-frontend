@@ -13,7 +13,7 @@ import useResultCache from '../../../hooks/useResultCache';
 import { MOVIES_REQUEST_ERROR_MESSAGE } from '../../../utils/constants';
 
 function Movies() {
-  const [moviesList, setMoviesList] = useState(()=> {
+  const [moviesList, setMoviesList] = useState(() => {
     const movies = JSON.parse(localStorage.getItem('moviesList'));
     return movies ? movies : [];
   });
@@ -31,6 +31,7 @@ function Movies() {
 
     setRenderMoviesList(resultSearchMovie);
     setResultCache( 'moviesCache', { movies: resultSearchMovie });
+
   }
   // запросы к BeatfilmMoviesApi
   const handleMoviesFetch = ({ keyword, shortmovies }) => {

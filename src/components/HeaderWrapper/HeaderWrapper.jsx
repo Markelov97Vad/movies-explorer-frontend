@@ -17,7 +17,7 @@ function HeaderWrapper() {
           className="header-wrapper__button-burger"
           onClick={handleMenuOpen}
         ></button>
-        <HeaderMenu handleMenuOpen={handleMenuOpen} isMenuOpen={isMenuOpen} />
+        <HeaderMenu handleClick={handleMenuOpen} isMenuOpen={isMenuOpen} />
       </div>
     </>
   );

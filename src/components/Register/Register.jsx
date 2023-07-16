@@ -22,6 +22,7 @@ function Register({ onRegistration , message, isLoading}) {
     onRegistration(values)
   };
   return (
+    // ! исправить
     <SignWrapper>
       <SignTitle text="Добро пожаловать!" />
       <SignForm 

@@ -21,7 +21,7 @@ function SavedMoviesCardList({ place, moviesList = [], errorMessage, handleMovie
                   movie={movie} 
                   Button={ButtonCross}
                   handleClick={handleClick}
-                  handleMovieDelete={handleMovieDelete}
+                  // handleMovieDelete={handleMovieDelete}
                   place='card'
                 />
             </li>

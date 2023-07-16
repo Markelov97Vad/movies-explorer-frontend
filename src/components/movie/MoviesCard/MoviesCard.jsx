@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
+import { useLocation } from 'react-router-dom';
 import { MOVIES_BASE_API_URL } from '../../../utils/constants';
 
 function MoviesCard({ movie, handleClick, Button, isOwner, place}) {
