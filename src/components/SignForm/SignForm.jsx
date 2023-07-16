@@ -2,7 +2,7 @@ import "./SignForm.css";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import InputForm from "../ui/InputForm/InputForm";
-import NavLinkSign from "../ui/NavLinkButton/NavLinkButton";
+import NavLinkButton from "../ui/NavLinkButton/NavLinkButton";
 import FormButton from "../ui/FormButton/FormButton";
 import useFormValid from "../../hooks/useFormValid";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
@@ -19,16 +19,15 @@ function SignForm({ handleSubmit, nameForm, message, isLoading }) {
 
   useEffect(() => {
     resetFormValues();
-  }, []);
+  }, [resetFormValues]);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log('INPUT VALUES', inputValues);
     handleSubmit(inputValues);
   };
 
   return (
-    <form className="sign-form" onSubmit={onSubmit} name={nameForm} disabled={!formIsValid || isLoading} noValidate>
+    <form className="sign-form" onSubmit={onSubmit} name={nameForm}  noValidate>
       <div className="sign-form__wrapper">
         {pathname === "/signup" && (
           <InputForm
@@ -78,7 +77,7 @@ function SignForm({ handleSubmit, nameForm, message, isLoading }) {
         {pathname === "/signin" ? (
           <span className="sign-form__span">
             Ещё не зарегистрированы?
-            <NavLinkSign
+            <NavLinkButton
               text="Регистрация"
               link="/signup"
               place="sign"
@@ -89,7 +88,7 @@ function SignForm({ handleSubmit, nameForm, message, isLoading }) {
         ) : (
           <span className="sign-form__span">
             Уже зарегистрированы?
-            <NavLinkSign
+            <NavLinkButton
               text="Войти"
               link="/signin"
               place="sign"

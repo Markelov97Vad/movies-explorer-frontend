@@ -76,6 +76,7 @@ function useFormValid( values = {}) {
     const isValid = formRef.current?.checkValidity();
     const isError = Object.keys(errorMessages).some(name => errorMessages[name]);
 
+
     setFormIsValid(() => isValid && !isError);
   }, [inputValues, errorMessages])
 

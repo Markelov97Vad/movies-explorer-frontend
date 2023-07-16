@@ -3,7 +3,7 @@ import { MoviesContext } from "../contexts/MoviesContext";
 
 function useMoviesContext() {
   const moviesContextValue = useContext(MoviesContext);
-  return { ...moviesContextValue};
+  return {...moviesContextValue};
 }
 
 export default useMoviesContext;

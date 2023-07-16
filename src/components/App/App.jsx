@@ -42,10 +42,14 @@ function App() {
   const navigate = useNavigate();
 
   const handleRegistration = (inputValue) => {
+    console.log('Inputvalues',inputValue);
     setIsLoading(true);
     return mainApi
       .register(inputValue)
-      .then(() => handleAuthorize(inputValue))
+      .then((res) => {
+        console.log(res);
+        handleAuthorize(inputValue)
+      })
       .catch((err) => {
         if (err === CONFLICT_CODE) {
           setMessage(UNAUTHORIZED_ERROR_EMAIL_MESSAGE)
@@ -187,7 +191,8 @@ function App() {
                     isLoading={isLoading}
                     handleOpenConfirm={handleOpenConfirm}
                     message={message}
-                    onSignOut={handleSignOut}/>
+                    onSignOut={handleSignOut}
+                  />
                 </ProtectedRoute>
               }
             />
